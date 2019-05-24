@@ -1,0 +1,16 @@
+{
+  "name": "tellus_eth",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "truffle": "^5.0.18",
+    "truffle-cost": "^1.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC"
+}
