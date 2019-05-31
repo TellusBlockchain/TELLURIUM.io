@@ -39,11 +39,11 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.0+commit.1d4f565a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"address\"}],\"name\":\"_users\",\"outputs\":[{\"name\":\"id\",\"type\":\"uint256\"},{\"name\":\"addr\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"create\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/sborod/projects/exyte/tellus/tellus_eth/contracts/Users.sol\":\"Users\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/sborod/projects/exyte/tellus/tellus_eth/contracts/Users.sol\":{\"keccak256\":\"0x61f70aa7080078053273b60c2f81bd8f9b8520473971a363154cd37c2875dea6\",\"urls\":[\"bzzr://99f80652022dbcfdf5af05fa7ad22077ca36e6300d0731d9e36d564c0e65ec46\"]}},\"version\":1}",
-  "bytecode": "0x60806040526000805534801561001457600080fd5b506102ba806100246000396000f3fe60806040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680633cacd7d6146100515780639ed93318146100e9575b600080fd5b34801561005d57600080fd5b506100a06004803603602081101561007457600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061013a565b604051808381526020018273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019250505060405180910390f35b3480156100f557600080fd5b506101386004803603602081101561010c57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061017e565b005b60016020528060005260406000206000915090508060000154908060010160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905082565b600080815480929190600101919050555061019761025e565b604080519081016040528060005481526020018373ffffffffffffffffffffffffffffffffffffffff16815250905080600160008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206000820151816000015560208201518160010160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055509050505050565b604080519081016040528060008152602001600073ffffffffffffffffffffffffffffffffffffffff168152509056fea165627a7a7230582016062ff51924eecf542137dcd1990e70271e823aab0ee67f8a2acffeb46ee4fe0029",
-  "deployedBytecode": "0x60806040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680633cacd7d6146100515780639ed93318146100e9575b600080fd5b34801561005d57600080fd5b506100a06004803603602081101561007457600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061013a565b604051808381526020018273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019250505060405180910390f35b3480156100f557600080fd5b506101386004803603602081101561010c57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061017e565b005b60016020528060005260406000206000915090508060000154908060010160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905082565b600080815480929190600101919050555061019761025e565b604080519081016040528060005481526020018373ffffffffffffffffffffffffffffffffffffffff16815250905080600160008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206000820151816000015560208201518160010160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055509050505050565b604080519081016040528060008152602001600073ffffffffffffffffffffffffffffffffffffffff168152509056fea165627a7a7230582016062ff51924eecf542137dcd1990e70271e823aab0ee67f8a2acffeb46ee4fe0029",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"address\"}],\"name\":\"_users\",\"outputs\":[{\"name\":\"id\",\"type\":\"uint256\"},{\"name\":\"addr\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"create\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/sborod/projects/exyte/tellus/tellus_eth/contracts/Users.sol\":\"Users\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/sborod/projects/exyte/tellus/tellus_eth/contracts/Users.sol\":{\"keccak256\":\"0x61f70aa7080078053273b60c2f81bd8f9b8520473971a363154cd37c2875dea6\",\"urls\":[\"bzzr://99f80652022dbcfdf5af05fa7ad22077ca36e6300d0731d9e36d564c0e65ec46\"]}},\"version\":1}",
+  "bytecode": "0x60806040526000805534801561001457600080fd5b5061028a806100246000396000f3fe608060405234801561001057600080fd5b50600436106100365760003560e01c80633cacd7d61461003b5780639ed93318146100c6575b600080fd5b61007d6004803603602081101561005157600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061010a565b604051808381526020018273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019250505060405180910390f35b610108600480360360208110156100dc57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061014e565b005b60016020528060005260406000206000915090508060000154908060010160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905082565b600080815480929190600101919050555061016761022e565b604051806040016040528060005481526020018373ffffffffffffffffffffffffffffffffffffffff16815250905080600160008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206000820151816000015560208201518160010160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055509050505050565b604051806040016040528060008152602001600073ffffffffffffffffffffffffffffffffffffffff168152509056fea165627a7a72305820548079ef6b59a3ae5185dd029fe2f7421cc45c556284d70cc7dd1448a4ac90c60029",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100365760003560e01c80633cacd7d61461003b5780639ed93318146100c6575b600080fd5b61007d6004803603602081101561005157600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061010a565b604051808381526020018273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019250505060405180910390f35b610108600480360360208110156100dc57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061014e565b005b60016020528060005260406000206000915090508060000154908060010160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905082565b600080815480929190600101919050555061016761022e565b604051806040016040528060005481526020018373ffffffffffffffffffffffffffffffffffffffff16815250905080600160008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206000820151816000015560208201518160010160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055509050505050565b604051806040016040528060008152602001600073ffffffffffffffffffffffffffffffffffffffff168152509056fea165627a7a72305820548079ef6b59a3ae5185dd029fe2f7421cc45c556284d70cc7dd1448a4ac90c60029",
   "sourceMap": "33:378:2:-;;;161:1;143:19;;33:378;8:9:-1;5:2;;;30:1;27;20:12;5:2;33:378:2;;;;;;;",
-  "deployedSourceMap": "33:378:2:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;169:38;;8:9:-1;5:2;;;30:1;27;20:12;5:2;169:38:2;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;169:38:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;214:194;;8:9:-1;5:2;;;30:1;27;20:12;5:2;214:194:2;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;214:194:2;;;;;;;;;;;;;;;;;;;;;;169:38;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;214:194::-;261:10;;:12;;;;;;;;;;;;;284:16;;:::i;:::-;303:68;;;;;;;;;326:10;;303:68;;;;356:4;303:68;;;;;284:87;;397:4;382:6;:12;389:4;382:12;;;;;;;;;;;;;;;:19;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;214:194;;:::o;33:378::-;;;;;;;;;;;;;;;;;;;;;;:::o",
+  "deployedSourceMap": "33:378:2:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;33:378:2;;;;;;;;;;;;;;;;;;;;;;;;169:38;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;169:38:2;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;214:194;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;214:194:2;;;;;;;;;;;;;;;;;;;:::i;:::-;;169:38;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;214:194::-;261:10;;:12;;;;;;;;;;;;;284:16;;:::i;:::-;303:68;;;;;;;;326:10;;303:68;;;;356:4;303:68;;;;;284:87;;397:4;382:6;:12;389:4;382:12;;;;;;;;;;;;;;;:19;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;214:194;;:::o;33:378::-;;;;;;;;;;;;;;;;;;;;;:::o",
   "source": "pragma solidity >=0.4.0 <0.7.0;\n\ncontract Users {\n\n    struct User {\n        uint id;\n        address addr;\n    }\n\n    // Autoincrementer:\n    uint current_id = 0;\n\n    mapping(address => User) public _users;\n\n    function create(address addr) public {\n        current_id++;\n\n        User memory user = User({\n            id: current_id,\n            addr: addr\n        });\n\n        _users[addr] = user;\n    }\n\n}",
   "sourcePath": "/Users/sborod/projects/exyte/tellus/tellus_eth/contracts/Users.sol",
   "ast": {
@@ -343,7 +343,16 @@
                       }
                     ],
                     "expression": {
-                      "argumentTypes": null,
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
                       "id": 201,
                       "name": "User",
                       "nodeType": "Identifier",
@@ -807,7 +816,16 @@
                       }
                     ],
                     "expression": {
-                      "argumentTypes": null,
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
                       "id": 201,
                       "name": "User",
                       "nodeType": "Identifier",
@@ -976,18 +994,24 @@
   },
   "compiler": {
     "name": "solc",
-    "version": "0.5.0+commit.1d4f565a.Emscripten.clang"
+    "version": "0.5.8+commit.23d335f2.Emscripten.clang"
   },
   "networks": {
-    "5777": {
+    "1559279237045": {
       "events": {},
       "links": {},
-      "address": "0x6abEC6C4086745246eeC80Ae3fB653898281AF03",
-      "transactionHash": "0x683e4f64ff5f725e9530e142d09e9da760b961c3c8bc20bef1d90e45b3d01e56"
+      "address": "0xf025D689FB0D97fF433C2595B163373eedFC3e16",
+      "transactionHash": "0x4160c6f0cd1a95828ffb1106574ff25e84d262a6913e7cd07cac6743f9184270"
+    },
+    "1559281714808": {
+      "events": {},
+      "links": {},
+      "address": "0x0aaBb3B63D40B774c29732a47277E364Dc4d74EB",
+      "transactionHash": "0x52c6baf53f7ec60a8fb058fd16fc7805b24cd100cdc62057cae9d3b843eea40c"
     }
   },
-  "schemaVersion": "3.0.9",
-  "updatedAt": "2019-05-30T11:38:35.473Z",
+  "schemaVersion": "3.0.10",
+  "updatedAt": "2019-05-31T05:48:47.167Z",
   "devdoc": {
     "methods": {}
   },
