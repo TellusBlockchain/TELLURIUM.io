@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "truffle": "^5.0.18",
-    "truffle-cost": "^1.0.1"
+    "ganache-cli": "6.4.3",
+    "truffle": "5.0.20",
+    "truffle-cost": "1.0.1"
   },
   "devDependencies": {},
   "scripts": {
