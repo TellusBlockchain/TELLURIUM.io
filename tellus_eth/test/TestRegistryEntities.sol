@@ -2,12 +2,12 @@ pragma solidity >=0.4.25 <0.6.0;
 
 import "truffle/Assert.sol";
 import "truffle/DeployedAddresses.sol";
-import "../contracts/LandEntries.sol";
+import "../contracts/RegistryEntities.sol";
 
-contract TestLandEntries {
+contract TestRegistryEntities {
 
     function testCreate() public {
-        LandEntries landEntries = new LandEntries();
+        RegistryEntities registryEntities = new RegistryEntities();
 
         int32 valid_x = 1;
         int32 valid_y = 2;
@@ -18,7 +18,7 @@ contract TestLandEntries {
         points[1] = valid_y;
         points[2] = valid_z;
 
-        landEntries.create({
+        registryEntities.create({
             title: "title",
             description: "description",
             documents_url: "documents_url",
@@ -28,14 +28,14 @@ contract TestLandEntries {
     }
 
     function testFind() public {
-        LandEntries landEntries = new LandEntries();
+        RegistryEntities registryEntities = new RegistryEntities();
 
         int32[] memory points = new int32[](3);
         points[0] = 1;
         points[1] = 2;
         points[2] = 3;
 
-        landEntries.create({
+        registryEntities.create({
             title: "title",
             description: "description",
             documents_url: "documents_url",
@@ -52,7 +52,7 @@ contract TestLandEntries {
         uint created_at1;
         uint updated_at1;
 
-        (id1, title1, description1, documents_url1, image_url1, points1, created_at1, updated_at1) = landEntries.find(1);
+        (id1, title1, description1, documents_url1, image_url1, points1, created_at1, updated_at1) = registryEntities.find(1);
 
         Assert.equal(id1, 1, "Id1 should be 1.");
         Assert.equal(title1, "title", "Title1 should be 'title'.");
@@ -68,7 +68,7 @@ contract TestLandEntries {
 //        uint id2;
 //        string memory title2;
 //        string memory description2;
-//        (id2, title2, description2) = landEntries.find(2);
+//        (id2, title2, description2) = registryEntities.find(2);
 //        Assert.equal(id2, 0, "Id2 of non-existent element should be 0.");
 //        Assert.equal(title2, "", "Title2 of non-existent element should be an empty string.");
 //        Assert.equal(description2, "", "Description2 of non-existent element should be an empty string.");

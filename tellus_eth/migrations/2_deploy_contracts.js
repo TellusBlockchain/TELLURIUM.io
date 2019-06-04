@@ -1,7 +1,7 @@
-const LandEntries = artifacts.require("LandEntries");
+const RegistryEntities = artifacts.require("RegistryEntities");
 const Users = artifacts.require("Users");
 
 module.exports = function(deployer) {
-  deployer.deploy(LandEntries);
+  deployer.deploy(RegistryEntities);
   deployer.deploy(Users);
 };

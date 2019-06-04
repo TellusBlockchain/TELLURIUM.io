@@ -9,6 +9,5 @@ contract('Users', (accounts) => {
       usersInstance.create("0x2af4978cA29Dfe3D402b76Ec946785f1E84Ed82c"),
       'USD'
     );
-
   });
 });

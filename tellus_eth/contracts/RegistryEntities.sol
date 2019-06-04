@@ -1,10 +1,10 @@
 pragma solidity >=0.4.0 <0.7.0;
 
 // Contract for managing land entries.
-contract LandEntries {
+contract RegistryEntities {
 
     // Struct for storing data of land entry.
-    struct LandEntry {
+    struct RegistryEntity {
         uint id;
         string title;
         string description;
@@ -19,7 +19,7 @@ contract LandEntries {
     uint current_id = 0;
 
     // Map for storing land entries (id => land entry data).
-    mapping(uint => LandEntry) public _landEntries;
+    mapping(uint => RegistryEntity) public _registryEntity;
 
     // Function for creating and saving land entry to land entries map.
     function create(string memory title,
@@ -30,10 +30,10 @@ contract LandEntries {
     ) public {
         current_id += 1;
 
-        uint created_at = now;
+        uint created_at = block.timestamp;
         uint updated_at = created_at;
 
-        LandEntry memory landEntry = LandEntry({
+        RegistryEntity memory registryEntity = RegistryEntity({
             id: current_id,
             title: title,
             description: description,
@@ -44,7 +44,7 @@ contract LandEntries {
             updated_at: updated_at
         });
 
-        _landEntries[current_id] = landEntry;
+        _registryEntity[current_id] = registryEntity;
     }
 
     // Function for getting land entry data by land entry id.
@@ -58,17 +58,17 @@ contract LandEntries {
         uint,
         uint
     ) {
-        LandEntry memory landEntry = _landEntries[id];
+        RegistryEntity memory registryEntity = _registryEntity[id];
 
         return (
-            landEntry.id,
-            landEntry.title,
-            landEntry.description,
-            landEntry.documents_url,
-            landEntry.image_url,
-            landEntry.points,
-            landEntry.created_at,
-            landEntry.updated_at
+            registryEntity.id,
+            registryEntity.title,
+            registryEntity.description,
+            registryEntity.documents_url,
+            registryEntity.image_url,
+            registryEntity.points,
+            registryEntity.created_at,
+            registryEntity.updated_at
         );
     }
 
