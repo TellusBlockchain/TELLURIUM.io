@@ -8,6 +8,7 @@ import Header from './components/Header';
 import PagesWelcome from './routes/Pages/PagesWelcome';
 import UsersNew from './routes/Users/UsersNew';
 import RegistryEntitiesNew from './routes/RegistryEntities/RegistryEntitiesNew';
+import RegistryEntitiesIndex from './routes/RegistryEntities/RegistryEntitiesIndex';
 
 class App extends React.Component {
   render () {
@@ -18,6 +19,7 @@ class App extends React.Component {
           <div>
             <Route path="/" exact component={PagesWelcome} />
             <Route path="/users/new" component={UsersNew} />
+            <Route path="/registry_entities/index" component={RegistryEntitiesIndex} />
             <Route path="/registry_entities/new" component={RegistryEntitiesNew} />
           </div>
         </Router>

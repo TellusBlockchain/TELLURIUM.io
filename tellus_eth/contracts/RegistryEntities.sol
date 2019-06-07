@@ -19,7 +19,7 @@ contract RegistryEntities {
     uint current_id = 0;
 
     // Map for storing land entries (id => land entry data).
-    mapping(uint => RegistryEntity) public _registryEntity;
+    mapping (uint => RegistryEntity) public _registryEntity;
 
     // Function for creating and saving land entry to land entries map.
     function create(string memory title,
@@ -59,7 +59,6 @@ contract RegistryEntities {
         uint
     ) {
         RegistryEntity memory registryEntity = _registryEntity[id];
-
         return (
             registryEntity.id,
             registryEntity.title,
@@ -70,6 +69,10 @@ contract RegistryEntities {
             registryEntity.created_at,
             registryEntity.updated_at
         );
+    }
+
+    function get_current_id() public view returns (uint) {
+        return current_id;
     }
 
 }

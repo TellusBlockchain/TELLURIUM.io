@@ -6,7 +6,7 @@ class Header extends React.Component {
   render () {
     return (
       <nav>
-        <ul>
+        <ul className="mainHeader">
           <li>
             <Link to="/">Welcome</Link>
           </li>
@@ -15,6 +15,9 @@ class Header extends React.Component {
           </li>
           <li>
             <Link to="/registry_entities/new">New Registry Entity</Link>
+          </li>
+          <li>
+            <Link to="/registry_entities/index">Registry Entities Index</Link>
           </li>
         </ul>
       </nav>
