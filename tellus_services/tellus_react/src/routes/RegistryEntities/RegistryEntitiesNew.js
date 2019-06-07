@@ -99,7 +99,7 @@ class RegistryEntitiesNew extends React.Component {
         <Row>
           <Col>
             <Button type="button" onClick={this.handleClick}>
-              Validate
+              Save
             </Button>
           </Col>
         </Row>

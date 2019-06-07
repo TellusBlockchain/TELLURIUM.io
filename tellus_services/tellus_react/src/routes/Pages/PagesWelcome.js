@@ -1,5 +1,8 @@
 import React from 'react';
 
+import contract from "truffle-contract";
+import UsersJSON from "../../contracts/Users.json";
+
 class PagesWelcome extends React.Component {
   constructor (props) {
     super(props);
@@ -10,23 +13,29 @@ class PagesWelcome extends React.Component {
   }
 
   async componentDidMount () {
-    // console.log(window.ethereum)
-    // console.log(window.web3.currentProvider)
-    // console.log(window.ethereum.isMetaMask)
-    // console.log(window.ethereum.selectedAddress)
-
     if (window.ethereum.selectedAddress) {
-      this.setState({ isLoginnedViaMetamask: true });
+      // console.log(window.ethereum.selectedAddress)
+      await this.handleClick();
     }
-
-    // const accounts = await window.ethereum.enable();
-    // console.log(accounts);
   }
 
   async handleClick () {
     const accounts = await window.ethereum.enable();
     if (accounts) {
-      this.setState({ isLoginnedViaMetamask: true });
+      const Users = contract(UsersJSON);
+  
+      Users.setProvider(window.web3.currentProvider);
+      Users.defaults({
+        from: accounts[0]
+      });
+  
+      const deployed = await Users.deployed();
+      let role = await deployed.get_my_role();
+
+      this.setState({
+        isLoginnedViaMetamask: true,
+        role: role.words[0]
+      });
     }
   }
 
@@ -36,11 +45,32 @@ class PagesWelcome extends React.Component {
         <h2>Welcome</h2>
         {
           this.state.isLoginnedViaMetamask ? (
-            <p>You logined via MetaMask</p>
+            this.state.role === 1 ? (
+              <React.Fragment>
+                <p>You logined via MetaMask as Deployer</p>
+              </React.Fragment>
+            ) : (
+              this.state.role === 2 ? (
+                <React.Fragment>
+                  <p>You logined via MetaMask as Notary</p>
+                </React.Fragment>
+              ) : (
+                this.state.role === 3 ? (
+                  <React.Fragment>
+                    <p>You logined via MetaMask as a common User</p>
+                  </React.Fragment>
+                ) : (
+                  <React.Fragment>
+                    <p>You are not in validated users list</p>
+                  </React.Fragment>
+                )
+              )
+            )
           ) : (
             <React.Fragment>
               <p>You'll need to auth via MetaMask</p>
-              <button type="button" onClick={this.handleClick}>Login via MetaMask</button>
+              <button type="button"
+                      onClick={this.handleClick}>Login via MetaMask</button>
             </React.Fragment>
           )
         }

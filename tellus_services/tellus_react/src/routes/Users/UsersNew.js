@@ -30,7 +30,7 @@ class UsersNew extends React.Component {
       });
   
       const deployed = await Users.deployed();
-      deployed.create(this.state.eth_address);
+      deployed.create(this.state.eth_address, 0);
     } else {
   
     }
