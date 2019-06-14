@@ -5,9 +5,13 @@ import RegistryEntitiesJSON from "../../contracts/RegistryEntities.json";
 
 import { Row, Col, Form, Button } from 'react-bootstrap';
 
+import ipfsClient from 'ipfs-http-client';
+
 class RegistryEntitiesNew extends React.Component {
   constructor (props) {
     super(props);
+
+    this.ipfs = ipfsClient('localhost', '5001');
 
     this.state = {
       title: "",
@@ -19,6 +23,46 @@ class RegistryEntitiesNew extends React.Component {
 
     this.handleClick = this.handleClick.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.upload_documents = this.upload_documents.bind(this);
+    this.upload_image = this.upload_image.bind(this);
+  }
+
+  upload_documents (event) {
+    event.stopPropagation()
+    event.preventDefault()
+    this.saveToIpfsDocuments(event.target.files)
+  }
+
+  saveToIpfsDocuments (files) {
+    let ipfsId
+    this.ipfs.add([...files], { progress: (prog) => console.log(`received: ${prog}`) })
+      .then((response) => {
+        console.log(response)
+        ipfsId = response[0].hash
+        console.log(ipfsId)
+        this.setState({ documents_url: `http://localhost:8080/ipfs/${ipfsId}` })
+      }).catch((err) => {
+        console.error(err)
+      })
+  }
+
+  upload_image (event) {
+    event.stopPropagation()
+    event.preventDefault()
+    this.saveToIpfsImage(event.target.files)
+  }
+
+  saveToIpfsImage (files) {
+    let ipfsId
+    this.ipfs.add([...files], { progress: (prog) => console.log(`received: ${prog}`) })
+      .then((response) => {
+        console.log(response)
+        ipfsId = response[0].hash
+        console.log(ipfsId)
+        this.setState({ image_url: `http://localhost:8080/ipfs/${ipfsId}` })
+      }).catch((err) => {
+        console.error(err)
+      })
   }
 
   async handleClick() {
@@ -32,13 +76,15 @@ class RegistryEntitiesNew extends React.Component {
       });
   
       const deployed = await RegistryEntities.deployed();
-      deployed.create(
+      await deployed.create(
         this.state.title,
         this.state.description,
         this.state.documents_url,
         this.state.image_url,
         this.state.points
       );
+      
+      this.props.history.push('/registry_entities/index')
     } else {
   
     }
@@ -69,7 +115,7 @@ class RegistryEntitiesNew extends React.Component {
         <Form.Group controlId="formDescription" as={Row}>
           <Form.Label column sm={2}>Description:</Form.Label>
           <Col sm={10}>
-            <Form.Control type="text"
+            <Form.Control as="textarea"
                           placeholder="Description"
                           name="description"
                           value={this.state.description}
@@ -77,23 +123,19 @@ class RegistryEntitiesNew extends React.Component {
           </Col>
         </Form.Group>
         <Form.Group controlId="formDocumentsUrl" as={Row}>
-          <Form.Label column sm={2}>DocumentsUrl:</Form.Label>
+          <Form.Label column sm={2}>Upload Documents:</Form.Label>
           <Col sm={10}>
-            <Form.Control type="text"
-                          placeholder="DocumentsUrl"
+            <Form.Control type="file"
                           name="documents_url"
-                          value={this.state.documents_url}
-                          onChange={this.handleInputChange} />
+                          onChange={this.upload_documents} />
           </Col>
         </Form.Group>
         <Form.Group controlId="formImageUrl" as={Row}>
-          <Form.Label column sm={2}>ImageUrl:</Form.Label>
+          <Form.Label column sm={2}>Upload Image:</Form.Label>
           <Col sm={10}>
-            <Form.Control type="text"
-                          placeholder="ImageUrl"
+            <Form.Control type="file"
                           name="image_url"
-                          value={this.state.image_url}
-                          onChange={this.handleInputChange} />
+                          onChange={this.upload_image} />
           </Col>
         </Form.Group>
         <Row>

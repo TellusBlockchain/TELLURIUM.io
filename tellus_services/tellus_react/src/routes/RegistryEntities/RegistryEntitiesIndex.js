@@ -33,17 +33,17 @@ class RegistryEntitiesIndex extends React.Component {
       let registry_entities_current_id = await deployed.get_current_id();
 
       let registry_entities = [];
-      for (let i = 1; i <= registry_entities_current_id.words[0]; i++) {
-        let registry_entity = await deployed.find(i);
+      for (let i = 1, l = registry_entities_current_id.toNumber(); i <= l; l--) {
+        let registry_entity = await deployed.find(l);
         registry_entities.push({
-          id: registry_entity[0].words[0],
+          id: registry_entity[0].toNumber(),
           title: registry_entity[1],
           description: registry_entity[2],
           documents_url: registry_entity[3],
           image_url: registry_entity[4],
-          points: registry_entity[5].map(point => point.words[0]),
-          created_at: registry_entity[6].words[0],
-          updated_at: registry_entity[7].words[0]
+          points: registry_entity[5].map( point => point.toNumber() ),
+          created_at: (new Date(registry_entity[6].toNumber() * 1000)),
+          updated_at: (new Date(registry_entity[7].toNumber() * 1000))
         });
       }
       console.log(registry_entities)
@@ -71,10 +71,14 @@ class RegistryEntitiesIndex extends React.Component {
                       <Card.Body>
                         <Card.Title>{registry_entity.title}</Card.Title>
                         <Card.Text>{registry_entity.description}</Card.Text>
-                        <Button variant="primary">Download documents</Button>
+                        <Button variant="primary"
+                                href={registry_entity.documents_url}
+                                target="_blank">Download documents</Button>
                       </Card.Body>
                       <Card.Footer>
-                        <small className="text-muted">Last updated 3 mins ago</small>
+                        <small className="text-muted">Updated at {
+                          registry_entity.updated_at.toLocaleString("en-US")
+                        }</small>
                       </Card.Footer>
                     </Card>
                   </Col>
