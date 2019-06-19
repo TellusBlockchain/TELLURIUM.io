@@ -3,7 +3,9 @@ import React from 'react';
 import contract from "truffle-contract";
 import RegistryEntitiesJSON from "../../contracts/RegistryEntities.json";
 
-import { Row, Col, Form, Button, Card, Container } from 'react-bootstrap';
+import { Row, Col, Button, Card, Container } from 'react-bootstrap';
+
+import RegistryEntitiesIndexMap from "../../components/RegistryEntitiesIndexMap";
 
 class RegistryEntitiesIndex extends React.Component {
   constructor (props) {
@@ -15,11 +17,11 @@ class RegistryEntitiesIndex extends React.Component {
 
   async componentDidMount () {
     if (window.ethereum.selectedAddress) {
-      await this.handleClick();
+      await this.loadRegistryEntities();
     }
   }
 
-  async handleClick() {
+  async loadRegistryEntities () {
     if (window.ethereum.isMetaMask) {
       const accounts = await window.ethereum.enable();
       const RegistryEntities = contract(RegistryEntitiesJSON);
@@ -46,6 +48,7 @@ class RegistryEntitiesIndex extends React.Component {
           updated_at: (new Date(registry_entity[7].toNumber() * 1000))
         });
       }
+
       console.log(registry_entities)
 
       this.setState({
@@ -60,11 +63,12 @@ class RegistryEntitiesIndex extends React.Component {
     return (
       <React.Fragment>
         <h1>Index of Registry Entities</h1>
+        <RegistryEntitiesIndexMap registry_entities={this.state.registry_entities} />
         <Container>
           {
             this.state.registry_entities.map((registry_entity) => {
               return (
-                <Row>
+                <Row key={registry_entity.id}>
                   <Col>
                     <Card>
                       <Card.Img variant="top" src={registry_entity.image_url} />

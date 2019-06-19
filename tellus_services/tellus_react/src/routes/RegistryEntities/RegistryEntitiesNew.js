@@ -7,6 +7,8 @@ import { Row, Col, Form, Button } from 'react-bootstrap';
 
 import ipfsClient from 'ipfs-http-client';
 
+import RegistryEntitiesNewMap from "../../components/RegistryEntitiesNewMap";
+
 class RegistryEntitiesNew extends React.Component {
   constructor (props) {
     super(props);
@@ -18,13 +20,15 @@ class RegistryEntitiesNew extends React.Component {
       description: "",
       documents_url: "",
       image_url: "",
-      points: [ 1, 2, 3 ]
+      points: [ 5, 5, 5 ]
     };
 
     this.handleClick = this.handleClick.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.upload_documents = this.upload_documents.bind(this);
     this.upload_image = this.upload_image.bind(this);
+
+    this.saveLatLngToState = this.saveLatLngToState.bind(this);
   }
 
   upload_documents (event) {
@@ -63,6 +67,12 @@ class RegistryEntitiesNew extends React.Component {
       }).catch((err) => {
         console.error(err)
       })
+  }
+
+  saveLatLngToState(latLng) {
+    this.setState({
+      points: [ Math.round(latLng.lat*1000000), Math.round(latLng.lng*1000000), 1 ]
+    });
   }
 
   async handleClick() {
@@ -137,6 +147,9 @@ class RegistryEntitiesNew extends React.Component {
                           name="image_url"
                           onChange={this.upload_image} />
           </Col>
+        </Form.Group>
+        <Form.Group controlId="" as={Row}>
+          <RegistryEntitiesNewMap onMarkerDragEnd={this.saveLatLngToState} />
         </Form.Group>
         <Row>
           <Col>
