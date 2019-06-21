@@ -8,6 +8,7 @@ contract TestUsers {
 
     function testConstructor() public {
         Users users = new Users();
+        users.initialize();
 
         (uint user_id,
             address user_addr,
@@ -37,6 +38,7 @@ contract TestUsers {
 
     function testCreate() public {
         Users users = new Users();
+        users.initialize();
 
         (uint user_id,
             address user_addr,

@@ -1,6 +1,8 @@
 pragma solidity >=0.4.0 <0.7.0;
 
-contract Users {
+import "zos-lib/contracts/Initializable.sol";
+
+contract Users is Initializable {
 
     struct User {
         uint id;
@@ -9,13 +11,15 @@ contract Users {
         uint created_at;
     }
 
-    constructor () public {
+    // Autoincrementer:
+    uint current_id;
+
+    function initialize() initializer public {
+        current_id = 0;
+
         // Create first user on init with role=1 (deployer)
         create(tx.origin, 1);
     }
-
-    // Autoincrementer:
-    uint current_id = 0;
 
     mapping (address => User) public _users;
 

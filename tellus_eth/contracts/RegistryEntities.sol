@@ -1,7 +1,9 @@
 pragma solidity >=0.4.0 <0.7.0;
 
+import "zos-lib/contracts/Initializable.sol";
+
 // Contract for managing land entries.
-contract RegistryEntities {
+contract RegistryEntities is Initializable {
 
     // Struct for storing data of land entry.
     struct RegistryEntity {
@@ -16,7 +18,11 @@ contract RegistryEntities {
     }
 
     // Autoincrementer:
-    uint current_id = 0;
+    uint current_id;
+
+    function initialize() initializer public {
+        current_id = 0;
+    }
 
     // Map for storing land entries (id => land entry data).
     mapping (uint => RegistryEntity) public _registryEntity;

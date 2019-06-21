@@ -6,7 +6,9 @@
   "dependencies": {
     "ganache-cli": "6.4.3",
     "truffle": "5.0.20",
-    "truffle-cost": "1.0.1"
+    "truffle-cost": "1.0.1",
+    "zos": "^2.3.1",
+    "zos-lib": "^2.3.1"
   },
   "devDependencies": {},
   "scripts": {

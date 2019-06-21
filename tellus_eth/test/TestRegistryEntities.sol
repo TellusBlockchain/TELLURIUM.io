@@ -8,6 +8,7 @@ contract TestRegistryEntities {
 
     function testCreate() public {
         RegistryEntities registryEntities = new RegistryEntities();
+        registryEntities.initialize();
 
         int32 valid_x = 1;
         int32 valid_y = 2;
@@ -29,6 +30,7 @@ contract TestRegistryEntities {
 
     function testFind() public {
         RegistryEntities registryEntities = new RegistryEntities();
+        registryEntities.initialize();
 
         int32[] memory points = new int32[](3);
         points[0] = 1;
@@ -68,6 +70,7 @@ contract TestRegistryEntities {
 
     function testGetCurrentId() public {
         RegistryEntities registryEntities = new RegistryEntities();
+        registryEntities.initialize();
 
         int32[] memory points = new int32[](3);
         points[0] = 1;

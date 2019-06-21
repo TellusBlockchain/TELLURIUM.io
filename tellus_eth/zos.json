@@ -1,0 +1,9 @@
+{
+  "zosversion": "2.2",
+  "name": "tellus_eth",
+  "version": "1.0.0",
+  "contracts": {
+    "RegistryEntities": "RegistryEntities",
+    "Users": "Users"
+  }
+}
