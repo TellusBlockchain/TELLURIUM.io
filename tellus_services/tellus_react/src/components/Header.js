@@ -19,6 +19,9 @@ class Header extends React.Component {
           <li>
             <Link to="/registry_entities/index">Registry Entities Index</Link>
           </li>
+          <li>
+            <Link to="/explorer">Explorer</Link>
+          </li>
         </ul>
       </nav>
     );

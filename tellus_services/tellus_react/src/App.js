@@ -9,6 +9,7 @@ import PagesWelcome from './routes/Pages/PagesWelcome';
 import UsersNew from './routes/Users/UsersNew';
 import RegistryEntitiesNew from './routes/RegistryEntities/RegistryEntitiesNew';
 import RegistryEntitiesIndex from './routes/RegistryEntities/RegistryEntitiesIndex';
+import PagesExplorer from './routes/Pages/PagesExplorer';
 
 class App extends React.Component {
   render () {
@@ -21,6 +22,7 @@ class App extends React.Component {
             <Route path="/users/new" component={UsersNew} />
             <Route path="/registry_entities/index" component={RegistryEntitiesIndex} />
             <Route path="/registry_entities/new" component={RegistryEntitiesNew} />
+            <Route path="/explorer" component={PagesExplorer} />
           </div>
         </Router>
       </div>
