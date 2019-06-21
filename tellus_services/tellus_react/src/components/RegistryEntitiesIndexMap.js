@@ -49,7 +49,7 @@ class RegistryEntitiesIndexMap extends Component {
           defaultZoom={this.props.zoom}
           // It is not best way to render markers and use 'onGoogleApiLoaded'
           // for 'google-map-react' library, so this peace of code requires
-          // TODO: refactoring to native 'google-map-react' library markers like
+          // TODO: refactoring to native 'google-map-react' markers like
           // there https://github.com/google-map-react/google-map-react/issues/59
           onGoogleApiLoaded={({ map, maps }) => {
             this.setState({ _map: map, _maps: maps })

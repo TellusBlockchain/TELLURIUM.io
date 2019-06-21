@@ -6,20 +6,21 @@ import UsersJSON from "../../contracts/Users.json";
 class PagesWelcome extends React.Component {
   constructor (props) {
     super(props);
+
     this.state = {
       isLoginnedViaMetamask: false
     };
-    this.handleClick = this.handleClick.bind(this);
+
+    this.tryToLoginViaMetamask = this.tryToLoginViaMetamask.bind(this);
   }
 
   async componentDidMount () {
     if (window.ethereum.selectedAddress) {
-      // console.log(window.ethereum.selectedAddress)
-      await this.handleClick();
+      await this.tryToLoginViaMetamask();
     }
   }
 
-  async handleClick () {
+  async tryToLoginViaMetamask () {
     const accounts = await window.ethereum.enable();
     if (accounts) {
       const Users = contract(UsersJSON);
@@ -31,10 +32,11 @@ class PagesWelcome extends React.Component {
   
       const deployed = await Users.deployed();
       let role = await deployed.get_my_role();
+      role = role.toNumber();
 
       this.setState({
         isLoginnedViaMetamask: true,
-        role: role.words[0]
+        role: role
       });
     }
   }
@@ -70,7 +72,8 @@ class PagesWelcome extends React.Component {
             <React.Fragment>
               <p>You'll need to auth via MetaMask</p>
               <button type="button"
-                      onClick={this.handleClick}>Login via MetaMask</button>
+                      onClick={this.tryToLoginViaMetamask}
+              >Login via MetaMask</button>
             </React.Fragment>
           )
         }
