@@ -1,11 +1,11 @@
 {
   "contracts": {
     "RegistryEntities": {
-      "address": "0xA586074FA4Fe3E546A132a16238abe37951D41fE",
-      "constructorCode": "608060405234801561001057600080fd5b506112ae806100206000396000f3fe",
-      "bodyBytecodeHash": "9182b9d6108f149dc862f007db1c7b0dbc9138e3506de107e2521c986fcd1411",
-      "localBytecodeHash": "df3d04924fb0b1c7ee2af670e6f9fa0f4f6c9d1d60ed99d6dc9800ce62e5055d",
-      "deployedBytecodeHash": "df3d04924fb0b1c7ee2af670e6f9fa0f4f6c9d1d60ed99d6dc9800ce62e5055d",
+      "address": "0x989B76F53109Cc63432f1DB2FEe80bf3200e52Aa",
+      "constructorCode": "608060405234801561001057600080fd5b506114e5806100206000396000f3fe",
+      "bodyBytecodeHash": "9d66f1c7d80774736d162c2e96ce55ecfdc4bf6f601face341c9fad9552af9e1",
+      "localBytecodeHash": "6e92bbb36ccbcd42ea7685fbb6f0ec11540da7eca5c5ff72a886c78b9a33bb22",
+      "deployedBytecodeHash": "6e92bbb36ccbcd42ea7685fbb6f0ec11540da7eca5c5ff72a886c78b9a33bb22",
       "types": {
         "t_bool": {
           "id": "t_bool",
@@ -108,7 +108,7 @@
           "contract": "Initializable",
           "path": "zos-lib/contracts/Initializable.sol",
           "label": "initialized",
-          "astId": 318,
+          "astId": 371,
           "type": "t_bool",
           "src": "757:24:3"
         },
@@ -116,7 +116,7 @@
           "contract": "Initializable",
           "path": "zos-lib/contracts/Initializable.sol",
           "label": "initializing",
-          "astId": 320,
+          "astId": 373,
           "type": "t_bool",
           "src": "876:25:3"
         },
@@ -124,7 +124,7 @@
           "contract": "Initializable",
           "path": "zos-lib/contracts/Initializable.sol",
           "label": "______gap",
-          "astId": 376,
+          "astId": 429,
           "type": "t_array:50<t_uint256>",
           "src": "1951:29:3"
         },
@@ -132,17 +132,17 @@
           "contract": "RegistryEntities",
           "path": "contracts/RegistryEntities.sol",
           "label": "current_id",
-          "astId": 81,
+          "astId": 98,
           "type": "t_uint256",
-          "src": "471:15:1"
+          "src": "701:15:1"
         },
         {
           "contract": "RegistryEntities",
           "path": "contracts/RegistryEntities.sol",
           "label": "_registryEntity",
-          "astId": 95,
+          "astId": 112,
           "type": "t_mapping<t_struct<RegistryEntities.RegistryEntity>>",
-          "src": "632:55:1"
+          "src": "862:55:1"
         }
       ],
       "warnings": {
@@ -150,15 +150,26 @@
         "hasSelfDestruct": false,
         "hasDelegateCall": false,
         "hasInitialValuesInDeclarations": false,
-        "uninitializedBaseContracts": []
+        "uninitializedBaseContracts": [],
+        "storageUncheckedVars": [
+          {
+            "contract": "RegistryEntities",
+            "path": "contracts/RegistryEntities.sol",
+            "label": "_registryEntity",
+            "astId": 112,
+            "type": "t_mapping<t_struct<RegistryEntities.RegistryEntity>>",
+            "src": "862:55:1"
+          }
+        ],
+        "storageDiff": []
       }
     },
     "Users": {
-      "address": "0x2D8BE6BF0baA74e0A907016679CaE9190e80dD0A",
-      "constructorCode": "608060405234801561001057600080fd5b50610818806100206000396000f3fe",
-      "bodyBytecodeHash": "99cd59e1bd09c595236063206d6cce4e36bceb5749d5a92c9942d47e0713ba64",
-      "localBytecodeHash": "5f6ab33c61257005cc5a81ad49ee689bd77cff5bbd43eadb62e9d32680724e7b",
-      "deployedBytecodeHash": "5f6ab33c61257005cc5a81ad49ee689bd77cff5bbd43eadb62e9d32680724e7b",
+      "address": "0xa41795579e6779aE007200DE58DA175d78eE0bA6",
+      "constructorCode": "608060405234801561001057600080fd5b5061088e806100206000396000f3fe",
+      "bodyBytecodeHash": "f1080c8cf46da847d789d8f2ff40a80a57970b7122eb3f8cf31213fd2be79861",
+      "localBytecodeHash": "fac84a4aed1ac1e7a38123d3d859abc2387e3fb5b39b64d2c2a9a13ae1698e01",
+      "deployedBytecodeHash": "fac84a4aed1ac1e7a38123d3d859abc2387e3fb5b39b64d2c2a9a13ae1698e01",
       "types": {
         "t_bool": {
           "id": "t_bool",
@@ -184,25 +195,25 @@
           "members": [
             {
               "label": "id",
-              "astId": 205,
+              "astId": 232,
               "type": "t_uint256",
               "src": "141:7:2"
             },
             {
               "label": "addr",
-              "astId": 207,
+              "astId": 234,
               "type": "t_address",
               "src": "158:12:2"
             },
             {
               "label": "role",
-              "astId": 209,
+              "astId": 236,
               "type": "t_uint256",
               "src": "180:9:2"
             },
             {
               "label": "created_at",
-              "astId": 211,
+              "astId": 238,
               "type": "t_uint256",
               "src": "199:15:2"
             }
@@ -225,7 +236,7 @@
           "contract": "Initializable",
           "path": "zos-lib/contracts/Initializable.sol",
           "label": "initialized",
-          "astId": 326,
+          "astId": 371,
           "type": "t_bool",
           "src": "757:24:3"
         },
@@ -233,7 +244,7 @@
           "contract": "Initializable",
           "path": "zos-lib/contracts/Initializable.sol",
           "label": "initializing",
-          "astId": 328,
+          "astId": 373,
           "type": "t_bool",
           "src": "876:25:3"
         },
@@ -241,7 +252,7 @@
           "contract": "Initializable",
           "path": "zos-lib/contracts/Initializable.sol",
           "label": "______gap",
-          "astId": 384,
+          "astId": 429,
           "type": "t_array:50<t_uint256>",
           "src": "1951:29:3"
         },
@@ -249,17 +260,17 @@
           "contract": "Users",
           "path": "contracts/Users.sol",
           "label": "current_id",
-          "astId": 214,
+          "astId": 251,
           "type": "t_uint256",
-          "src": "251:15:2"
+          "src": "379:15:2"
         },
         {
           "contract": "Users",
           "path": "contracts/Users.sol",
           "label": "_users",
-          "astId": 234,
+          "astId": 271,
           "type": "t_mapping<t_struct<Users.User>>",
-          "src": "442:39:2"
+          "src": "570:39:2"
         }
       ],
       "warnings": {
@@ -267,7 +278,18 @@
         "hasSelfDestruct": false,
         "hasDelegateCall": false,
         "hasInitialValuesInDeclarations": false,
-        "uninitializedBaseContracts": []
+        "uninitializedBaseContracts": [],
+        "storageUncheckedVars": [
+          {
+            "contract": "Users",
+            "path": "contracts/Users.sol",
+            "label": "_users",
+            "astId": 271,
+            "type": "t_mapping<t_struct<Users.User>>",
+            "src": "570:39:2"
+          }
+        ],
+        "storageDiff": []
       }
     }
   },
@@ -277,12 +299,12 @@
       {
         "address": "0x5b9b42d6e4B2e4Bf8d42Eba32D46918e10899B66",
         "version": "1.0.0",
-        "implementation": "0xA586074FA4Fe3E546A132a16238abe37951D41fE"
+        "implementation": "0x989B76F53109Cc63432f1DB2FEe80bf3200e52Aa"
       },
       {
         "address": "0x1b88Bdb8269A1aB1372459F5a4eC3663D6f5cCc4",
         "version": "1.0.0",
-        "implementation": "0xA586074FA4Fe3E546A132a16238abe37951D41fE",
+        "implementation": "0x989B76F53109Cc63432f1DB2FEe80bf3200e52Aa",
         "admin": "0x970e8f18ebfEa0B08810f33a5A40438b9530FBCF"
       }
     ],
@@ -290,13 +312,13 @@
       {
         "address": "0xaf5C4C6C7920B4883bC6252e9d9B8fE27187Cf68",
         "version": "1.0.0",
-        "implementation": "0x2D8BE6BF0baA74e0A907016679CaE9190e80dD0A",
+        "implementation": "0xa41795579e6779aE007200DE58DA175d78eE0bA6",
         "admin": "0x970e8f18ebfEa0B08810f33a5A40438b9530FBCF"
       },
       {
         "address": "0xEC5d4F247aF81A843612eb1371CBCfa88b762119",
         "version": "1.0.0",
-        "implementation": "0x2D8BE6BF0baA74e0A907016679CaE9190e80dD0A",
+        "implementation": "0xa41795579e6779aE007200DE58DA175d78eE0bA6",
         "admin": "0x970e8f18ebfEa0B08810f33a5A40438b9530FBCF"
       }
     ]

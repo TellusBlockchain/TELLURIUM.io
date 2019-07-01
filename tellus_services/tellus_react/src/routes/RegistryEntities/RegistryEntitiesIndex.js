@@ -49,7 +49,7 @@ class RegistryEntitiesIndex extends React.Component {
         });
       }
 
-      console.log(registry_entities)
+      // console.log(registry_entities)
 
       this.setState({
         registry_entities: registry_entities
@@ -63,7 +63,11 @@ class RegistryEntitiesIndex extends React.Component {
     return (
       <React.Fragment>
         <h1>Index of Registry Entities</h1>
-        <RegistryEntitiesIndexMap registry_entities={this.state.registry_entities} />
+        <Row>
+          <Col md={{span: 10, offset: 1}}>
+            <RegistryEntitiesIndexMap registry_entities={this.state.registry_entities} />
+          </Col>
+        </Row>
         <Container>
           {
             this.state.registry_entities.map((registry_entity) => {
@@ -77,7 +81,8 @@ class RegistryEntitiesIndex extends React.Component {
                         <Card.Text>{registry_entity.description}</Card.Text>
                         <Button variant="primary"
                                 href={registry_entity.documents_url}
-                                target="_blank">Download documents</Button>
+                                target="_blank"
+                        >Download documents</Button>
                       </Card.Body>
                       <Card.Footer>
                         <small className="text-muted">Updated at {

@@ -4,8 +4,8 @@ import GoogleMapReact from 'google-map-react'
 class RegistryEntitiesNewMap extends Component {
   static defaultProps = {
     center: {
-      lat: 59.95,
-      lng: 30.33
+      lat: 37.775,
+      lng: -122.414
     },
     zoom: 11
   }
@@ -13,8 +13,8 @@ class RegistryEntitiesNewMap extends Component {
   renderMarkers(map, maps, onMarkerDragEnd) {
     const marker = new maps.Marker({
       position: {
-        lat: 59.95,
-        lng: 30.33
+        lat: 37.775,
+        lng: -122.414
       },
       map,
       draggable: true
@@ -35,7 +35,7 @@ class RegistryEntitiesNewMap extends Component {
 
   render() {
     return (
-      <div style={{ width: '640px', height: '480px' }}>
+      <div style={{ width: '100%', height: '480px' }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: "AIzaSyDbqXZerRwHyXrq8EIm488aJLmuBZ2J0Jg" }}
           defaultCenter={this.props.center}

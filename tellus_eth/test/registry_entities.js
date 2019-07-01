@@ -5,16 +5,14 @@ contract('RegistryEntities', (accounts) => {
   it('should create registry entity', async () => {
     const registryEntitiesInstance = await RegistryEntities.deployed();
 
-    result = await truffleCost.log(
-      registryEntitiesInstance.create(
-          "title",
-          "description",
-          "documents_url",
-          "image_url",
-          [ 1, 2, 3]
-      ),
-      'USD'
+    let result = await registryEntitiesInstance.create(
+      "title",
+      "description",
+      "documents_url",
+      "image_url",
+      [ 1, 2, 3]
     );
-
+    assert.equal(result.logs[0].event, 'AfterRegistryEntityCreate');
+    result = await truffleCost.log(result, 'USD');
   });
 });

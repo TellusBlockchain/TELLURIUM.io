@@ -113,8 +113,8 @@ class RegistryEntitiesNew extends React.Component {
     return (
       <Form>
         <Form.Group controlId="formTitle" as={Row}>
-          <Form.Label column sm={2}>Title:</Form.Label>
-          <Col sm={10}>
+          <Form.Label column md={2}>Title:</Form.Label>
+          <Col md={9}>
             <Form.Control type="text"
                           placeholder="Title"
                           name="title"
@@ -123,8 +123,8 @@ class RegistryEntitiesNew extends React.Component {
           </Col>
         </Form.Group>
         <Form.Group controlId="formDescription" as={Row}>
-          <Form.Label column sm={2}>Description:</Form.Label>
-          <Col sm={10}>
+          <Form.Label column md={2}>Description:</Form.Label>
+          <Col md={9}>
             <Form.Control as="textarea"
                           placeholder="Description"
                           name="description"
@@ -133,23 +133,25 @@ class RegistryEntitiesNew extends React.Component {
           </Col>
         </Form.Group>
         <Form.Group controlId="formDocumentsUrl" as={Row}>
-          <Form.Label column sm={2}>Upload Documents:</Form.Label>
-          <Col sm={10}>
+          <Form.Label column md={2}>Upload Documents:</Form.Label>
+          <Col md={9}>
             <Form.Control type="file"
                           name="documents_url"
                           onChange={this.upload_documents} />
           </Col>
         </Form.Group>
         <Form.Group controlId="formImageUrl" as={Row}>
-          <Form.Label column sm={2}>Upload Image:</Form.Label>
-          <Col sm={10}>
+          <Form.Label column md={2}>Upload Image:</Form.Label>
+          <Col md={9}>
             <Form.Control type="file"
                           name="image_url"
                           onChange={this.upload_image} />
           </Col>
         </Form.Group>
         <Form.Group controlId="" as={Row}>
-          <RegistryEntitiesNewMap onMarkerDragEnd={this.saveLatLngToState} />
+          <Col md={{ span: 10, offset: 1 }}>
+            <RegistryEntitiesNewMap onMarkerDragEnd={this.saveLatLngToState} />
+          </Col>
         </Form.Group>
         <Row>
           <Col>
