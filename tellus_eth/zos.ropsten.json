@@ -1,0 +1,303 @@
+{
+  "contracts": {
+    "Users": {
+      "address": "0xE552b6f810E5824508D79c292aFc4c6A0b603A59",
+      "constructorCode": "608060405234801561001057600080fd5b5061088e806100206000396000f3fe",
+      "bodyBytecodeHash": "f1080c8cf46da847d789d8f2ff40a80a57970b7122eb3f8cf31213fd2be79861",
+      "localBytecodeHash": "fac84a4aed1ac1e7a38123d3d859abc2387e3fb5b39b64d2c2a9a13ae1698e01",
+      "deployedBytecodeHash": "fac84a4aed1ac1e7a38123d3d859abc2387e3fb5b39b64d2c2a9a13ae1698e01",
+      "types": {
+        "t_bool": {
+          "id": "t_bool",
+          "kind": "elementary",
+          "label": "bool"
+        },
+        "t_uint256": {
+          "id": "t_uint256",
+          "kind": "elementary",
+          "label": "uint256"
+        },
+        "t_array:50<t_uint256>": {
+          "id": "t_array:50<t_uint256>",
+          "valueType": "t_uint256",
+          "length": "50",
+          "kind": "array",
+          "label": "uint256[50]"
+        },
+        "t_struct<Users.User>": {
+          "id": "t_struct<Users.User>",
+          "kind": "struct",
+          "label": "Users.User",
+          "members": [
+            {
+              "label": "id",
+              "astId": 232,
+              "type": "t_uint256",
+              "src": "141:7:2"
+            },
+            {
+              "label": "addr",
+              "astId": 234,
+              "type": "t_address",
+              "src": "158:12:2"
+            },
+            {
+              "label": "role",
+              "astId": 236,
+              "type": "t_uint256",
+              "src": "180:9:2"
+            },
+            {
+              "label": "created_at",
+              "astId": 238,
+              "type": "t_uint256",
+              "src": "199:15:2"
+            }
+          ]
+        },
+        "t_address": {
+          "id": "t_address",
+          "kind": "elementary",
+          "label": "address"
+        },
+        "t_mapping<t_struct<Users.User>>": {
+          "id": "t_mapping<t_struct<Users.User>>",
+          "valueType": "t_struct<Users.User>",
+          "label": "mapping(key => Users.User)",
+          "kind": "mapping"
+        }
+      },
+      "storage": [
+        {
+          "contract": "Initializable",
+          "path": "zos-lib/contracts/Initializable.sol",
+          "label": "initialized",
+          "astId": 371,
+          "type": "t_bool",
+          "src": "757:24:3"
+        },
+        {
+          "contract": "Initializable",
+          "path": "zos-lib/contracts/Initializable.sol",
+          "label": "initializing",
+          "astId": 373,
+          "type": "t_bool",
+          "src": "876:25:3"
+        },
+        {
+          "contract": "Initializable",
+          "path": "zos-lib/contracts/Initializable.sol",
+          "label": "______gap",
+          "astId": 429,
+          "type": "t_array:50<t_uint256>",
+          "src": "1951:29:3"
+        },
+        {
+          "contract": "Users",
+          "path": "contracts/Users.sol",
+          "label": "current_id",
+          "astId": 251,
+          "type": "t_uint256",
+          "src": "379:15:2"
+        },
+        {
+          "contract": "Users",
+          "path": "contracts/Users.sol",
+          "label": "_users",
+          "astId": 271,
+          "type": "t_mapping<t_struct<Users.User>>",
+          "src": "570:39:2"
+        }
+      ],
+      "warnings": {
+        "hasConstructor": false,
+        "hasSelfDestruct": false,
+        "hasDelegateCall": false,
+        "hasInitialValuesInDeclarations": false,
+        "uninitializedBaseContracts": []
+      }
+    },
+    "RegistryEntities": {
+      "address": "0xEC4a3DE22D420023aCA1F7A35c7c074Fa22Cbd7F",
+      "constructorCode": "608060405234801561001057600080fd5b506114e5806100206000396000f3fe",
+      "bodyBytecodeHash": "9d66f1c7d80774736d162c2e96ce55ecfdc4bf6f601face341c9fad9552af9e1",
+      "localBytecodeHash": "6e92bbb36ccbcd42ea7685fbb6f0ec11540da7eca5c5ff72a886c78b9a33bb22",
+      "deployedBytecodeHash": "6e92bbb36ccbcd42ea7685fbb6f0ec11540da7eca5c5ff72a886c78b9a33bb22",
+      "types": {
+        "t_bool": {
+          "id": "t_bool",
+          "kind": "elementary",
+          "label": "bool"
+        },
+        "t_uint256": {
+          "id": "t_uint256",
+          "kind": "elementary",
+          "label": "uint256"
+        },
+        "t_array:50<t_uint256>": {
+          "id": "t_array:50<t_uint256>",
+          "valueType": "t_uint256",
+          "length": "50",
+          "kind": "array",
+          "label": "uint256[50]"
+        },
+        "t_struct<RegistryEntities.RegistryEntity>": {
+          "id": "t_struct<RegistryEntities.RegistryEntity>",
+          "kind": "struct",
+          "label": "RegistryEntities.RegistryEntity",
+          "members": [
+            {
+              "label": "id",
+              "astId": 63,
+              "type": "t_uint256",
+              "src": "247:7:1"
+            },
+            {
+              "label": "title",
+              "astId": 65,
+              "type": "t_string",
+              "src": "264:12:1"
+            },
+            {
+              "label": "description",
+              "astId": 67,
+              "type": "t_string",
+              "src": "286:18:1"
+            },
+            {
+              "label": "documents_url",
+              "astId": 69,
+              "type": "t_string",
+              "src": "314:20:1"
+            },
+            {
+              "label": "image_url",
+              "astId": 71,
+              "type": "t_string",
+              "src": "344:16:1"
+            },
+            {
+              "label": "points",
+              "astId": 74,
+              "type": "t_array:dyn<t_int32>",
+              "src": "370:14:1"
+            },
+            {
+              "label": "created_at",
+              "astId": 76,
+              "type": "t_uint256",
+              "src": "394:15:1"
+            },
+            {
+              "label": "updated_at",
+              "astId": 78,
+              "type": "t_uint256",
+              "src": "419:15:1"
+            }
+          ]
+        },
+        "t_string": {
+          "id": "t_string",
+          "kind": "elementary",
+          "label": "string"
+        },
+        "t_int32": {
+          "id": "t_int32",
+          "kind": "elementary",
+          "label": "int32"
+        },
+        "t_array:dyn<t_int32>": {
+          "id": "t_array:dyn<t_int32>",
+          "valueType": "t_int32",
+          "length": "dyn",
+          "kind": "array",
+          "label": "int32[]"
+        },
+        "t_mapping<t_struct<RegistryEntities.RegistryEntity>>": {
+          "id": "t_mapping<t_struct<RegistryEntities.RegistryEntity>>",
+          "valueType": "t_struct<RegistryEntities.RegistryEntity>",
+          "label": "mapping(key => RegistryEntities.RegistryEntity)",
+          "kind": "mapping"
+        }
+      },
+      "storage": [
+        {
+          "contract": "Initializable",
+          "path": "zos-lib/contracts/Initializable.sol",
+          "label": "initialized",
+          "astId": 371,
+          "type": "t_bool",
+          "src": "757:24:3"
+        },
+        {
+          "contract": "Initializable",
+          "path": "zos-lib/contracts/Initializable.sol",
+          "label": "initializing",
+          "astId": 373,
+          "type": "t_bool",
+          "src": "876:25:3"
+        },
+        {
+          "contract": "Initializable",
+          "path": "zos-lib/contracts/Initializable.sol",
+          "label": "______gap",
+          "astId": 429,
+          "type": "t_array:50<t_uint256>",
+          "src": "1951:29:3"
+        },
+        {
+          "contract": "RegistryEntities",
+          "path": "contracts/RegistryEntities.sol",
+          "label": "current_id",
+          "astId": 98,
+          "type": "t_uint256",
+          "src": "701:15:1"
+        },
+        {
+          "contract": "RegistryEntities",
+          "path": "contracts/RegistryEntities.sol",
+          "label": "_registryEntity",
+          "astId": 112,
+          "type": "t_mapping<t_struct<RegistryEntities.RegistryEntity>>",
+          "src": "862:55:1"
+        }
+      ],
+      "warnings": {
+        "hasConstructor": false,
+        "hasSelfDestruct": false,
+        "hasDelegateCall": false,
+        "hasInitialValuesInDeclarations": false,
+        "uninitializedBaseContracts": []
+      }
+    }
+  },
+  "solidityLibs": {},
+  "proxies": {
+    "tellus_eth/Users": [
+      {
+        "address": "0xcc32bAfA2bDaE8D25E465A377abACe8b33F95E76",
+        "version": "1.0.0",
+        "implementation": "0xE552b6f810E5824508D79c292aFc4c6A0b603A59"
+      },
+      {
+        "address": "0x9849BF19fC3896A2e97082601B5f78d9eC1bed00",
+        "version": "1.0.0",
+        "implementation": "0xE552b6f810E5824508D79c292aFc4c6A0b603A59",
+        "admin": "0x426B36241ec14B15A631F9Ea4A779244d45De66c"
+      }
+    ],
+    "tellus_eth/RegistryEntities": [
+      {
+        "address": "0x4181F7b28a7e3E7f67450d793087D119ef34A850",
+        "version": "1.0.0",
+        "implementation": "0xEC4a3DE22D420023aCA1F7A35c7c074Fa22Cbd7F",
+        "admin": "0x426B36241ec14B15A631F9Ea4A779244d45De66c"
+      }
+    ]
+  },
+  "zosversion": "2.2",
+  "version": "1.0.0",
+  "proxyAdmin": {
+    "address": "0x426B36241ec14B15A631F9Ea4A779244d45De66c"
+  }
+}
