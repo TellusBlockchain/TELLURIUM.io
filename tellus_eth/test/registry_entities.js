@@ -10,7 +10,7 @@ contract('RegistryEntities', (accounts) => {
       "description",
       "documents_url",
       "image_url",
-      [ 1, 2, 3]
+      [ 1, 2, 3 ]
     );
     assert.equal(result.logs[0].event, 'AfterRegistryEntityCreate');
     result = await truffleCost.log(result, 'USD');

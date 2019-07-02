@@ -21,7 +21,7 @@ contract Users is Initializable {
     // Autoincrementer:
     uint current_id;
 
-    function initialize() initializer public {
+    function initialize() public initializer {
         current_id = 0;
 
         // Create first user on init with role=1 (deployer)
