@@ -44,7 +44,7 @@ class RegistryEntitiesIndexMap extends Component {
     return (
       <div style={{ width: '100%', height: '480px' }}>
         <GoogleMapReact
-          bootstrapURLKeys={{ key: "AIzaSyDbqXZerRwHyXrq8EIm488aJLmuBZ2J0Jg" }}
+          bootstrapURLKeys={{ key: "AIzaSyDIbd-oSFvBx_JtZzFuBkGHGdvA5SPBMVM" }}
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
           // It is not best way to render markers and use 'onGoogleApiLoaded'
