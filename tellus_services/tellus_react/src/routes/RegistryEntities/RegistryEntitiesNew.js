@@ -44,7 +44,7 @@ class RegistryEntitiesNew extends React.Component {
         console.log(response)
         ipfsId = response[0].hash
         console.log(ipfsId)
-        this.setState({ documents_url: `http://localhost:8080/ipfs/${ipfsId}` })
+        this.setState({ documents_url: `http://18.195.159.148:8080/ipfs/${ipfsId}` })
       }).catch((err) => {
         console.error(err)
       })
@@ -63,7 +63,7 @@ class RegistryEntitiesNew extends React.Component {
         console.log(response)
         ipfsId = response[0].hash
         console.log(ipfsId)
-        this.setState({ image_url: `http://localhost:8080/ipfs/${ipfsId}` })
+        this.setState({ image_url: `http://18.195.159.148:8080/ipfs/${ipfsId}` })
       }).catch((err) => {
         console.error(err)
       })
