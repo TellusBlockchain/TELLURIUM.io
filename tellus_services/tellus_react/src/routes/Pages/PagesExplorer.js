@@ -10,7 +10,7 @@ class PagesExplorer extends React.Component {
   }
 
   async componentDidMount () {
-    let response = await fetch("http://localhost:3002/transactions");
+    let response = await fetch("http://18.195.159.148:5002/transactions");
     response = await response.json();
     let transactions = response;
     this.setState({
