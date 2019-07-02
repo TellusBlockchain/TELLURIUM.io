@@ -13,7 +13,7 @@ class RegistryEntitiesNew extends React.Component {
   constructor (props) {
     super(props);
 
-    this.ipfs = ipfsClient('localhost', '5001');
+    this.ipfs = ipfsClient('18.195.159.148', '5001');
 
     this.state = {
       title: "",
