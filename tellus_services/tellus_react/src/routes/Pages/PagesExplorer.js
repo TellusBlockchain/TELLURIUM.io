@@ -28,7 +28,6 @@ class PagesExplorer extends React.Component {
               <thead>
                 <tr>
                   <th>transactionHash</th>
-                  <th>blockNumber</th>
                   <th>eventName</th>
                 </tr>
               </thead>
@@ -37,8 +36,7 @@ class PagesExplorer extends React.Component {
                 this.state.transactions.map((transaction) => {
                   return (
                     <tr>
-                      <td>{transaction.transactionHash}</td>
-                      <td>{transaction.blockNumber}</td>
+                      <td><a href={'https://ropsten.etherscan.io/tx/' + transaction.transactionHash}>{transaction.transactionHash}</a></td>
                       <td>{transaction.eventName}</td>
                     </tr>
                   )
