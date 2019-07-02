@@ -3820,6 +3820,12 @@
     "version": "0.5.8+commit.23d335f2.Emscripten.clang"
   },
   "networks": {
+    "3": {
+      "links": {},
+      "events": {},
+      "address": "0x9849BF19fC3896A2e97082601B5f78d9eC1bed00",
+      "updated_at": 1562053780346
+    },
     "5778": {
       "links": {},
       "events": {},
@@ -3828,7 +3834,7 @@
     }
   },
   "schemaVersion": "3.0.10",
-  "updatedAt": "2019-06-28T09:32:17.997Z",
+  "updatedAt": "2019-07-02T07:49:18.810Z",
   "devdoc": {
     "methods": {}
   },
