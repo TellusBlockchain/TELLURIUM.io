@@ -14,7 +14,7 @@ var db        = {};
 //   var sequelize = new Sequelize(config.database, config.username, config.password, config);
 // }
 
-var sequelize = new Sequelize('mydb', 'sborod', '', {
+var sequelize = new Sequelize('tellusdb', 'postgres', '', {
   host: 'localhost',
   dialect: 'postgres'
 });
