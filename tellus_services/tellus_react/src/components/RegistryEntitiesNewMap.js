@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import GoogleMapReact from 'google-map-react'
+import * as secrets from '../.secrets'
 
 class RegistryEntitiesNewMap extends Component {
   static defaultProps = {
@@ -37,7 +38,7 @@ class RegistryEntitiesNewMap extends Component {
     return (
       <div style={{ width: '100%', height: '480px' }}>
         <GoogleMapReact
-          bootstrapURLKeys={{ key: "AIzaSyDIbd-oSFvBx_JtZzFuBkGHGdvA5SPBMVM" }}
+          bootstrapURLKeys={{ key: secrets[process.env.NODE_ENV]["googleMapsKey"] }}
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
           // It is not best way to render markers and use 'onGoogleApiLoaded'

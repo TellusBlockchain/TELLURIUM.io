@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import GoogleMapReact from 'google-map-react'
+import * as secrets from '../.secrets'
+
+const LAT_LNG_DIVIDER = 1000000;
 
 class RegistryEntitiesIndexMap extends Component {
   static defaultProps = {
@@ -17,8 +20,8 @@ class RegistryEntitiesIndexMap extends Component {
 
     let latLngs = this.props.registry_entities.map((registry_entity) => {
       return {
-        lat: registry_entity.points[0] / 1000000,
-        lng: registry_entity.points[1] / 1000000
+        lat: registry_entity.points[0] / LAT_LNG_DIVIDER,
+        lng: registry_entity.points[1] / LAT_LNG_DIVIDER
       }
     })
 
@@ -44,7 +47,7 @@ class RegistryEntitiesIndexMap extends Component {
     return (
       <div style={{ width: '100%', height: '480px' }}>
         <GoogleMapReact
-          bootstrapURLKeys={{ key: "AIzaSyDIbd-oSFvBx_JtZzFuBkGHGdvA5SPBMVM" }}
+          bootstrapURLKeys={{ key: secrets[process.env.NODE_ENV]["googleMapsKey"] }}
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
           // It is not best way to render markers and use 'onGoogleApiLoaded'

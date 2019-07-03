@@ -9,11 +9,16 @@ import ipfsClient from 'ipfs-http-client';
 
 import RegistryEntitiesNewMap from "../../components/RegistryEntitiesNewMap";
 
+const LAT_LNG_DIVIDER = 1000000;
+
 class RegistryEntitiesNew extends React.Component {
   constructor (props) {
     super(props);
 
-    this.ipfs = ipfsClient('18.195.159.148', '5001');
+    this.ipfs = ipfsClient(
+      process.env.REACT_APP_IPFS_API_SERVER_URL,
+      process.env.REACT_APP_IPFS_API_SERVER_PORT
+    );
 
     this.state = {
       title: "",
@@ -44,7 +49,9 @@ class RegistryEntitiesNew extends React.Component {
         console.log(response)
         ipfsId = response[0].hash
         console.log(ipfsId)
-        this.setState({ documents_url: `http://18.195.159.148:8080/ipfs/${ipfsId}` })
+        this.setState({
+          documents_url: `${process.env.REACT_APP_IPFS_GATEWAY_URL}/ipfs/${ipfsId}`
+        })
       }).catch((err) => {
         console.error(err)
       })
@@ -63,7 +70,9 @@ class RegistryEntitiesNew extends React.Component {
         console.log(response)
         ipfsId = response[0].hash
         console.log(ipfsId)
-        this.setState({ image_url: `http://18.195.159.148:8080/ipfs/${ipfsId}` })
+        this.setState({
+          image_url: `${process.env.REACT_APP_IPFS_GATEWAY_URL}/ipfs/${ipfsId}`
+        })
       }).catch((err) => {
         console.error(err)
       })
@@ -71,7 +80,11 @@ class RegistryEntitiesNew extends React.Component {
 
   saveLatLngToState(latLng) {
     this.setState({
-      points: [ Math.round(latLng.lat*1000000), Math.round(latLng.lng*1000000), 1 ]
+      points: [
+        Math.round(latLng.lat*LAT_LNG_DIVIDER),
+        Math.round(latLng.lng*LAT_LNG_DIVIDER),
+        1
+      ]
     });
   }
 

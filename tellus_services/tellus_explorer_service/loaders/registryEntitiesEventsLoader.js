@@ -1,10 +1,10 @@
 const Web3 = require('web3');
-const web3 = new Web3("wss://ropsten.infura.io/ws/v3/60227cbc12a1491f92b8456ab35e874a");
+const web3 = new Web3(process.env.REACT_APP_WEB3_PROVIDER);
 const RegistryEntitiesJSON = require("../../tellus_react/src/contracts/RegistryEntities.json");
 
 let RegistryEntitiesContract = new web3.eth.Contract(
   RegistryEntitiesJSON.abi,
-  RegistryEntitiesJSON["networks"]["3"]["address"]
+  RegistryEntitiesJSON["networks"][process.env.REACT_APP_ETHEREUM_NETWORK]["address"]
 );
 
 class registryEntitiesEventsLoader {
