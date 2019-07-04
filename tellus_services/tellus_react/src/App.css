@@ -42,6 +42,11 @@ ul.mainHeader {
 ul.mainHeader li {
   list-style: none;
   display: inline-block;
+  width: 200px;
+}
+
+ul.mainHeader li a {
+  color: #00ffec;
 }
 
 .bg_card {
