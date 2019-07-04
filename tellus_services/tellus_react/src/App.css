@@ -1,14 +1,14 @@
-.App {
+/* .App {
   text-align: center;
-}
+} */
 
-.App-logo {
+/* .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
   pointer-events: none;
-}
+} */
 
-.App-header {
+/* .App-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -17,21 +17,112 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
+} */
 
-.App-link {
+/* .App-link {
   color: #61dafb;
-}
+} */
 
-@keyframes App-logo-spin {
+/* @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
   }
+} */
+
+ul.mainHeader {
+  /* padding-inline-start: 0px; */
+  /* padding-left: 0px; */
+  margin: 20px auto 0 auto;
+  width: 1000px;
 }
 
 ul.mainHeader li {
   list-style: none;
+  display: inline-block;
+}
+
+.bg_card {
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: -2.1px 2.1px 7px 0 rgba(0, 0, 0, 0.15), 1.9px 2.3px 7px 0 rgba(0, 0, 0, 0.15);
+  margin-top: 110px;
+}
+
+.Tellurium_logo {
+  width: 230px;
+  height: 50px;
+  object-fit: contain;
+  margin: 50px auto 0 auto;
+  display: block;
+}
+
+.art {
+  width: 299px;
+  height: 276px;
+  object-fit: contain;
+  margin: 32px auto 0 auto;
+  display: block;
+}
+
+.separator_hor {
+  border-right: 1px solid #e6e9ed;
+}
+
+.signin_via_metamask_button_container {
+  width: 260px;
+  margin: 140px auto 0 auto;
+}
+
+.signin_as_notary_button_container {
+  width: 260px;
+  margin: 20px auto 225px auto;
+}
+
+.signin_via_metamask_button {
+  width: 260px;
+  height: 39px;
+  border-radius: 4px;
+  background-color: #fe8100;
+  color: white;
+}
+
+.signin_as_notary_button {
+  width: 260px;
+  height: 39px;
+  border-radius: 4px;
+  border: solid 1px #2d5674;
+  background-color: #ffffff;
+}
+
+.Welcome {
+  /* width: 136px; */
+  height: 50px;
+  /* font-family: SFUIText; */
+  font-size: 30px;
+  /* font-weight: 300; */
+  /* font-style: normal; */
+  /* font-stretch: normal; */
+  line-height: 1.6;
+  letter-spacing: normal;
+  text-align: center;
+  margin-top: 52px;
+  color: #2d5674;
+}
+
+.With-Proof-of-Ownership {
+  /* width: 294px;
+  height: 86px;
+  font-family: SFUIText;
+  font-size: 14px;
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.71;
+  letter-spacing: 0.14px; */
+  margin-bottom: 82px;
+  text-align: center;
+  color: #2d5674;
 }

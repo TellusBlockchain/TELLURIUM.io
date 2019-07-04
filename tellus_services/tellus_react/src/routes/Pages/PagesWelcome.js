@@ -1,7 +1,9 @@
 import React from 'react';
 
-import contract from "truffle-contract";
-import UsersJSON from "../../contracts/Users.json";
+import contract from 'truffle-contract';
+import UsersJSON from '../../contracts/Users.json';
+
+import WelcomeCard from '../../components/WelcomeCard'
 
 class PagesWelcome extends React.Component {
   constructor (props) {
@@ -16,7 +18,7 @@ class PagesWelcome extends React.Component {
 
   async componentDidMount () {
     if (window.ethereum.selectedAddress) {
-      await this.tryToLoginViaMetamask();
+      // await this.tryToLoginViaMetamask();
     }
   }
 
@@ -38,46 +40,14 @@ class PagesWelcome extends React.Component {
         isLoginnedViaMetamask: true,
         role: role
       });
+
+      this.props.history.push('/registry_entities/index');
     }
   }
 
   render () {
     return (
-      <React.Fragment>
-        <h2>Welcome</h2>
-        {
-          this.state.isLoginnedViaMetamask ? (
-            this.state.role === 1 ? (
-              <React.Fragment>
-                <p>You logined via MetaMask as Deployer</p>
-              </React.Fragment>
-            ) : (
-              this.state.role === 2 ? (
-                <React.Fragment>
-                  <p>You logined via MetaMask as Notary</p>
-                </React.Fragment>
-              ) : (
-                this.state.role === 3 ? (
-                  <React.Fragment>
-                    <p>You logined via MetaMask as a common User</p>
-                  </React.Fragment>
-                ) : (
-                  <React.Fragment>
-                    <p>You are not in validated users list</p>
-                  </React.Fragment>
-                )
-              )
-            )
-          ) : (
-            <React.Fragment>
-              <p>You'll need to auth via MetaMask</p>
-              <button type="button"
-                      onClick={this.tryToLoginViaMetamask}
-              >Login via MetaMask</button>
-            </React.Fragment>
-          )
-        }
-      </React.Fragment>
+      <WelcomeCard tryToLoginViaMetamask={this.tryToLoginViaMetamask}></WelcomeCard>
     );
   }
 }

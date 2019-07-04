@@ -16,7 +16,6 @@ class App extends React.Component {
     return (
       <div className="App">
         <Router>
-          <Header />
           <div>
             <Route path="/" exact component={PagesWelcome} />
             <Route path="/users/new" component={UsersNew} />
@@ -24,6 +23,7 @@ class App extends React.Component {
             <Route path="/registry_entities/new" component={RegistryEntitiesNew} />
             <Route path="/explorer" component={PagesExplorer} />
           </div>
+          <Header />
         </Router>
       </div>
     )
