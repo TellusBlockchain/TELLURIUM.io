@@ -18,7 +18,7 @@ class WelcomeCard extends React.Component {
                 <div>
                   <img src="/art.jpg"
                        srcSet="/art@2x.jpg 2x,
-                              /art@3x.jpg 3x"
+                               /art@3x.jpg 3x"
                        className="art" />
                 </div>
                 <div className="With-Proof-of-Ownership">

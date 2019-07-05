@@ -6,6 +6,7 @@ import RegistryEntitiesJSON from "../../contracts/RegistryEntities.json";
 import { Row, Col, Button, Card, Container } from 'react-bootstrap';
 
 import RegistryEntitiesIndexMap from "../../components/RegistryEntitiesIndexMap";
+import AboveTheMapWindow from "../../components/AboveTheMapWindow";
 
 class RegistryEntitiesIndex extends React.Component {
   constructor (props) {
@@ -74,19 +75,20 @@ class RegistryEntitiesIndex extends React.Component {
     });
   }
 
+
   render() {
     return (
       <>
         <div className='map-container'>
           <RegistryEntitiesIndexMap registry_entities={this.state.registry_entities} />
         </div>
-        <div className="registry-entities-container">
+        <AboveTheMapWindow>
           {
             this.state.registry_entities.map((registry_entity) => {
               return (
                 <Row key={registry_entity.id}
-                     className="registry-entity-row"
-                     onClick={() => { this.showRegistryEntity(registry_entity) } }
+                    className="registry-entity-row"
+                    onClick={() => { this.showRegistryEntity(registry_entity) } }
                 >
                   <Col>
                     <h5>{registry_entity.title}</h5>
@@ -101,7 +103,7 @@ class RegistryEntitiesIndex extends React.Component {
               )
             })
           }
-        </div>
+        </AboveTheMapWindow>
         {
           this.state.registryEntity ? (
             <div className={ "registry-entity-show-container" + (this.state.showRegistryEntity ? '' : ' hidden') }>

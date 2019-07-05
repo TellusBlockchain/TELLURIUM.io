@@ -73,7 +73,6 @@
   height: 60px;
   box-shadow: 0px 3px 7px 0 rgba(0, 0, 0, 0.16);
   background-color: #2d5674;
-  /* z-index: 100; */
 }
 
 .nav-links-container {
@@ -88,9 +87,7 @@
 }
 
 .nav-links-container a {
-  /* margin-top: 30px; */
   color: #ffffff;
-  /* color: #00ffec; */
 }
 
 .bg_card {
@@ -113,7 +110,6 @@
   height: 18px;
   object-fit: contain;
   margin-top: 24px;
-  /* margin-left: 20px; */
 }
 
 .art {
@@ -155,13 +151,8 @@
 }
 
 .Welcome {
-  /* width: 136px; */
   height: 50px;
-  /* font-family: SFUIText; */
   font-size: 30px;
-  /* font-weight: 300; */
-  /* font-style: normal; */
-  /* font-stretch: normal; */
   line-height: 1.6;
   letter-spacing: normal;
   text-align: center;
@@ -170,15 +161,6 @@
 }
 
 .With-Proof-of-Ownership {
-  /* width: 294px;
-  height: 86px;
-  font-family: SFUIText;
-  font-size: 14px;
-  font-weight: 300;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1.71;
-  letter-spacing: 0.14px; */
   margin-bottom: 82px;
   text-align: center;
   color: #2d5674;

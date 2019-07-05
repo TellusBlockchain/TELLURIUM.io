@@ -8,6 +8,7 @@ import { Row, Col, Form, Button } from 'react-bootstrap';
 import ipfsClient from 'ipfs-http-client';
 
 import RegistryEntitiesNewMap from "../../components/RegistryEntitiesNewMap";
+import AboveTheMapWindow from "../../components/AboveTheMapWindow";
 
 const LAT_LNG_DIVIDER = 1000000;
 
@@ -25,7 +26,7 @@ class RegistryEntitiesNew extends React.Component {
       description: "",
       documents_url: "",
       image_url: "",
-      points: [ 5, 5, 5 ]
+      points: [ 0, 0, 0 ]
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -83,7 +84,7 @@ class RegistryEntitiesNew extends React.Component {
       points: [
         Math.round(latLng.lat*LAT_LNG_DIVIDER),
         Math.round(latLng.lng*LAT_LNG_DIVIDER),
-        1
+        0
       ]
     });
   }
@@ -124,56 +125,62 @@ class RegistryEntitiesNew extends React.Component {
 
   render() {
     return (
-      <Form>
-        <Form.Group controlId="formTitle" as={Row}>
-          <Form.Label column md={2}>Title:</Form.Label>
-          <Col md={9}>
-            <Form.Control type="text"
-                          placeholder="Title"
-                          name="title"
-                          value={this.state.title}
-                          onChange={this.handleInputChange} />
-          </Col>
-        </Form.Group>
-        <Form.Group controlId="formDescription" as={Row}>
-          <Form.Label column md={2}>Description:</Form.Label>
-          <Col md={9}>
-            <Form.Control as="textarea"
-                          placeholder="Description"
-                          name="description"
-                          value={this.state.description}
-                          onChange={this.handleInputChange} />
-          </Col>
-        </Form.Group>
-        <Form.Group controlId="formDocumentsUrl" as={Row}>
-          <Form.Label column md={2}>Upload Documents:</Form.Label>
-          <Col md={9}>
-            <Form.Control type="file"
-                          name="documents_url"
-                          onChange={this.upload_documents} />
-          </Col>
-        </Form.Group>
-        <Form.Group controlId="formImageUrl" as={Row}>
-          <Form.Label column md={2}>Upload Image:</Form.Label>
-          <Col md={9}>
-            <Form.Control type="file"
-                          name="image_url"
-                          onChange={this.upload_image} />
-          </Col>
-        </Form.Group>
-        <Form.Group controlId="" as={Row}>
-          <Col md={{ span: 10, offset: 1 }}>
-            <RegistryEntitiesNewMap onMarkerDragEnd={this.saveLatLngToState} />
-          </Col>
-        </Form.Group>
-        <Row>
-          <Col>
-            <Button type="button" onClick={this.handleClick}>
-              Save
-            </Button>
-          </Col>
-        </Row>
-      </Form>
+      <>
+        <div className='map-container'>
+          <RegistryEntitiesNewMap onMarkerDragEnd={this.saveLatLngToState} />
+        </div>
+        <AboveTheMapWindow style={{ padding: '30px' }}>
+          <Form>
+            <Form.Group controlId="formTitle">
+              <Form.Label>Title:</Form.Label>
+              <Form.Control type="text"
+                            placeholder="Title"
+                            name="title"
+                            value={this.state.title}
+                            onChange={this.handleInputChange} />
+            </Form.Group>
+            <Form.Group controlId="formDescription">
+              <Form.Label>Description:</Form.Label>
+              <Form.Control as="textarea"
+                            placeholder="Description"
+                            name="description"
+                            value={this.state.description}
+                            onChange={this.handleInputChange} />
+            </Form.Group>
+            <Form.Group controlId="formDocumentsUrl">
+              <Form.Label>Upload Documents:</Form.Label>
+              <Form.Control type="file"
+                            name="documents_url"
+                            onChange={this.upload_documents} />
+            </Form.Group>
+            <Form.Group controlId="formImageUrl">
+              <Form.Label>Upload Image:</Form.Label>
+              <Form.Control type="file"
+                            name="image_url"
+                            onChange={this.upload_image} />
+            </Form.Group>
+            <Form.Group controlId="formPoints">
+              <Form.Label>Coordinates:</Form.Label>
+              <div>
+                Lat: {this.state.points[0]/LAT_LNG_DIVIDER}
+              </div>
+              <div>
+                Lng: {this.state.points[1]/LAT_LNG_DIVIDER}
+              </div>
+              <div>
+                Z: {this.state.points[2]}
+              </div>
+            </Form.Group>
+            <Row>
+              <Col>
+                <Button type="button" onClick={this.handleClick}>
+                  Save
+                </Button>
+              </Col>
+            </Row>
+          </Form>
+        </AboveTheMapWindow>
+      </>
     );
   }
 }
