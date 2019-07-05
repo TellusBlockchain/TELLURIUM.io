@@ -16,14 +16,13 @@ class App extends React.Component {
     return (
       <div className="App">
         <Router>
-          <div>
-            <Route path="/" exact component={PagesWelcome} />
-            <Route path="/users/new" component={UsersNew} />
-            <Route path="/registry_entities/index" component={RegistryEntitiesIndex} />
-            <Route path="/registry_entities/new" component={RegistryEntitiesNew} />
-            <Route path="/explorer" component={PagesExplorer} />
-          </div>
           <Header />
+          
+          <Route path="/" exact component={PagesWelcome} />
+          <Route path="/users/new" component={UsersNew} />
+          <Route path="/registry_entities/index" component={RegistryEntitiesIndex} />
+          <Route path="/registry_entities/new" component={RegistryEntitiesNew} />
+          <Route path="/explorer" component={PagesExplorer} />
         </Router>
       </div>
     )

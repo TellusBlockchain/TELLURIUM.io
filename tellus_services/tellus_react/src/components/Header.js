@@ -1,28 +1,39 @@
 import React from 'react';
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Row, Col, Container } from 'react-bootstrap';
 
 class Header extends React.Component {
   render () {
     return (
-      <nav>
-        <ul className="mainHeader">
-          <li>
-            <Link to="/">Welcome</Link>
-          </li>
-          <li>
-            <Link to="/users/new">New User</Link>
-          </li>
-          <li>
-            <Link to="/registry_entities/new">New Registry Entity</Link>
-          </li>
-          <li>
-            <Link to="/registry_entities/index">Registry Entities Index</Link>
-          </li>
-          <li>
-            <Link to="/explorer">Explorer</Link>
-          </li>
-        </ul>
+      <nav className="mainHeader">
+        <Container>
+          <Row>
+            <Col md="auto">
+              <img src="/tellurium-logo-white.png"
+                   srcSet="/tellurium-logo-white@2x.png 2x,
+                          /tellurium-logo-white@3x.png 3x"
+                   className="Tellurium_logo_white" />
+            </Col>
+            <Col className="nav-links-container">
+              <div>
+                <Link to="/">Welcome</Link>
+              </div>
+              <div>
+                <Link to="/users/new">New User</Link>
+              </div>
+              <div>
+                <Link to="/registry_entities/new">New Registry Entity</Link>
+              </div>
+              <div>
+                <Link to="/registry_entities/index">Registry Entities Index</Link>
+              </div>
+              <div>
+                <Link to="/explorer">Explorer</Link>
+              </div>
+            </Col>
+          </Row>
+        </Container>
       </nav>
     );
   }

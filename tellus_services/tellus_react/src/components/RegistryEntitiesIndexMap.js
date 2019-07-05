@@ -45,7 +45,7 @@ class RegistryEntitiesIndexMap extends Component {
 
   render() {
     return (
-      <div style={{ width: '100%', height: '480px' }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: secrets[process.env.NODE_ENV]["googleMapsKey"] }}
           defaultCenter={this.props.center}

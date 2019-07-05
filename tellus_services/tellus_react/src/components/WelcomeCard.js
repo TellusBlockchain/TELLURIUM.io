@@ -40,7 +40,7 @@ class WelcomeCard extends React.Component {
                 <div className="signin_as_notary_button_container">
                   <button type="button"
                           className="signin_as_notary_button"
-                          onClick={this.tryToLoginViaMetamask}
+                          onClick={this.props.tryToLoginViaMetamask}
                   >Sign in as Notary</button>
                 </div>
               </Col>

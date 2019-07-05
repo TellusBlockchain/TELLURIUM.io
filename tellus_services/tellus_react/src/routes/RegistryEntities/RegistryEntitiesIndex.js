@@ -10,9 +10,15 @@ import RegistryEntitiesIndexMap from "../../components/RegistryEntitiesIndexMap"
 class RegistryEntitiesIndex extends React.Component {
   constructor (props) {
     super(props);
+
     this.state = {
-      registry_entities: []
+      registry_entities: [],
+      showRegistryEntity: false,
+      registryEntity: null
     };
+
+    this.closeRegistryEntity = this.closeRegistryEntity.bind(this);
+    this.showRegistryEntity = this.showRegistryEntity.bind(this);
   }
 
   async componentDidMount () {
@@ -49,8 +55,6 @@ class RegistryEntitiesIndex extends React.Component {
         });
       }
 
-      // console.log(registry_entities)
-
       this.setState({
         registry_entities: registry_entities
       });
@@ -59,44 +63,77 @@ class RegistryEntitiesIndex extends React.Component {
     }
   }
 
+  closeRegistryEntity() {
+    this.setState({ showRegistryEntity: false });
+  }
+
+  showRegistryEntity(registry_entity) {
+    this.setState({
+      showRegistryEntity: true,
+      registryEntity: registry_entity
+    });
+  }
+
   render() {
     return (
-      <React.Fragment>
-        <h1>Index of Registry Entities</h1>
-        <Row>
-          <Col md={{span: 10, offset: 1}}>
-            <RegistryEntitiesIndexMap registry_entities={this.state.registry_entities} />
-          </Col>
-        </Row>
-        <Container>
+      <>
+        <div className='map-container'>
+          <RegistryEntitiesIndexMap registry_entities={this.state.registry_entities} />
+        </div>
+        <div className="registry-entities-container">
           {
             this.state.registry_entities.map((registry_entity) => {
               return (
-                <Row key={registry_entity.id}>
+                <Row key={registry_entity.id}
+                     className="registry-entity-row"
+                     onClick={() => { this.showRegistryEntity(registry_entity) } }
+                >
                   <Col>
-                    <Card>
-                      <Card.Img variant="top" src={registry_entity.image_url} />
-                      <Card.Body>
-                        <Card.Title>{registry_entity.title}</Card.Title>
-                        <Card.Text>{registry_entity.description}</Card.Text>
-                        <Button variant="primary"
-                                href={registry_entity.documents_url}
-                                target="_blank"
-                        >Download documents</Button>
-                      </Card.Body>
-                      <Card.Footer>
-                        <small className="text-muted">Updated at {
-                          registry_entity.updated_at.toLocaleString("en-US")
-                        }</small>
-                      </Card.Footer>
-                    </Card>
+                    <h5>{registry_entity.title}</h5>
+                    <p>{registry_entity.description}</p>
+                  </Col>
+                  <Col md='auto'>
+                    <div className='registry-entities-image-container'>
+                      <img src={registry_entity.image_url} />
+                    </div>
                   </Col>
                 </Row>
               )
             })
           }
-        </Container>
-      </React.Fragment>
+        </div>
+        {
+          this.state.registryEntity ? (
+            <div className={ "registry-entity-show-container" + (this.state.showRegistryEntity ? '' : ' hidden') }>
+              <div className="close-button-container" onClick={this.closeRegistryEntity}>
+                <img src="/x.png"
+                     srcSet="/x@2x.png 2x,
+                             /x@3x.png 3x" />
+              </div>
+              {
+                <Card style={{ position: 'relative', 'zIndex': 250 }}>
+                  <Card.Img variant="top" src={this.state.registryEntity.image_url} />
+                  <Card.Body style={{ position: 'relative' }}>
+                    <Button variant="info"
+                            href={this.state.registryEntity.documents_url}
+                            target="_blank"
+                            style={{ position: "absolute", top: '-27px', right: '16px', width: '54px', height: '54px', 'borderRadius': '50%' }}
+                    >
+                      <span style={{ display: 'inline-block', height: '100%', verticalAlign: 'middle' }}></span>
+                      <img src="/download-doc.png"
+                           style={{ verticalAlign: 'middle' }}
+                           srcSet="/download-doc@2x.png 2x,
+                                   /download-doc@3x.png 3x" />
+                    </Button>
+                    <Card.Title>{this.state.registryEntity.title}</Card.Title>
+                    <Card.Text>{this.state.registryEntity.description}</Card.Text>
+                  </Card.Body>
+                </Card>
+              }
+            </div>
+          ) : null
+        }
+      </>
     );
   }
 }

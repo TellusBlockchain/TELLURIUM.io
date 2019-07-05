@@ -1,52 +1,96 @@
-/* .App {
-  text-align: center;
-} */
+.App {
+  height: 100%;
+  position: relative;
+}
 
-/* .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-} */
+.map-container {
+  position: absolute;
+  bottom: 0;
+  top: 60px;
+  width: 100%;
+  z-index: 100;
+}
 
-/* .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.registry-entities-container {
+  position: absolute;
+  bottom: 20px;
+  top: 80px;
+  left: 20px;
+  width: 400px;
+  z-index: 200;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: -2.1px 2.1px 7px 0 rgba(0, 0, 0, 0.15), 1.9px 2.3px 7px 0 rgba(0, 0, 0, 0.15);
+  overflow-y: scroll;
+}
+
+.registry-entity-show-container {
+  position: absolute;
+  bottom: 20px;
+  top: 80px;
+  left: 420px;
+  width: 400px;
+  z-index: 200;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: -2.1px 2.1px 7px 0 rgba(0, 0, 0, 0.15), 1.9px 2.3px 7px 0 rgba(0, 0, 0, 0.15);
+  overflow-y: scroll;
+}
+
+.close-button-container {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  right: 10px;
+  top: 10px;
+  z-index: 300;
+}
+
+.hidden { display: none; }
+
+.registry-entity-row:not(:last-child) {
+  border-bottom: 1px solid #d9d9d9;
+}
+
+.registry-entity-row {
+  padding: 16px 0 16px 0;
+  margin: 0 16px 0 16px;
+}
+
+.registry-entities-image-container {
+  width: 90px;
+  height: 90px;
+}
+
+.registry-entities-image-container img {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+}
+
+.mainHeader {
+  width: 100%;
+  height: 60px;
+  box-shadow: 0px 3px 7px 0 rgba(0, 0, 0, 0.16);
+  background-color: #2d5674;
+  /* z-index: 100; */
+}
+
+.nav-links-container {
   display: flex;
-  flex-direction: column;
+  justify-content: flex-end;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-} */
-
-/* .App-link {
-  color: #61dafb;
-} */
-
-/* @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
-
-ul.mainHeader {
-  /* padding-inline-start: 0px; */
-  /* padding-left: 0px; */
-  margin: 20px auto 0 auto;
-  width: 1000px;
+  height: 60px;
 }
 
-ul.mainHeader li {
-  list-style: none;
-  display: inline-block;
-  width: 200px;
+.nav-links-container div:not(:first-child) {
+  margin-left: 20px;
 }
 
-ul.mainHeader li a {
-  color: #00ffec;
+.nav-links-container a {
+  /* margin-top: 30px; */
+  color: #ffffff;
+  /* color: #00ffec; */
 }
 
 .bg_card {
@@ -62,6 +106,14 @@ ul.mainHeader li a {
   object-fit: contain;
   margin: 50px auto 0 auto;
   display: block;
+}
+
+.Tellurium_logo_white {
+  width: 167px;
+  height: 18px;
+  object-fit: contain;
+  margin-top: 24px;
+  /* margin-left: 20px; */
 }
 
 .art {
