@@ -48,7 +48,7 @@ class PagesWelcome extends React.Component {
 
   render () {
     return (
-      <MainWindow>
+      <MainWindow style={{ marginTop: '110px' }}>
         <Row>
           <Col className="separator_hor">
             <div>
