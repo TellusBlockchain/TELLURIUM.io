@@ -6,7 +6,7 @@ class MainWindow extends React.Component {
     return (
       <Container>
         <Row>
-          <Col md={{ span: 8, offset: 2 }} className="bg_card">
+          <Col md={{ span: 8, offset: 2 }} className="bg_card" style={ this.props.style }>
             { this.props.children }
           </Col>
         </Row>
