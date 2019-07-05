@@ -160,6 +160,17 @@
   color: #2d5674;
 }
 
+.Notary-Page {
+  font-size: 16px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.25;
+  letter-spacing: -0.32px;
+  text-align: center;
+  color: #3c424b;
+}
+
 .With-Proof-of-Ownership {
   margin-bottom: 82px;
   text-align: center;
