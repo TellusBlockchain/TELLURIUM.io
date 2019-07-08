@@ -21,7 +21,7 @@ class PagesExplorer extends React.Component {
 
   render () {
     return (
-      <div style={{ backgroundColor: '#e9e9e9', height: '100%' }}>
+      <div style={{ backgroundColor: '#e9e9e9', minHeight: '100%' }}>
         <Container md={{ span: 10, offset: 1 }}>
           <Row style={{ paddingTop: '21px' }}>
             <Col>
