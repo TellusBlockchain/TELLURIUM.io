@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node -r dotenv/config ./bin/www"
+    "start": "node -r dotenv/config ./bin/www",
+    "test": "node -r dotenv/config ./tests/test_index_route.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -15,6 +16,10 @@
     "pg": "^7.11.0",
     "pg-hstore": "^2.3.2",
     "sequelize": "^5.8.6",
+    "sequelize-cli": "^5.5.0",
     "web3": "1.0.0-beta.37"
+  },
+  "devDependencies": {
+    "supertest": "^4.0.2"
   }
 }

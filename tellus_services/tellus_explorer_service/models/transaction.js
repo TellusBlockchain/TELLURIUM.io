@@ -1,16 +1,17 @@
 'use strict';
-
 module.exports = (sequelize, DataTypes) => {
-  var Transaction = sequelize.define('Transaction', {
+  const Transaction = sequelize.define('Transaction', {
     transactionHash: {
       type: DataTypes.STRING,
       unique: true
     },
     blockHash: DataTypes.STRING,
-    blockNumber: DataTypes.BIGINT,
     eventName: DataTypes.STRING,
+    blockNumber: DataTypes.BIGINT,
     returnValues: DataTypes.TEXT
-  });
-
+  }, {});
+  Transaction.associate = function(models) {
+    // associations can be defined here
+  };
   return Transaction;
 };
