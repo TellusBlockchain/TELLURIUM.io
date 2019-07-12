@@ -6,6 +6,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var transactionsRouter = require('./routes/transactions');
+var registryEntitiesRouter = require('./routes/registry_entities');
 
 require("./initializers/sync_registry_entities_events");
 require('./initializers/sync_registry_entities_events_listener');
@@ -21,5 +22,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/transactions', transactionsRouter);
+app.use('/registry_entities', registryEntitiesRouter);
 
 module.exports = app;

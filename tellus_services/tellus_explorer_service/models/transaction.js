@@ -1,10 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Transaction = sequelize.define('Transaction', {
-    transactionHash: {
-      type: DataTypes.STRING,
-      unique: true
-    },
+    transactionHash: DataTypes.STRING,
     blockHash: DataTypes.STRING,
     eventName: DataTypes.STRING,
     blockNumber: DataTypes.BIGINT,
