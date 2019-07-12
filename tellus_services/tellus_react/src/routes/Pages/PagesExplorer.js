@@ -37,7 +37,7 @@ class PagesExplorer extends React.Component {
             </Col>
             <Col>
               <Form.Control as="select">
-                <option>AfterRegistryEntityCreate</option>
+                <option>AfterRegistryEntityCreated</option>
                 <option>AfterUserCreate</option>
               </Form.Control>
             </Col>

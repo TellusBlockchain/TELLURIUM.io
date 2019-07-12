@@ -9,7 +9,7 @@ let RegistryEntitiesContract = new web3.eth.Contract(
 
 class registryEntitiesEventsLoader {
   async load_all() {
-    let events = await RegistryEntitiesContract.getPastEvents("allEvents", {
+    let events = await RegistryEntitiesContract.getPastEvents("AfterRegistryEntityCreated", {
       fromBlock: 0
     });
 

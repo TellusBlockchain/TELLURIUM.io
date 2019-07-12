@@ -17,25 +17,25 @@ contract RegistryEntities is Initializable {
         uint updated_at;
     }
 
-    event AfterRegistryEntityCreate(
+    event AfterRegistryEntityCreated(
         uint indexed _id,
         string _title,
         string _description,
         string _documents_url,
         string _image_url,
         int32[] _points,
-        uint created_at
+        uint _created_at
     );
 
     // Autoincrementer:
     uint current_id;
 
-    function initialize() initializer public {
+    function initialize() public initializer {
         current_id = 0;
     }
 
     // Map for storing land entries (id => land entry data).
-    mapping (uint => RegistryEntity) public _registryEntity;
+    mapping (uint => RegistryEntity) public _registryEntities;
 
     // Function for creating and saving land entry to land entries map.
     function create(string memory title,
@@ -60,9 +60,9 @@ contract RegistryEntities is Initializable {
             updated_at: updated_at
         });
 
-        _registryEntity[current_id] = registryEntity;
+        _registryEntities[current_id] = registryEntity;
 
-        emit AfterRegistryEntityCreate(current_id, title, description, documents_url, image_url, points, created_at);
+        emit AfterRegistryEntityCreated(current_id, title, description, documents_url, image_url, points, created_at);
     }
 
     // Function for getting land entry data by land entry id.
@@ -76,7 +76,7 @@ contract RegistryEntities is Initializable {
         uint,
         uint
     ) {
-        RegistryEntity memory registryEntity = _registryEntity[id];
+        RegistryEntity memory registryEntity = _registryEntities[id];
         return (
             registryEntity.id,
             registryEntity.title,

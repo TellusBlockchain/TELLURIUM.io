@@ -12,7 +12,7 @@ contract('RegistryEntities', (accounts) => {
       "image_url",
       [ 1, 2, 3 ]
     );
-    assert.equal(result.logs[0].event, 'AfterRegistryEntityCreate');
+    assert.equal(result.logs[0].event, 'AfterRegistryEntityCreated');
     result = await truffleCost.log(result, 'USD');
   });
 });
