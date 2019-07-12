@@ -12,13 +12,20 @@ import RegistryEntitiesIndex from './routes/RegistryEntities/RegistryEntitiesInd
 import PagesExplorer from './routes/Pages/PagesExplorer';
 
 class App extends React.Component {
+  constructor (props) {
+    super(props);
+    this.state = {
+      current_user_role: undefined
+    };
+  }
+
   render () {
     return (
       <div className="App">
         <Router>
-          <Header />
+          <Header current_user_role={this.state.current_user_role} />
           
-          <Route path="/" exact component={PagesWelcome} />
+          <Route path="/" exact render={(props) => <PagesWelcome app={this} {...props} />} />
           <Route path="/users/new" component={UsersNew} />
           <Route path="/registry_entities/index" component={RegistryEntitiesIndex} />
           <Route path="/registry_entities/new" component={RegistryEntitiesNew} />

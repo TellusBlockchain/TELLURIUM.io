@@ -42,6 +42,8 @@ class PagesWelcome extends React.Component {
         role: role
       });
 
+      this.props.app.setState({ current_user_role: role });
+
       this.props.history.push('/registry_entities/index');
     }
   }
@@ -79,12 +81,12 @@ class PagesWelcome extends React.Component {
                       onClick={this.tryToLoginViaMetamask}
               >Login via MetaMask</button>
             </div>
-            <div className="signin_as_notary_button_container">
+            {/* <div className="signin_as_notary_button_container">
               <button type="button"
                       className="signin_as_notary_button"
                       onClick={this.tryToLoginViaMetamask}
               >Sign in as Notary</button>
-            </div>
+            </div> */}
           </Col>
         </Row>
       </MainWindow>

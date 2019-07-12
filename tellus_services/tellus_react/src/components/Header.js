@@ -19,15 +19,27 @@ class Header extends React.Component {
               <div>
                 <Link to="/">Welcome</Link>
               </div>
-              <div>
-                <Link to="/users/new">New User</Link>
-              </div>
-              <div>
-                <Link to="/registry_entities/new">New Registry Entity</Link>
-              </div>
-              <div>
-                <Link to="/registry_entities/index">Registry Entities Index</Link>
-              </div>
+              {
+                this.props.current_user_role === 1 ? (
+                  <div>
+                    <Link to="/users/new">New User</Link>
+                  </div>
+                ) : null
+              }
+              {
+                this.props.current_user_role === 1 ? (
+                  <div>
+                    <Link to="/registry_entities/new">New Registry Entity</Link>
+                  </div>
+                ) : null
+              }
+              {
+                typeof this.props.current_user_role !== 'undefined' ? (
+                  <div>
+                    <Link to="/registry_entities/index">Registry Entities Index</Link>
+                  </div>
+                ) : null
+              }
               <div>
                 <Link to="/explorer">Explorer</Link>
               </div>
