@@ -129,6 +129,11 @@
   margin: 140px auto 0 auto;
 }
 
+.signin_via_metamask_button_container_invite_page {
+  width: 260px;
+  margin: 0 auto 0 auto;
+}
+
 .signin_as_notary_button_container {
   width: 260px;
   margin: 20px auto 225px auto;

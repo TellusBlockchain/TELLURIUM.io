@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Header from './components/Header';
 
 import PagesWelcome from './routes/Pages/PagesWelcome';
+import PagesAcceptInvite from './routes/Pages/PagesAcceptInvite';
 import UsersNew from './routes/Users/UsersNew';
 import RegistryEntitiesNew from './routes/RegistryEntities/RegistryEntitiesNew';
 import RegistryEntitiesIndex from './routes/RegistryEntities/RegistryEntitiesIndex';
@@ -26,6 +27,7 @@ class App extends React.Component {
           <Header current_user_role={this.state.current_user_role} />
           
           <Route path="/" exact render={(props) => <PagesWelcome app={this} {...props} />} />
+          <Route path="/invites/accept" render={(props) => <PagesAcceptInvite app={this} {...props} />} />
           <Route path="/users/new" component={UsersNew} />
           <Route path="/registry_entities/index" component={RegistryEntitiesIndex} />
           <Route path="/registry_entities/new" component={RegistryEntitiesNew} />

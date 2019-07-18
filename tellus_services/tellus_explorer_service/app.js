@@ -7,6 +7,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var transactionsRouter = require('./routes/transactions');
 var registryEntitiesRouter = require('./routes/registry_entities');
+var invitesRouter = require('./routes/invites');
 
 require("./initializers/sync_registry_entities_events");
 require('./initializers/sync_registry_entities_events_listener');
@@ -23,5 +24,6 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/transactions', transactionsRouter);
 app.use('/registry_entities', registryEntitiesRouter);
+app.use('/invites', invitesRouter);
 
 module.exports = app;

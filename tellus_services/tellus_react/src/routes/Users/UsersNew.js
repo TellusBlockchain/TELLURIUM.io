@@ -11,13 +11,20 @@ class UsersNew extends React.Component {
     super(props);
 
     this.state = {
-      username: "",
-      email: "",
-      eth_address: ""
+      username: '',
+      email: '',
+      eth_address: '',
+      invitation_email: ''
     };
 
     this.handleClick = this.handleClick.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSendInviteButtonClick = this.handleSendInviteButtonClick.bind(this);
+  }
+
+  async handleSendInviteButtonClick() {
+    let response = await fetch(`${process.env.REACT_APP_EXPLORER_SERVICE_BASE_URL}/invites/send_invitation?mail_to=${this.state.invitation_email}`);
+    response = await response.json();
   }
 
   async handleClick() {
@@ -104,10 +111,14 @@ class UsersNew extends React.Component {
                   <InputGroup>
                     <FormControl
                       placeholder="Email"
-                      aria-label="Email"
+                      name='invitation_email'
+                      onChange={this.handleInputChange}
+                      value={this.state.invitation_email}
                     />
                     <InputGroup.Append>
-                      <Button variant="success">SEND INVITE</Button>
+                      <Button variant="success"
+                              onClick={this.handleSendInviteButtonClick}
+                      >SEND INVITE</Button>
                     </InputGroup.Append>
                   </InputGroup>
                 </Col>
