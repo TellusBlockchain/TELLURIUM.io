@@ -18,12 +18,16 @@ class PagesWelcome extends React.Component {
   }
 
   async componentDidMount () {
-    if (window.ethereum.selectedAddress) {
-      // await this.tryToLoginViaMetamask();
-    }
+    // if (window.ethereum.selectedAddress) {
+    //   await this.tryToLoginViaMetamask();
+    // }
   }
 
   async tryToLoginViaMetamask () {
+    if (!window.ethereum) {
+      return null;
+    }
+    
     const accounts = await window.ethereum.enable();
     if (accounts) {
       const Users = contract(UsersJSON);
@@ -43,7 +47,6 @@ class PagesWelcome extends React.Component {
       });
 
       this.props.app.setState({ current_user_role: role });
-
       this.props.history.push('/registry_entities/index');
     }
   }

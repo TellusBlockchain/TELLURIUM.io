@@ -132,6 +132,7 @@
 .signin_via_metamask_button_container_invite_page {
   width: 260px;
   margin: 0 auto 0 auto;
+  padding-bottom: 100px;
 }
 
 .signin_as_notary_button_container {

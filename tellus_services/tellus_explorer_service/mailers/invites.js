@@ -29,7 +29,7 @@ exports.send_invitation = async function (inviter_name, mail_to) {
     });
   }
 
-  var hash = crypto.createHash('md5').update(mail_to + '_' + process.env["INVITES_SECRET"]).digest('hex');
+  let hash = crypto.createHash('md5').update(mail_to + '_' + process.env["INVITES_SECRET"]).digest('hex');
   let href = `${process.env["BASE_URL"]}/invites/accept?email=${mail_to}&token=${hash}`;
 
   const email = new Email({
@@ -55,6 +55,7 @@ exports.send_invitation = async function (inviter_name, mail_to) {
 
   if (process.env["TEST_MAILER"] === '1') {
     console.log("Preview URL: %s", nodemailer.getTestMessageUrl(result));
+    result.preview_url = nodemailer.getTestMessageUrl(result);
   }
 
   return result;

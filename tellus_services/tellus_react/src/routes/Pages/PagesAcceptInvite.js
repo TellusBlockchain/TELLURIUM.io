@@ -12,7 +12,8 @@ class PagesWelcome extends React.Component {
 
     this.state = {
       isLoginnedViaMetamask: false,
-      username: ''
+      username: '',
+      query_params: {}
     };
 
     this.tryToLoginViaMetamask = this.tryToLoginViaMetamask.bind(this);
@@ -20,9 +21,13 @@ class PagesWelcome extends React.Component {
   }
 
   async componentDidMount () {
-    // if (window.ethereum.selectedAddress) {
-    //   await this.tryToLoginViaMetamask();
-    // }
+    let query_params_str = this.props.location.search.split('?')[1];
+    let query_params = {};
+    query_params_str.split('&').map( (query_param) => {
+      let [ k, v ] = query_param.split('=');
+      query_params[k] = v;
+    });
+    this.setState({ query_params });
   }
 
   async tryToLoginViaMetamask () {
@@ -32,6 +37,15 @@ class PagesWelcome extends React.Component {
     
     const accounts = await window.ethereum.enable();
     if (accounts) {
+      let url = `${process.env.REACT_APP_EXPLORER_SERVICE_BASE_URL}/invites/accept_invitation?`;
+      url += 'eth_address=' + accounts[0];
+      url += '&email=' + this.state.query_params['email'];
+      url += '&token=' + this.state.query_params['token'];
+      
+      let response = await fetch(url);
+      response = await response.json();
+      console.log(response);
+
       const Users = contract(UsersJSON);
   
       Users.setProvider(window.web3.currentProvider);
@@ -42,6 +56,11 @@ class PagesWelcome extends React.Component {
       const deployed = await Users.deployed();
       let role = await deployed.get_my_role();
       role = role.toNumber();
+
+      if (!role || role === 0) {
+        console.log(role);
+        return null;
+      }
 
       this.setState({
         isLoginnedViaMetamask: true,

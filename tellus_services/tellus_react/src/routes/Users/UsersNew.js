@@ -14,7 +14,8 @@ class UsersNew extends React.Component {
       username: '',
       email: '',
       eth_address: '',
-      invitation_email: ''
+      invitation_email: '',
+      email_preview_url: ''
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -25,6 +26,10 @@ class UsersNew extends React.Component {
   async handleSendInviteButtonClick() {
     let response = await fetch(`${process.env.REACT_APP_EXPLORER_SERVICE_BASE_URL}/invites/send_invitation?mail_to=${this.state.invitation_email}`);
     response = await response.json();
+    console.log(response);
+    if (response && response.result&& response.result.preview_url) {
+      this.setState({ email_preview_url: response.result.preview_url });
+    }
   }
 
   async handleClick() {
@@ -121,6 +126,11 @@ class UsersNew extends React.Component {
                       >SEND INVITE</Button>
                     </InputGroup.Append>
                   </InputGroup>
+                  <div style={{ wordWrap: 'break-word' }}>
+                    <a target='_blank' href={this.state.email_preview_url}>
+                      {this.state.email_preview_url}
+                    </a>
+                  </div>
                 </Col>
               </Row>
             </Col>

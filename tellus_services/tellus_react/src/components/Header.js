@@ -20,14 +20,14 @@ class Header extends React.Component {
                 <Link to="/">Welcome</Link>
               </div>
               {
-                this.props.current_user_role === 1 ? (
+                this.props.current_user_role === 1 || this.props.current_user_role === 2 ? (
                   <div>
                     <Link to="/users/new">New User</Link>
                   </div>
                 ) : null
               }
               {
-                this.props.current_user_role === 1 ? (
+                this.props.current_user_role === 1 || this.props.current_user_role === 2 ? (
                   <div>
                     <Link to="/registry_entities/new">New Registry Entity</Link>
                   </div>
