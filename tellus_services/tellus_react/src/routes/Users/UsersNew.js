@@ -117,6 +117,7 @@ class UsersNew extends React.Component {
                     <FormControl
                       placeholder="Email"
                       name='invitation_email'
+                      autoComplete='off'
                       onChange={this.handleInputChange}
                       value={this.state.invitation_email}
                     />

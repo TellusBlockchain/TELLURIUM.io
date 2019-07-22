@@ -116,6 +116,7 @@ class PagesWelcome extends React.Component {
                 <Form.Control type="text"
                               placeholder="Username"
                               name="username"
+                              autoComplete='off'
                               value={this.state.username}
                               onChange={this.handleInputChange}
                 />
