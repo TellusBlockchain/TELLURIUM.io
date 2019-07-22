@@ -22,10 +22,12 @@ class RegistryEntitiesNew extends React.Component {
     );
 
     this.state = {
-      title: "",
-      description: "",
-      documents_url: "",
-      image_url: "",
+      title: '',
+      description: '',
+      documents_url: '',
+      image_url: '',
+      documents_files: [],
+      images_files: [],
       points: [ 0, 0, 0 ]
     };
 
@@ -40,43 +42,21 @@ class RegistryEntitiesNew extends React.Component {
   upload_documents (event) {
     event.stopPropagation()
     event.preventDefault()
-    this.saveToIpfsDocuments(event.target.files)
+    this.setState({ documents_files: event.target.files })
   }
 
-  saveToIpfsDocuments (files) {
-    let ipfsId
-    this.ipfs.add([...files], { progress: (prog) => console.log(`received: ${prog}`) })
-      .then((response) => {
-        console.log(response)
-        ipfsId = response[0].hash
-        console.log(ipfsId)
-        this.setState({
-          documents_url: `${process.env.REACT_APP_IPFS_GATEWAY_URL}/ipfs/${ipfsId}`
-        })
-      }).catch((err) => {
-        console.error(err)
-      })
+  async saveToIpfsDocuments (files) {
+    return this.ipfs.add([...files], { progress: (prog) => console.log(`received: ${prog}`) })
   }
 
   upload_image (event) {
     event.stopPropagation()
     event.preventDefault()
-    this.saveToIpfsImage(event.target.files)
+    this.setState({ images_files: event.target.files })
   }
 
-  saveToIpfsImage (files) {
-    let ipfsId
-    this.ipfs.add([...files], { progress: (prog) => console.log(`received: ${prog}`) })
-      .then((response) => {
-        console.log(response)
-        ipfsId = response[0].hash
-        console.log(ipfsId)
-        this.setState({
-          image_url: `${process.env.REACT_APP_IPFS_GATEWAY_URL}/ipfs/${ipfsId}`
-        })
-      }).catch((err) => {
-        console.error(err)
-      })
+  async saveToIpfsImage (files) {
+    return this.ipfs.add([...files], { progress: (prog) => console.log(`received: ${prog}`) })
   }
 
   saveLatLngToState(latLng) {
@@ -98,7 +78,32 @@ class RegistryEntitiesNew extends React.Component {
       RegistryEntities.defaults({
         from: accounts[0]
       });
-  
+
+      let response, ipfsId;
+      try {
+        response = await this.saveToIpfsDocuments(this.state.documents_files)
+        console.log(response)
+        ipfsId = response[0].hash
+        console.log(ipfsId)
+        this.setState({
+          documents_url: `${process.env.REACT_APP_IPFS_GATEWAY_URL}/ipfs/${ipfsId}`
+        })
+      } catch (err) {
+        console.error(err)
+      }
+
+      try {
+        response = await this.saveToIpfsImage(this.state.images_files)
+        console.log(response)
+        ipfsId = response[0].hash
+        console.log(ipfsId)
+        this.setState({
+          image_url: `${process.env.REACT_APP_IPFS_GATEWAY_URL}/ipfs/${ipfsId}`
+        })
+      } catch (err) {
+        console.error(err)
+      }
+
       const deployed = await RegistryEntities.deployed();
       await deployed.create(
         this.state.title,
