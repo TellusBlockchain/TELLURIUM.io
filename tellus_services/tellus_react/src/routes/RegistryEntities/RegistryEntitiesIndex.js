@@ -48,11 +48,17 @@ class RegistryEntitiesIndex extends React.Component {
         let registry_entities = [];
         for (let i = 1, l = registry_entities_current_id.toNumber(); i <= l; l--) {
           let registry_entity = await deployed.find(l);
+
+          let documents_url = process.env.REACT_APP_SAMPLE_DOCUMENT;
+          if (registry_entity[3] && registry_entity[3].length > 0) {
+            documents_url = registry_entity[3];
+          }
+
           registry_entities.push({
             id: registry_entity[0].toNumber(),
             title: registry_entity[1],
             description: registry_entity[2],
-            documents_url: registry_entity[3],
+            documents_url: documents_url,
             image_url: registry_entity[4],
             points: registry_entity[5].map( point => point.toNumber() ),
             created_at: (new Date(registry_entity[6].toNumber() * 1000)),
@@ -64,7 +70,7 @@ class RegistryEntitiesIndex extends React.Component {
           });
         }
 
-        console.log(this.state.registry_entities);
+        // console.log(this.state.registry_entities);
       } else if (use_postgre_cache_as_db) {
         let response = await fetch(`${process.env.REACT_APP_EXPLORER_SERVICE_BASE_URL}/registry_entities`);
         response = await response.json();
