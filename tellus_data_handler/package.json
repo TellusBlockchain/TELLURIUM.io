@@ -1,0 +1,17 @@
+{
+  "name": "tellus_data_handler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node -r dotenv/config app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.0.0",
+    "ipfs-http-client": "^33.1.0",
+    "web3": "^1.2.0"
+  }
+}

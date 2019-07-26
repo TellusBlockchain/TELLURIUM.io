@@ -3,10 +3,12 @@ import React from 'react';
 import contract from "truffle-contract";
 import RegistryEntitiesJSON from "../../contracts/RegistryEntities.json";
 
-import { Row, Col, Button, Card, Container } from 'react-bootstrap';
+import { Row, Col, Button, Card, Container, Spinner } from 'react-bootstrap';
 
 import RegistryEntitiesIndexMap from "../../components/RegistryEntitiesIndexMap";
 import AboveTheMapWindow from "../../components/AboveTheMapWindow";
+
+const use_postgre_cache_as_db = false;
 
 class RegistryEntitiesIndex extends React.Component {
   constructor (props) {
@@ -15,7 +17,8 @@ class RegistryEntitiesIndex extends React.Component {
     this.state = {
       registry_entities: [],
       showRegistryEntity: false,
-      registryEntity: null
+      registryEntity: null,
+      registry_entities_loaded: false
     };
 
     this.closeRegistryEntity = this.closeRegistryEntity.bind(this);
@@ -41,23 +44,35 @@ class RegistryEntitiesIndex extends React.Component {
       const deployed = await RegistryEntities.deployed();
       let registry_entities_current_id = await deployed.get_current_id();
 
-      let registry_entities = [];
-      for (let i = 1, l = registry_entities_current_id.toNumber(); i <= l; l--) {
-        let registry_entity = await deployed.find(l);
-        registry_entities.push({
-          id: registry_entity[0].toNumber(),
-          title: registry_entity[1],
-          description: registry_entity[2],
-          documents_url: registry_entity[3],
-          image_url: registry_entity[4],
-          points: registry_entity[5].map( point => point.toNumber() ),
-          created_at: (new Date(registry_entity[6].toNumber() * 1000)),
-          updated_at: (new Date(registry_entity[7].toNumber() * 1000))
-        });
+      if (!use_postgre_cache_as_db) {
+        let registry_entities = [];
+        for (let i = 1, l = registry_entities_current_id.toNumber(); i <= l; l--) {
+          let registry_entity = await deployed.find(l);
+          registry_entities.push({
+            id: registry_entity[0].toNumber(),
+            title: registry_entity[1],
+            description: registry_entity[2],
+            documents_url: registry_entity[3],
+            image_url: registry_entity[4],
+            points: registry_entity[5].map( point => point.toNumber() ),
+            created_at: (new Date(registry_entity[6].toNumber() * 1000)),
+            updated_at: (new Date(registry_entity[7].toNumber() * 1000))
+          });
+
+          this.setState({
+            registry_entities: registry_entities
+          });
+        }
+
+        console.log(this.state.registry_entities);
+      } else if (use_postgre_cache_as_db) {
+        let response = await fetch(`${process.env.REACT_APP_EXPLORER_SERVICE_BASE_URL}/registry_entities`);
+        response = await response.json();
+        console.log(response);
       }
 
       this.setState({
-        registry_entities: registry_entities
+        registry_entities_loaded: true
       });
     } else {
   
@@ -75,24 +90,29 @@ class RegistryEntitiesIndex extends React.Component {
     });
   }
 
-
   render() {
     return (
       <>
         <div className='map-container'>
-          <RegistryEntitiesIndexMap registry_entities={this.state.registry_entities} />
+          <RegistryEntitiesIndexMap registry_entities={this.state.registry_entities} showRegistryEntity={this.showRegistryEntity} />
         </div>
         <AboveTheMapWindow>
           {
             this.state.registry_entities.map((registry_entity) => {
               return (
                 <Row key={registry_entity.id}
-                    className="registry-entity-row"
-                    onClick={() => { this.showRegistryEntity(registry_entity) } }
+                     className="registry-entity-row"
+                     onClick={() => { this.showRegistryEntity(registry_entity) } }
                 >
                   <Col>
                     <h5>{registry_entity.title}</h5>
-                    <p>{registry_entity.description}</p>
+                    <p>
+                      {
+                        registry_entity.description.length > 280 ? (
+                          `${registry_entity.description.substring(0, 280)}...`
+                        ) : registry_entity.description
+                      }
+                    </p>
                   </Col>
                   <Col md='auto'>
                     <div className='registry-entities-image-container'>
@@ -103,6 +123,11 @@ class RegistryEntitiesIndex extends React.Component {
               )
             })
           }
+          {!this.state.registry_entities_loaded && <Row>
+            <Col className='spinnerCol'>
+              <Spinner animation="grow" variant="primary" />
+            </Col>
+          </Row>}
         </AboveTheMapWindow>
         {
           this.state.registryEntity ? (

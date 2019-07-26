@@ -1,0 +1,4 @@
+.ipynb_checkpoints
+data/*
+node_modules
+.env

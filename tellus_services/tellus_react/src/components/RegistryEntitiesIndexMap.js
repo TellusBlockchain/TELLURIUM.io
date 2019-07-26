@@ -18,22 +18,31 @@ class RegistryEntitiesIndexMap extends Component {
     let _map = this.state._map
     let _maps = this.state._maps
 
-    let latLngs = this.props.registry_entities.map((registry_entity) => {
-      return {
-        lat: registry_entity.points[0] / LAT_LNG_DIVIDER,
-        lng: registry_entity.points[1] / LAT_LNG_DIVIDER
-      }
-    })
+    try {
+      this.props.registry_entities.forEach((registry_entity) => {
+        let latLng = {
+          lat: registry_entity.points[0] / LAT_LNG_DIVIDER,
+          lng: registry_entity.points[1] / LAT_LNG_DIVIDER
+        }
 
-    latLngs.map(function (latLng) {
-      return new _maps.Marker({
-        position: {
-          lat: latLng.lat,
-          lng: latLng.lng
-        },
-        map: _map
+        let marker = new _maps.Marker({
+          position: {
+            lat: latLng.lat,
+            lng: latLng.lng
+          },
+          map: _map
+        });
+
+        marker.registry_entity = registry_entity;
+        let showRegistryEntity = this.props.showRegistryEntity;
+
+        _maps.event.addListener(marker, 'click', function(e) {
+          showRegistryEntity(this.registry_entity);
+        });
       })
-    })
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
