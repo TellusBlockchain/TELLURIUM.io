@@ -1,7 +1,15 @@
 const LAT_LNG_DIVIDER = 1000000;
 
 const Web3 = require('web3');
-const web3 = new Web3(process.env.WEB3_PROVIDER);
+const HDWalletProvider = require("truffle-hdwallet-provider");
+
+let provider = new HDWalletProvider(
+  process.env.DEPLOYER_PRIVATE_KEY,
+  process.env.INFURA_PROJECT_URL
+);
+
+// const web3 = new Web3(process.env.WEB3_PROVIDER);
+const web3 = new Web3(provider);
 
 const ipfsClient = require('ipfs-http-client');
 

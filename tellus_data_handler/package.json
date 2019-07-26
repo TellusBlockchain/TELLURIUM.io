@@ -12,6 +12,7 @@
   "dependencies": {
     "dotenv": "^8.0.0",
     "ipfs-http-client": "^33.1.0",
+    "truffle-hdwallet-provider": "^1.0.15",
     "web3": "^1.2.0"
   }
 }
