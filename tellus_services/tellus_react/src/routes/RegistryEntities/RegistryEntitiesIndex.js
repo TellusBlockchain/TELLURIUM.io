@@ -49,7 +49,7 @@ class RegistryEntitiesIndex extends React.Component {
         for (let i = 1, l = registry_entities_current_id.toNumber(); i <= l; l--) {
           let registry_entity = await deployed.find(l);
 
-          let documents_url = process.env.REACT_APP_SAMPLE_DOCUMENT;
+          let documents_url = process.env.REACT_APP_SAMPLE_DOCUMENT || '';
           if (registry_entity[3] && registry_entity[3].length > 0) {
             documents_url = registry_entity[3];
           }
