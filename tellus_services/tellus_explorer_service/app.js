@@ -9,7 +9,6 @@ var transactionsRouter = require('./routes/transactions');
 var registryEntitiesRouter = require('./routes/registry_entities');
 var invitesRouter = require('./routes/invites');
 
-require("./initializers/sync_registry_entities_events");
 require('./initializers/sync_registry_entities_events_listener');
 
 var app = express();

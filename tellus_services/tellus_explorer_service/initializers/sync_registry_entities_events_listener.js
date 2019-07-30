@@ -1,13 +1,13 @@
+const models = require('../models');
+
 const Web3 = require('web3');
 const web3 = new Web3(process.env.WEB3_PROVIDER);
-const RegistryEntitiesJSON = require("../../tellus_react/src/contracts/RegistryEntities.json");
 
+const RegistryEntitiesJSON = require("../../tellus_react/src/contracts/RegistryEntities.json");
 let RegistryEntitiesContract = new web3.eth.Contract(
   RegistryEntitiesJSON.abi,
   RegistryEntitiesJSON["networks"][process.env.ETHEREUM_NETWORK]["address"]
 );
-
-const models = require('../models');
 
 RegistryEntitiesContract.events.AfterRegistryEntityCreated({
   fromBlock: 'latest'
@@ -20,8 +20,10 @@ RegistryEntitiesContract.events.AfterRegistryEntityCreated({
       eventName:       event.event,
       returnValues:    JSON.stringify(event.returnValues)
     });
-  } catch (e) {
+    console.log(`Successfully created Transaction with transactionHash=${event.transactionHash}`);
+  } catch (err) {
     console.log(`Can't create Transaction with transactionHash=${event.transactionHash}`);
+    console.log(err);
   }
 
   try {
@@ -34,9 +36,10 @@ RegistryEntitiesContract.events.AfterRegistryEntityCreated({
       points: JSON.stringify(event.returnValues._points),
       _created_at: event.returnValues._created_at
     });
-  } catch (e) {
-    console.log(`Can't create RegistryEntity with event.transactionHash=${event.transactionHash}`);
+    console.log(`Successfully created RegistryEntity with transactionHash=${event.transactionHash}`);
+  } catch (err) {
+    console.log(`Can't create RegistryEntity with transactionHash=${event.transactionHash}`);
+    console.log(err);
   }
 }).on('changed', function (event) {
-  // remove event from local database
 }).on('error', console.log);

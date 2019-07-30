@@ -16,7 +16,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       description: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       documents_url: {
         type: Sequelize.STRING
@@ -25,7 +25,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       points: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       _created_at: {
         type: Sequelize.INTEGER

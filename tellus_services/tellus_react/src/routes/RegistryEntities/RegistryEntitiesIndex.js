@@ -8,7 +8,7 @@ import { Row, Col, Button, Card, Container, Spinner } from 'react-bootstrap';
 import RegistryEntitiesIndexMap from "../../components/RegistryEntitiesIndexMap";
 import AboveTheMapWindow from "../../components/AboveTheMapWindow";
 
-const use_postgre_cache_as_db = false;
+const use_postgre_cache_as_db = true;
 
 class RegistryEntitiesIndex extends React.Component {
   constructor (props) {
@@ -44,8 +44,8 @@ class RegistryEntitiesIndex extends React.Component {
       const deployed = await RegistryEntities.deployed();
       let registry_entities_current_id = await deployed.get_current_id();
 
+      let registry_entities = [];
       if (!use_postgre_cache_as_db) {
-        let registry_entities = [];
         for (let i = 1, l = registry_entities_current_id.toNumber(); i <= l; l--) {
           let registry_entity = await deployed.find(l);
 
@@ -69,12 +69,17 @@ class RegistryEntitiesIndex extends React.Component {
             registry_entities: registry_entities
           });
         }
-
-        // console.log(this.state.registry_entities);
       } else if (use_postgre_cache_as_db) {
         let response = await fetch(`${process.env.REACT_APP_EXPLORER_SERVICE_BASE_URL}/registry_entities`);
         response = await response.json();
-        console.log(response);
+        response.map( (registry_entity) => {
+          registry_entity.points = JSON.parse(registry_entity.points)
+          registry_entity.points = registry_entity.points.map( (coord) => (coord >> 0) );
+        });
+        registry_entities = response;
+        this.setState({
+          registry_entities: registry_entities
+        });
       }
 
       this.setState({

@@ -3,10 +3,10 @@ module.exports = (sequelize, DataTypes) => {
   const RegistryEntity = sequelize.define('RegistryEntity', {
     _id: DataTypes.INTEGER,
     title: DataTypes.STRING,
-    description: DataTypes.STRING,
+    description: DataTypes.TEXT,
     documents_url: DataTypes.STRING,
     image_url: DataTypes.STRING,
-    points: DataTypes.STRING,
+    points: DataTypes.TEXT,
     _created_at: DataTypes.INTEGER
   }, {});
   RegistryEntity.associate = function(models) {
