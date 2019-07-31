@@ -1,0 +1,10 @@
+{
+  apps : [
+    {
+      name: "Tellus Explorer Service",
+      script: "npx",
+      interpreter: "none",
+      args: "npm start"
+    }
+  ]
+}

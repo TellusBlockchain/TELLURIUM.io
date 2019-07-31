@@ -1,0 +1,10 @@
+{
+  apps : [
+    {
+      name: "Tellus React Service",
+      script: "npx",
+      interpreter: "none",
+      args: "serve -n -d"
+    }
+  ]
+}
