@@ -13,6 +13,11 @@ require('./initializers/sync_registry_entities_events_listener');
 
 var app = express();
 
+app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+process.on('uncaughtException', function (exception) {
+  console.log(exception);
+});
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
