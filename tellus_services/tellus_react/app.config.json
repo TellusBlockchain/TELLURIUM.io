@@ -4,7 +4,7 @@
       name: "Tellus React Service",
       script: "npx",
       interpreter: "none",
-      args: "serve -n -d"
+      args: "serve -s build -n -d"
     }
   ]
 }
