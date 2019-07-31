@@ -1,10 +1,11 @@
 {
-  apps : [
+  "apps" : [
     {
-      name: "Tellus React Service",
-      script: "npx",
-      interpreter: "none",
-      args: "serve -s build -n -d"
+      "name": "Tellus React Service",
+      "script": "npx",
+      "interpreter": "none",
+      "args": "serve -s build -n -d",
+      "log_date_format" : "YYYY-MM-DD HH:mm Z"
     }
   ]
 }

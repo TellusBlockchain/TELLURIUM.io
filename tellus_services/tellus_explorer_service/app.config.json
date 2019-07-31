@@ -1,10 +1,11 @@
 {
-  apps : [
+  "apps" : [
     {
-      name: "Tellus Explorer Service",
-      script: "npx",
-      interpreter: "none",
-      args: "npm start"
+      "name": "Tellus Explorer Service",
+      "script": "npx",
+      "interpreter": "none",
+      "args": "npm start",
+      "log_date_format" : "YYYY-MM-DD HH:mm Z"
     }
   ]
 }
