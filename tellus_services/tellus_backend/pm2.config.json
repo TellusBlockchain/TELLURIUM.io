@@ -1,7 +1,7 @@
 {
   "apps" : [
     {
-      "name": "Tellus Backend Service",
+      "name": "Tellus Backend",
       "script": "npx",
       "interpreter": "none",
       "args": "npm start",

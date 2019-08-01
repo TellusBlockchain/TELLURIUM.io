@@ -1,5 +1,5 @@
 {
-  "name": "tellus-backend-service",
+  "name": "tellus-backend",
   "version": "0.0.0",
   "private": true,
   "scripts": {
