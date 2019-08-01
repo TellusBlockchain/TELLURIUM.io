@@ -10,6 +10,9 @@ const crypto = require('crypto');
 const UsersJSON = require("../../tellus_react/src/contracts/Users.json");
 const send_invitation = require('../mailers/invites').send_invitation;
 
+// console.log(web3.eth.accounts);
+// web3.eth.getAccounts().then(console.log);
+
 let UsersContract = new web3.eth.Contract(
   UsersJSON.abi,
   UsersJSON["networks"][process.env.ETHEREUM_NETWORK]["address"]
@@ -38,7 +41,7 @@ router.get('/accept_invitation', cors(), async function(req, res, next) {
   if (!req.query.eth_address) {
     return res.send({ error: 'eth_address field is required' });
   }
-  
+
   if (!req.query.token) {
     return res.send({ error: 'token field is required' });
   }

@@ -1,7 +1,7 @@
 {
   "apps" : [
     {
-      "name": "Tellus Explorer Service",
+      "name": "Tellus Backend Service",
       "script": "npx",
       "interpreter": "none",
       "args": "npm start",
