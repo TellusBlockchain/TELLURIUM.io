@@ -24,7 +24,7 @@ class UsersNew extends React.Component {
   }
 
   async handleSendInviteButtonClick() {
-    let response = await fetch(`${process.env.REACT_APP_EXPLORER_SERVICE_BASE_URL}/invites/send_invitation?mail_to=${this.state.invitation_email}`);
+    let response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/invites/send_invitation?mail_to=${this.state.invitation_email}`);
     response = await response.json();
     console.log(response);
     if (response && response.result&& response.result.preview_url) {

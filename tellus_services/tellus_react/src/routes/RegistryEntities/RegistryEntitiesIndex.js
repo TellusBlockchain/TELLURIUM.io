@@ -70,7 +70,7 @@ class RegistryEntitiesIndex extends React.Component {
           });
         }
       } else if (use_postgre_cache_as_db) {
-        let response = await fetch(`${process.env.REACT_APP_EXPLORER_SERVICE_BASE_URL}/registry_entities`);
+        let response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/registry_entities`);
         response = await response.json();
         response.map( (registry_entity) => {
           registry_entity.points = JSON.parse(registry_entity.points)

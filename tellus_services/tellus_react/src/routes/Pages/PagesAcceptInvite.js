@@ -37,7 +37,7 @@ class PagesWelcome extends React.Component {
     
     const accounts = await window.ethereum.enable();
     if (accounts) {
-      let url = `${process.env.REACT_APP_EXPLORER_SERVICE_BASE_URL}/invites/accept_invitation?`;
+      let url = `${process.env.REACT_APP_BACKEND_URL}/invites/accept_invitation?`;
       url += 'eth_address=' + accounts[0];
       url += '&email=' + this.state.query_params['email'];
       url += '&token=' + this.state.query_params['token'];

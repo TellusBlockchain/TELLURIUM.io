@@ -11,7 +11,7 @@ class PagesExplorer extends React.Component {
   }
 
   async componentDidMount () {
-    let response = await fetch(`${process.env.REACT_APP_EXPLORER_SERVICE_BASE_URL}/transactions`);
+    let response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/transactions`);
     response = await response.json();
     let transactions = response;
     this.setState({
