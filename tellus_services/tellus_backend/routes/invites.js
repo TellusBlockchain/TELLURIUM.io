@@ -7,7 +7,7 @@ const web3 = new Web3(process.env.WEB3_PROVIDER);
 
 const crypto = require('crypto');
 
-const UsersJSON = require("../../tellus_react/src/contracts/Users.json");
+const UsersJSON = require("../contracts/Users.json");
 const send_invitation = require('../mailers/invites').send_invitation;
 
 // console.log(web3.eth.accounts);
