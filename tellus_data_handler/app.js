@@ -8,6 +8,8 @@ let provider = new HDWalletProvider(
   process.env.INFURA_PROJECT_URL
 );
 
+const fs = require('fs');
+
 // const web3 = new Web3(process.env.WEB3_PROVIDER);
 const web3 = new Web3(provider);
 
@@ -47,15 +49,18 @@ fields.forEach(function (field) {
 });
 
 async function start_upload_data_to_tellus () {
-  sanitized_data.forEach( async function(data) {
-    let result;
+  var stream = fs.createWriteStream("handled.txt", { flags: 'a' });
+  let result, image_url, documents_url, points;
+
+  await Promise.all(sanitized_data.forEach( async function(data) {
+    console.log(`Trying to handle data with ML Number=${data['ML Number']}`)
 
     try {
       result = await ipfs.addFromFs(`./data/192072450_COMM_4C68/${data['ML Number']}_1.jpg`);
 
-      let image_url = `${process.env.IPFS_GATEWAY_URL}/ipfs/${result[0].hash}`;
-      let documents_url = '';
-      let points = [
+      image_url = `${process.env.IPFS_GATEWAY_URL}/ipfs/${result[0].hash}`;
+      documents_url = '';
+      points = [
         Math.round(data['Latitude']*LAT_LNG_DIVIDER),
         Math.round(data['Longitude']*LAT_LNG_DIVIDER),
         0
@@ -68,13 +73,19 @@ async function start_upload_data_to_tellus () {
             from: process.env["ADMIN_ADDRESS"],
             gas: 1000000
           });
+        stream.write(data['ML Number'] + "\n");
+        console.log(`Successfully handled data with ML Number=${data['ML Number']}`)
       } catch (err) {
         console.log(err);
+        stream.end();
       }
     } catch (err) {
       console.log(err);
+      stream.end();
     }
-  });
+  }));
+  
+  stream.end();
 }
 
 start_upload_data_to_tellus();
