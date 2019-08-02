@@ -1,10 +1,11 @@
 version: '3'
 services:
-  web:
-    build: .
+  tellus_backend:
+    build: ./tellus_backend
     ports:
-      - "5000:5000"
-    volumes:
-      - .:/code
-  redis:
-    image: "redis:alpine"
+      - "5002:5002"
+  
+  tellus_react:
+    build: ./tellus_react
+    ports:
+      - "3000:3000"
