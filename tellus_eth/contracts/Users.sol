@@ -2,6 +2,10 @@ pragma solidity >=0.4.0 <0.7.0;
 
 import "zos-lib/contracts/Initializable.sol";
 
+/// @title Tellus Title users smart contract
+/// @author Yuriy Kashnikov <yuriy@ubikgroup.co>
+/// @notice A class for managing Tellus Title users
+
 contract Users is Initializable {
 
     struct User {
@@ -30,7 +34,14 @@ contract Users is Initializable {
 
     mapping (address => User) public _users;
 
-    // Method for creating new user and adding it to list of users
+    /// @notice Method for creating new user and adding it to list of users
+    /// @param addr The Ethereum address of user
+    /// @param role The role of new user:
+    /// 0 – not choosen
+    /// 1 – deployer
+    /// 2 – notary
+    /// 3 – ordinary user
+
     function create (address addr, uint role) public {
         User memory user = _users[addr];
 
