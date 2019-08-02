@@ -27,7 +27,7 @@ const RegistryEntitiesContract = new web3.eth.Contract(
   RegistryEntitiesJSON["networks"][process.env.ETHEREUM_NETWORK]["address"]
 );
 
-const data = require('./data/192072450_COMM_4C68.json');
+const data = require('./data/192072450_RESI_65E2.json');
 
 const fields = [
   "ML Number",
@@ -50,13 +50,15 @@ fields.forEach(function (field) {
 
 async function start_upload_data_to_tellus () {
   var stream = fs.createWriteStream("handled.txt", { flags: 'a' });
-  let result, image_url, documents_url, points;
+  let data, result, image_url, documents_url, points;
 
-  await Promise.all(sanitized_data.forEach( async function(data) {
+  for (let i = 0, l = sanitized_data.length; i < l; i++) {
+    data = sanitized_data[i];
+
     console.log(`Trying to handle data with ML Number=${data['ML Number']}`)
 
     try {
-      result = await ipfs.addFromFs(`./data/192072450_COMM_4C68/${data['ML Number']}_1.jpg`);
+      result = await ipfs.addFromFs(`./data/192072450_RESI_65E2/${data['ML Number']}_1.jpg`);
 
       image_url = `${process.env.IPFS_GATEWAY_URL}/ipfs/${result[0].hash}`;
       documents_url = '';
@@ -77,14 +79,12 @@ async function start_upload_data_to_tellus () {
         console.log(`Successfully handled data with ML Number=${data['ML Number']}`)
       } catch (err) {
         console.log(err);
-        stream.end();
       }
     } catch (err) {
       console.log(err);
-      stream.end();
     }
-  }));
-  
+  }
+
   stream.end();
 }
 
