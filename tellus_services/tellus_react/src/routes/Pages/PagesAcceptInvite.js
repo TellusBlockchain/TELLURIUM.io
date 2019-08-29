@@ -41,33 +41,34 @@ class PagesWelcome extends React.Component {
       url += 'eth_address=' + accounts[0];
       url += '&email=' + this.state.query_params['email'];
       url += '&token=' + this.state.query_params['token'];
+      url += '&username=' + this.state.username;
       
       let response = await fetch(url);
       response = await response.json();
       console.log(response);
 
-      const Users = contract(UsersJSON);
+      // const Users = contract(UsersJSON);
   
-      Users.setProvider(window.web3.currentProvider);
-      Users.defaults({
-        from: accounts[0]
-      });
+      // Users.setProvider(window.web3.currentProvider);
+      // Users.defaults({
+      //   from: accounts[0]
+      // });
   
-      const deployed = await Users.deployed();
-      let role = await deployed.get_my_role();
-      role = role.toNumber();
+      // const deployed = await Users.deployed();
+      // let role = await deployed.get_my_role();
+      // role = role.toNumber();
 
-      if (!role || role === 0) {
-        console.log(role);
-        return null;
-      }
+      // if (!role || role === 0) {
+      //   console.log(role);
+      //   return null;
+      // }
 
-      this.setState({
-        isLoginnedViaMetamask: true,
-        role: role
-      });
+      // this.setState({
+      //   isLoginnedViaMetamask: true,
+      //   role: role
+      // });
 
-      this.props.app.setState({ current_user_role: role });
+      this.props.app.setState({ current_user_role: 3 });
       this.props.history.push('/registry_entities/index');
     }
   }

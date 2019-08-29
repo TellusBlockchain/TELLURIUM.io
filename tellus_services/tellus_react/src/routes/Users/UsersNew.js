@@ -24,7 +24,8 @@ class UsersNew extends React.Component {
   }
 
   async handleSendInviteButtonClick() {
-    let response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/invites/send_invitation?mail_to=${this.state.invitation_email}`);
+    let url = `${process.env.REACT_APP_BACKEND_URL}/invites/send_invitation?mail_to=${this.state.invitation_email}`;
+    let response = await fetch(url);
     response = await response.json();
     console.log(response);
     if (response && response.result&& response.result.preview_url) {
@@ -43,7 +44,31 @@ class UsersNew extends React.Component {
       });
   
       const deployed = await Users.deployed();
-      deployed.create(this.state.eth_address, 0);
+
+      let result;
+      try {
+        result = await deployed.create(this.state.eth_address, 3);
+      } catch (err) {
+        console.log(err);
+      }
+
+      if (result) {
+        let url = `${process.env.REACT_APP_BACKEND_URL}/users`;
+        let params = {
+          email: this.state.email,
+          username: this.state.username,
+          eth_address: this.state.eth_address,
+          role: 3
+        };
+        let response = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(params)
+        });
+        console.log(response);
+      }
     } else {
   
     }

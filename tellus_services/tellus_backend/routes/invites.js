@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
+var models = require('../models');
+
 const cors = require('cors');
 const Web3 = require('web3');
 const web3 = new Web3(process.env.WEB3_PROVIDER);
@@ -9,9 +11,6 @@ const crypto = require('crypto');
 
 const UsersJSON = require("../contracts/Users.json");
 const send_invitation = require('../mailers/invites').send_invitation;
-
-// console.log(web3.eth.accounts);
-// web3.eth.getAccounts().then(console.log);
 
 let UsersContract = new web3.eth.Contract(
   UsersJSON.abi,
@@ -64,6 +63,20 @@ router.get('/accept_invitation', cors(), async function(req, res, next) {
       });
   } catch (error) {
     return res.send({ error: error.stack });
+  }
+
+  if (result) {
+    try {
+      await models.User.create({
+        email:       req.query.email,
+        username:    req.query.username,
+        eth_address: req.query.eth_address,
+        role:        ordinary_user_role
+      });
+    } catch (err) {
+      console.log(`Can't create User with eth_address=${req.body.eth_address}`);
+      console.log(err);
+    }
   }
 
   res.send({ result });
