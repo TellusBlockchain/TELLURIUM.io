@@ -278,6 +278,12 @@
         "address": "0xEe822dB17319C2292292Bd4dd0C335a02BFd38E2",
         "version": "1.0.0",
         "implementation": "0x7019f1B7f7fb38737eD2E05bD9E34eC3aa52bDfe"
+      },
+      {
+        "address": "0xb5Ba4822Df3E8e7677fABc184A273EDA4FBd93aA",
+        "version": "1.0.0",
+        "implementation": "0x7019f1B7f7fb38737eD2E05bD9E34eC3aa52bDfe",
+        "admin": "0x7F539B9EEa2a320E1e34a1bBDd718E78649B063c"
       }
     ],
     "tellus_eth/RegistryEntities": [
