@@ -33,6 +33,7 @@ RegistryEntitiesContract.events.AfterRegistryEntityCreated({
       description: event.returnValues._description,
       documents_url: event.returnValues._documents_url,
       image_url: event.returnValues._image_url,
+      priceUSD: event.returnValues.priceUSD,
       points: JSON.stringify(event.returnValues._points),
       _created_at: event.returnValues._created_at
     });

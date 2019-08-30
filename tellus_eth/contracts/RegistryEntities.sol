@@ -12,6 +12,7 @@ contract RegistryEntities is Initializable {
         string description;
         string documents_url;
         string image_url;
+        string priceUSD;
         int32[] points;
         uint created_at;
         uint updated_at;
@@ -23,6 +24,7 @@ contract RegistryEntities is Initializable {
         string _description,
         string _documents_url,
         string _image_url,
+        string priceUSD,
         int32[] _points,
         uint _created_at
     );
@@ -42,6 +44,7 @@ contract RegistryEntities is Initializable {
                     string memory description,
                     string memory documents_url,
                     string memory image_url,
+                    string memory priceUSD,
                     int32[] memory points
     ) public {
         current_id += 1;
@@ -55,6 +58,7 @@ contract RegistryEntities is Initializable {
             description: description,
             documents_url: documents_url,
             image_url: image_url,
+            priceUSD: priceUSD,
             points: points,
             created_at: created_at,
             updated_at: updated_at
@@ -62,12 +66,13 @@ contract RegistryEntities is Initializable {
 
         _registryEntities[current_id] = registryEntity;
 
-        emit AfterRegistryEntityCreated(current_id, title, description, documents_url, image_url, points, created_at);
+        emit AfterRegistryEntityCreated(current_id, title, description, documents_url, image_url, priceUSD, points, created_at);
     }
 
     // Function for getting land entry data by land entry id.
     function find(uint id) public view returns (
         uint,
+        string memory,
         string memory,
         string memory,
         string memory,
@@ -83,6 +88,7 @@ contract RegistryEntities is Initializable {
             registryEntity.description,
             registryEntity.documents_url,
             registryEntity.image_url,
+            registryEntity.priceUSD,
             registryEntity.points,
             registryEntity.created_at,
             registryEntity.updated_at

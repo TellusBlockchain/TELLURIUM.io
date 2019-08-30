@@ -26,6 +26,7 @@ class RegistryEntitiesNew extends React.Component {
       description: '',
       documents_url: '',
       image_url: '',
+      priceUSD: '',
       documents_files: [],
       images_files: [],
       points: [ 0, 0, 0 ]
@@ -110,6 +111,7 @@ class RegistryEntitiesNew extends React.Component {
         this.state.description,
         this.state.documents_url,
         this.state.image_url,
+        this.state.priceUSD,
         this.state.points
       );
       
@@ -150,6 +152,14 @@ class RegistryEntitiesNew extends React.Component {
                             placeholder="Description"
                             name="description"
                             value={this.state.description}
+                            onChange={this.handleInputChange} />
+            </Form.Group>
+            <Form.Group controlId="formPriceUSD">
+              <Form.Label>PriceUSD:</Form.Label>
+              <Form.Control type="text"
+                            placeholder="Price in USD"
+                            name="priceUSD"
+                            value={this.state.priceUSD}
                             onChange={this.handleInputChange} />
             </Form.Group>
             <Form.Group controlId="formDocumentsUrl">

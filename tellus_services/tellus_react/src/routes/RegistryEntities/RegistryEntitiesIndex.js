@@ -60,9 +60,10 @@ class RegistryEntitiesIndex extends React.Component {
             description: registry_entity[2],
             documents_url: documents_url,
             image_url: registry_entity[4],
-            points: registry_entity[5].map( point => point.toNumber() ),
-            created_at: (new Date(registry_entity[6].toNumber() * 1000)),
-            updated_at: (new Date(registry_entity[7].toNumber() * 1000))
+            priceUSD: registry_entity[6],
+            points: registry_entity[6].map( point => point.toNumber() ),
+            created_at: (new Date(registry_entity[7].toNumber() * 1000)),
+            updated_at: (new Date(registry_entity[8].toNumber() * 1000))
           });
 
           this.setState({
@@ -164,7 +165,10 @@ class RegistryEntitiesIndex extends React.Component {
                                    /download-doc@3x.png 3x" />
                     </Button>
                     <Card.Title>{this.state.registryEntity.title}</Card.Title>
-                    <Card.Text>{this.state.registryEntity.description}</Card.Text>
+                    <Card.Text>
+                      <div><b>PriceUSD: {this.state.registryEntity.priceUSD}</b></div>
+                      <div>{this.state.registryEntity.description}</div>
+                    </Card.Text>
                   </Card.Body>
                 </Card>
               }

@@ -6,6 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.TEXT,
     documents_url: DataTypes.STRING,
     image_url: DataTypes.STRING,
+    priceUSD: DataTypes.STRING,
     points: DataTypes.TEXT,
     _created_at: DataTypes.INTEGER
   }, {});

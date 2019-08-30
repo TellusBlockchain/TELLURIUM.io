@@ -10,6 +10,7 @@ contract('RegistryEntities', (accounts) => {
       "description",
       "documents_url",
       "image_url",
+      "5000.00",
       [ 1, 2, 3 ]
     );
     assert.equal(result.logs[0].event, 'AfterRegistryEntityCreated');

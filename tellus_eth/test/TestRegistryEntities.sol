@@ -24,6 +24,7 @@ contract TestRegistryEntities {
             description: "description",
             documents_url: "documents_url",
             image_url: "image_url",
+            priceUSD: "5000.00",
             points: points
         });
     }
@@ -42,6 +43,7 @@ contract TestRegistryEntities {
             description: "description",
             documents_url: "documents_url",
             image_url: "image_url",
+            priceUSD: "5000.00",
             points: points
         });
 
@@ -51,6 +53,7 @@ contract TestRegistryEntities {
             string memory description1,
             string memory documents_url1,
             string memory image_url1,
+            string memory priceUSD1,
             int32[] memory points1,
             uint created_at1,
             uint updated_at1
@@ -61,6 +64,7 @@ contract TestRegistryEntities {
         Assert.equal(description1, "description", "Description1 should be 'description'.");
         Assert.equal(documents_url1, "documents_url", "Documents_url1 should be 'documents_url'.");
         Assert.equal(image_url1, "image_url", "Image_url1 should be 'image_url'.");
+        Assert.equal(priceUSD1, "5000.00", "priceUSD1 should be '5000.00'.");
         Assert.equal(points1[0], 1, "Points1[0] should be 1.");
         Assert.equal(points1[1], 2, "Points1[1] should be 2.");
         Assert.equal(points1[2], 3, "Points1[2] should be 3.");
@@ -82,6 +86,7 @@ contract TestRegistryEntities {
             description: "description",
             documents_url: "documents_url",
             image_url: "image_url",
+            priceUSD: "5000.00",
             points: points
         });
 

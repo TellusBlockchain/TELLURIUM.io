@@ -1,11 +1,11 @@
 {
   "contracts": {
     "RegistryEntities": {
-      "address": "0x869f686D85Be4c9Ba9804589032cbeD1c167B02c",
-      "constructorCode": "608060405234801561001057600080fd5b506114e5806100206000396000f3fe",
-      "bodyBytecodeHash": "ecdc5f683a147c1e7c8261205df3e383242bd974f4904aef930e46a82b0f9644",
-      "localBytecodeHash": "e4ee23bce4e1b79dbb5ee1776082bf565e54275a0de8071b00671c2ab0544c8d",
-      "deployedBytecodeHash": "e4ee23bce4e1b79dbb5ee1776082bf565e54275a0de8071b00671c2ab0544c8d",
+      "address": "0xbEf286266ba36C924bC96A1A13a10296B2E7088f",
+      "constructorCode": "608060405234801561001057600080fd5b5061183b806100206000396000f3fe",
+      "bodyBytecodeHash": "d343faa8691e70de47ec38746bd655611103e1816348d3fd848dd3cb5c5dcef0",
+      "localBytecodeHash": "962551e941ac492ebd3d24e337fcf3cb480e4781bf514d55e8c66cbe143f297d",
+      "deployedBytecodeHash": "962551e941ac492ebd3d24e337fcf3cb480e4781bf514d55e8c66cbe143f297d",
       "types": {
         "t_bool": {
           "id": "t_bool",
@@ -60,22 +60,28 @@
               "src": "344:16:1"
             },
             {
+              "label": "priceUSD",
+              "astId": 73,
+              "type": "t_string",
+              "src": "370:15:1"
+            },
+            {
               "label": "points",
-              "astId": 74,
+              "astId": 76,
               "type": "t_array:dyn<t_int32>",
-              "src": "370:14:1"
+              "src": "395:14:1"
             },
             {
               "label": "created_at",
-              "astId": 76,
-              "type": "t_uint256",
-              "src": "394:15:1"
-            },
-            {
-              "label": "updated_at",
               "astId": 78,
               "type": "t_uint256",
               "src": "419:15:1"
+            },
+            {
+              "label": "updated_at",
+              "astId": 80,
+              "type": "t_uint256",
+              "src": "444:15:1"
             }
           ]
         },
@@ -108,7 +114,7 @@
           "contract": "Initializable",
           "path": "zos-lib/contracts/Initializable.sol",
           "label": "initialized",
-          "astId": 371,
+          "astId": 383,
           "type": "t_bool",
           "src": "757:24:3"
         },
@@ -116,7 +122,7 @@
           "contract": "Initializable",
           "path": "zos-lib/contracts/Initializable.sol",
           "label": "initializing",
-          "astId": 373,
+          "astId": 385,
           "type": "t_bool",
           "src": "876:25:3"
         },
@@ -124,7 +130,7 @@
           "contract": "Initializable",
           "path": "zos-lib/contracts/Initializable.sol",
           "label": "______gap",
-          "astId": 429,
+          "astId": 441,
           "type": "t_array:50<t_uint256>",
           "src": "1951:29:3"
         },
@@ -132,17 +138,17 @@
           "contract": "RegistryEntities",
           "path": "contracts/RegistryEntities.sol",
           "label": "current_id",
-          "astId": 98,
+          "astId": 102,
           "type": "t_uint256",
-          "src": "702:15:1"
+          "src": "753:15:1"
         },
         {
           "contract": "RegistryEntities",
           "path": "contracts/RegistryEntities.sol",
           "label": "_registryEntities",
-          "astId": 112,
+          "astId": 116,
           "type": "t_mapping<t_struct<RegistryEntities.RegistryEntity>>",
-          "src": "863:57:1"
+          "src": "914:57:1"
         }
       ],
       "warnings": {
@@ -150,7 +156,18 @@
         "hasSelfDestruct": false,
         "hasDelegateCall": false,
         "hasInitialValuesInDeclarations": false,
-        "uninitializedBaseContracts": []
+        "uninitializedBaseContracts": [],
+        "storageUncheckedVars": [
+          {
+            "contract": "RegistryEntities",
+            "path": "contracts/RegistryEntities.sol",
+            "label": "_registryEntities",
+            "astId": 116,
+            "type": "t_mapping<t_struct<RegistryEntities.RegistryEntity>>",
+            "src": "914:57:1"
+          }
+        ],
+        "storageDiff": []
       }
     },
     "Users": {
@@ -290,7 +307,7 @@
       {
         "address": "0x56Ebc21A300882B23Adf6a2677D2993A34A9F8e5",
         "version": "1.0.0",
-        "implementation": "0x869f686D85Be4c9Ba9804589032cbeD1c167B02c",
+        "implementation": "0xbEf286266ba36C924bC96A1A13a10296B2E7088f",
         "admin": "0xa8b4a00e2EA7EBEb70De008dA1da48485F4027Dc"
       }
     ]
