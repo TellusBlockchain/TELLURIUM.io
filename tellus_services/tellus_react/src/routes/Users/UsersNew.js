@@ -6,6 +6,8 @@ import UsersJSON from "../../contracts/Users.json";
 import { Row, Col, Form, Button, InputGroup, FormControl, Container } from 'react-bootstrap';
 import MainWindow from '../../components/MainWindow'
 
+const ORDINARY_USER = 3;
+
 class UsersNew extends React.Component {
   constructor (props) {
     super(props);
@@ -19,6 +21,7 @@ class UsersNew extends React.Component {
     };
 
     this.handleClick = this.handleClick.bind(this);
+    this.handleClickIfIsMetaMask = this.handleClickIfIsMetaMask.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSendInviteButtonClick = this.handleSendInviteButtonClick.bind(this);
   }
@@ -33,44 +36,43 @@ class UsersNew extends React.Component {
     }
   }
 
+  async handleClickIfIsMetaMask() {
+    let url = `${process.env.REACT_APP_BACKEND_URL}/users`;
+    let params = {
+      email: this.state.email,
+      username: this.state.username,
+      eth_address: this.state.eth_address,
+      role: ORDINARY_USER
+    };
+    let response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(params)
+    });
+    console.log(response);
+
+    const accounts = await window.ethereum.enable();
+    const Users = contract(UsersJSON);
+
+    Users.setProvider(window.web3.currentProvider);
+    Users.defaults({
+      from: accounts[0]
+    });
+
+    const deployed = await Users.deployed();
+
+    try {
+      await deployed.create(this.state.eth_address, ORDINARY_USER);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   async handleClick() {
     if (window.ethereum.isMetaMask) {
-      const accounts = await window.ethereum.enable();
-      const Users = contract(UsersJSON);
-  
-      Users.setProvider(window.web3.currentProvider);
-      Users.defaults({
-        from: accounts[0]
-      });
-  
-      const deployed = await Users.deployed();
-
-      let result;
-      try {
-        result = await deployed.create(this.state.eth_address, 3);
-      } catch (err) {
-        console.log(err);
-      }
-
-      if (result) {
-        let url = `${process.env.REACT_APP_BACKEND_URL}/users`;
-        let params = {
-          email: this.state.email,
-          username: this.state.username,
-          eth_address: this.state.eth_address,
-          role: 3
-        };
-        let response = await fetch(url, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(params)
-        });
-        console.log(response);
-      }
-    } else {
-  
+      this.handleClickIfIsMetaMask();
     }
   }
 
