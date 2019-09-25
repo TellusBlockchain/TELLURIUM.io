@@ -22,7 +22,7 @@ $ sudo ./install.sh
 ```
 
 2. Start services
-2.1 Backend API
+  1. Backend API
 Some preparations: you should install `make, build-essentials, g++, python, postgresql, postgresql-contrib` for deploy. NodeJS can be installed via `nvm`. Also it recommends to use globally installed `pm2` in production.
 ```
 $ cd ../tellus_services/tellus_backend
@@ -32,7 +32,7 @@ or (better)
 $ pm2 start pm2.config.json
 ```
 
-2.2 Frontend React App
+  2. Frontend React App
 There is no need make `npm install` for production mode, because all production code is static and contained in `/build` folder. All you need to do is to serve this folder. It's easy to do by `serve` npm package. This folder contains pm2 config for that. Just do (after installing `serve`):
 ```
 $ cd ../tellus_services/tellus_react
