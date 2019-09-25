@@ -28,8 +28,11 @@ $ sudo ./install.sh
 
 2.1. Backend API
 
-Some preparations: you should install `make, build-essentials, g++, python, postgresql, postgresql-contrib` for deploy. NodeJS can be installed via `nvm`. Also it recommends to use globally installed `pm2` in production.
+Install pre-requisites: 
 ```
+$ apt-get install make, build-essentials, g++, python, postgresql, postgresql-contrib, nvm
+$ nvm install latest
+$ npm install -g pm2
 $ cd ../tellus_services/tellus_backend
 $ npm install
 $ npm start
