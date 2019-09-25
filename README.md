@@ -2,11 +2,14 @@
 Tellurium Proof of Concept project implementation.
 
 ## Structure
-tellus_eth – blockchain related code and utilities.
-Blockchain tasks in the Tellurium project solves by ZeppelinOS 2.0 and Truffle frameworks.
-/contracts - this folder contains Ethereum solidity smart contracts. It contains RegistryEntities smart contract for managing entities and follows CRUD architecture with Create, Read, Update and Destroy operations on entities. For local development it uses Ganache.
 
-tellus_services – backend and frontend services for interacting with smart contracts boxed to Docker containers.
+tellus_eth – blockchain related code and utilities
+
+We ZeppelinOS 2.0 and Truffle frameworks to tackle Blockchain / smart contracts parts of the code
+
+/contracts - this folder contains Ethereum solidity smart contracts, in particular it contains RegistryEntities smart contract for managing entities and follows CRUD architecture to Create, Read, Update and Destroy operations on entities
+
+tellus_services – backend and frontend services for interacting with smart contracts boxed to Docker containers
 
 tellus_data_handler – utilities for mass data uploading to blockchain.
 
