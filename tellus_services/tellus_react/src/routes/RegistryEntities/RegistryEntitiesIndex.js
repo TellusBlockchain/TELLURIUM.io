@@ -75,6 +75,10 @@ class RegistryEntitiesIndex extends React.Component {
       response.map( (registry_entity) => {
         registry_entity.points = JSON.parse(registry_entity.points)
         registry_entity.points = registry_entity.points.map( (coord) => (coord >> 0) );
+
+        // Monkey patch for old test urls. TODO: remove after database reset
+        registry_entity.image_url     = registry_entity.image_url.replace('18.195.159.148', 'tellurium.io')
+        registry_entity.documents_url = registry_entity.documents_url.replace('18.195.159.148', 'tellurium.io')
       });
       registry_entities = response;
       this.setState({
