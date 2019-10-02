@@ -2,11 +2,14 @@
 Tellurium Proof of Concept project implementation.
 
 ## Structure
-tellus_eth – blockchain related code and utilities.
-Blockchain tasks in the Tellurium project solves by ZeppelinOS 2.0 and Truffle frameworks.
-/contracts - this folder contains Ethereum solidity smart contracts. It contains RegistryEntities smart contract for managing entities and follows CRUD architecture with Create, Read, Update and Destroy operations on entities. For local development it uses Ganache.
 
-tellus_services – backend and frontend services for interacting with smart contracts boxed to Docker containers.
+tellus_eth – blockchain related code and utilities
+
+We ZeppelinOS 2.0 and Truffle frameworks to tackle Blockchain / smart contracts parts of the code
+
+/contracts - this folder contains Ethereum solidity smart contracts, in particular it contains RegistryEntities smart contract for managing entities and follows CRUD architecture to Create, Read, Update and Destroy operations on entities
+
+tellus_services – backend and frontend services for interacting with smart contracts boxed to Docker containers
 
 tellus_data_handler – utilities for mass data uploading to blockchain.
 
@@ -25,8 +28,11 @@ $ sudo ./install.sh
 
 2.1. Backend API
 
-Some preparations: you should install `make, build-essentials, g++, python, postgresql, postgresql-contrib` for deploy. NodeJS can be installed via `nvm`. Also it recommends to use globally installed `pm2` in production.
+Install pre-requisites: 
 ```
+$ apt-get install make, build-essentials, g++, python, postgresql, postgresql-contrib, nvm
+$ nvm install latest
+$ npm install -g pm2
 $ cd ../tellus_services/tellus_backend
 $ npm install
 $ npm start
