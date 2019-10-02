@@ -11,11 +11,13 @@ describe('Registry Entities synchronizer', () => {
     models.Transaction.sequelize.close();
   });
 
+  let registry_entities_events_count = null;
+
   test('tries to load all Registry Entities events from blockchain', async () => {
     const registry_entities_events_loader = new registryEntitiesEventsLoader();
     let registry_entities_events = await registry_entities_events_loader.load_all();
-    expect(Array.isArray(registry_entities_events)).toBe(true);
-    expect(registry_entities_events.length).toBe(28);
+    expect( Array.isArray(registry_entities_events) ).toBe(true);
+    registry_entities_events_count = registry_entities_events.length;
   });
 
   test('tries to load all Registry Entities events from blockchain and save them like Transaction and RegistryEntity models in local database', async () => {
@@ -33,7 +35,7 @@ describe('Registry Entities synchronizer', () => {
       console.log(err);
     }
 
-    expect(transactions.length).toBe(28);
+    expect(transactions.length).toBe(registry_entities_events_count);
 
     let registry_entities;
     try {
@@ -46,7 +48,7 @@ describe('Registry Entities synchronizer', () => {
       console.log(err);
     }
 
-    expect(registry_entities.length).toBe(28);
+    expect(registry_entities.length).toBe(registry_entities_events_count);
   });
 
   test('checks that transactions table in test database is empty', async () => {
