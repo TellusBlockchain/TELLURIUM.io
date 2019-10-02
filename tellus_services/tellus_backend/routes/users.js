@@ -4,6 +4,7 @@ var router = express.Router();
 var models = require('../models');
 
 const cors = require('cors');
+const crypto = require('crypto');
 
 router.options('/', cors());
 
@@ -17,6 +18,21 @@ router.get('/', cors(), async function(req, res, next) {
     ]
   });
   res.send(users);
+});
+
+router.get('/check_token', cors(), async function(req, res, next) {
+  if (!req.query.email) {
+    return res.send({ error: 'email field is required' });
+  }
+  if (!req.query.token) {
+    return res.send({ error: 'token field is required' });
+  }
+
+  let hash = crypto.createHash('md5')
+    .update(req.query.email + '_' + process.env["INVITES_SECRET"])
+    .digest('hex');
+
+  res.send({ token_is_valid: (req.query.token === hash) });
 });
 
 // router.get('/reset', cors(), async function(req, res, next) {

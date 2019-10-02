@@ -15,6 +15,11 @@ class RegistryEntitiesIndexMap extends Component {
   }
 
   renderMarkers() {
+    if (!this.state) {
+      console.warn("renderMarkers invoked before this.state initialized.")
+      return;
+    }
+
     let _map = this.state._map
     let _maps = this.state._maps
 

@@ -25,6 +25,7 @@ class PagesWelcome extends React.Component {
 
   async tryToLoginViaMetamask () {
     if (!window.ethereum) {
+      console.warning('You are trying to login via MetaMask, but you have not installed MetaMask')
       return null;
     }
     
@@ -43,7 +44,7 @@ class PagesWelcome extends React.Component {
 
       this.setState({
         isLoginnedViaMetamask: true,
-        role: role
+        role:                  role
       });
 
       this.props.app.setState({ current_user_role: role });

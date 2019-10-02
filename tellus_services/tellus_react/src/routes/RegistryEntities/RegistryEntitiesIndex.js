@@ -15,9 +15,9 @@ class RegistryEntitiesIndex extends React.Component {
     super(props);
 
     this.state = {
-      registry_entities: [],
-      showRegistryEntity: false,
-      registryEntity: null,
+      registry_entities:        [],
+      showRegistryEntity:       false,
+      registryEntity:           null,
       registry_entities_loaded: false
     };
 
@@ -26,26 +26,24 @@ class RegistryEntitiesIndex extends React.Component {
   }
 
   async componentDidMount () {
-    if (window.ethereum.selectedAddress) {
-      await this.loadRegistryEntities();
-    }
+    await this.loadRegistryEntities();
   }
 
   async loadRegistryEntities () {
-    if (window.ethereum.isMetaMask) {
-      const accounts = await window.ethereum.enable();
-      const RegistryEntities = contract(RegistryEntitiesJSON);
-  
-      RegistryEntities.setProvider(window.web3.currentProvider);
-      RegistryEntities.defaults({
-        from: accounts[0]
-      });
-  
-      const deployed = await RegistryEntities.deployed();
-      let registry_entities_current_id = await deployed.get_current_id();
+    let registry_entities = [];
+    if (!use_postgre_cache_as_db) {
+      if (window.ethereum.isMetaMask) {
+        const accounts = await window.ethereum.enable();
+        const RegistryEntities = contract(RegistryEntitiesJSON);
+    
+        RegistryEntities.setProvider(window.web3.currentProvider);
+        RegistryEntities.defaults({
+          from: accounts[0]
+        });
+    
+        const deployed = await RegistryEntities.deployed();
+        let registry_entities_current_id = await deployed.get_current_id();
 
-      let registry_entities = [];
-      if (!use_postgre_cache_as_db) {
         for (let i = 1, l = registry_entities_current_id.toNumber(); i <= l; l--) {
           let registry_entity = await deployed.find(l);
 
@@ -70,25 +68,23 @@ class RegistryEntitiesIndex extends React.Component {
             registry_entities: registry_entities
           });
         }
-      } else if (use_postgre_cache_as_db) {
-        let response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/registry_entities`);
-        response = await response.json();
-        response.map( (registry_entity) => {
-          registry_entity.points = JSON.parse(registry_entity.points)
-          registry_entity.points = registry_entity.points.map( (coord) => (coord >> 0) );
-        });
-        registry_entities = response;
-        this.setState({
-          registry_entities: registry_entities
-        });
       }
-
-      this.setState({
-        registry_entities_loaded: true
+    } else if (use_postgre_cache_as_db) {
+      let response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/registry_entities`);
+      response = await response.json();
+      response.map( (registry_entity) => {
+        registry_entity.points = JSON.parse(registry_entity.points)
+        registry_entity.points = registry_entity.points.map( (coord) => (coord >> 0) );
       });
-    } else {
-  
+      registry_entities = response;
+      this.setState({
+        registry_entities: registry_entities
+      });
     }
+
+    this.setState({
+      registry_entities_loaded: true
+    });
   }
 
   closeRegistryEntity() {
@@ -98,12 +94,14 @@ class RegistryEntitiesIndex extends React.Component {
   showRegistryEntity(registry_entity) {
     this.setState({
       showRegistryEntity: true,
-      registryEntity: registry_entity
+      registryEntity:     registry_entity
     });
   }
 
   render() {
-    return (
+    return !(this.props.token_is_valid || this.props.current_user_role) ? (
+      <div style={{ 'color': 'white' }}>No permissions</div>
+    ) : (
       <>
         <div className='map-container'>
           <RegistryEntitiesIndexMap registry_entities={this.state.registry_entities} showRegistryEntity={this.showRegistryEntity} />
