@@ -77,8 +77,14 @@ class RegistryEntitiesIndex extends React.Component {
         registry_entity.points = registry_entity.points.map( (coord) => (coord >> 0) );
 
         // Monkey patch for old test urls. TODO: remove after database reset
-        registry_entity.image_url     = registry_entity.image_url.replace('18.195.159.148', 'tellurium.io')
-        registry_entity.documents_url = registry_entity.documents_url.replace('18.195.159.148', 'tellurium.io')
+        registry_entity.image_url     = registry_entity.image_url.replace('18.195.159.148', 'tellurium.io');
+        registry_entity.documents_url = registry_entity.documents_url.replace('18.195.159.148', 'tellurium.io');
+        if (registry_entity.image_url === "") {
+          registry_entity.image_url = "http://localhost:8080/ipfs/QmPDx9feQjLpnUpdYNZdpSA6Va73vtrRawkbvQWNHphNi5"
+        }
+        if (registry_entity.documents_url === "") {
+          registry_entity.documents_url = "http://tellurium.io:8080/ipfs/QmUo5uXFymFB2rTaoQb1QcCMxQegE3S9gZx37Z5iTvZ4ZB"
+        }
       });
       registry_entities = response;
       this.setState({
