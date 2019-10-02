@@ -43,7 +43,7 @@ class Header extends React.Component {
               {
                 typeof this.props.current_user_role !== 'undefined' || this.props.token_is_valid ? (
                   <div>
-                    <Link to="/registry_entities/index">Decentralized Land Registry</Link>
+                    <Link to="/registry_entities">Decentralized Land Registry</Link>
                   </div>
                 ) : null
               }

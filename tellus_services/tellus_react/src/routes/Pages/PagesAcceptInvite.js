@@ -69,7 +69,7 @@ class PagesWelcome extends React.Component {
       // });
 
       this.props.app.setState({ current_user_role: 3 });
-      this.props.history.push('/registry_entities/index');
+      this.props.history.push('/registry_entities');
     }
   }
 

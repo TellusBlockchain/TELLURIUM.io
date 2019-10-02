@@ -31,7 +31,7 @@ exports.send_invitation = async function (inviter_name, mail_to) {
   }
 
   let hash = crypto.createHash('md5').update(mail_to + '_' + process.env["INVITES_SECRET"]).digest('hex');
-  let href = `${process.env["BASE_URL"]}/registry_entities/index?email=${mail_to}&token=${hash}`;
+  let href = `${process.env["BASE_URL"]}/registry_entities?email=${mail_to}&token=${hash}`;
 
   const email = new Email({ views: { options: { extension: 'ejs' } } });
   let emailRender = await email.renderAll('invitation', { href });

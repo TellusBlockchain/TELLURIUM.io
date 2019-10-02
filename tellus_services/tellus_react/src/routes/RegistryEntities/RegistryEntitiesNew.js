@@ -115,7 +115,7 @@ class RegistryEntitiesNew extends React.Component {
         this.state.points
       );
       
-      this.props.history.push('/registry_entities/index')
+      this.props.history.push('/registry_entities')
     } else {
   
     }

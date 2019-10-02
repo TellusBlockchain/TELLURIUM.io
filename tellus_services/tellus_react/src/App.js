@@ -66,8 +66,8 @@ class App extends React.Component {
             <Route path="/invites/accept"          render={(props) => <PagesAcceptInvite app={this} {...props} />} />
             <Route path="/users/new"               component={UsersNew} />
             <Route path="/users/index"             component={UsersIndex} />
-            <Route path="/registry_entities/index" render={(props) => <RegistryEntitiesIndex current_user_role={this.state.current_user_role} token_is_valid={this.state.token_is_valid} {...props} /> } />
             <Route path="/registry_entities/new"   component={RegistryEntitiesNew} />
+            <Route path="/registry_entities"       render={(props) => <RegistryEntitiesIndex current_user_role={this.state.current_user_role} token_is_valid={this.state.token_is_valid} {...props} /> } />
             <Route path="/explorer"                component={PagesExplorer} />
           </Switch>
         </Router>
