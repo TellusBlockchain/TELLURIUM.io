@@ -29,7 +29,7 @@ class Header extends React.Component {
               {
                 this.props.current_user_role === 1 || this.props.current_user_role === 2 ? (
                   <div>
-                    <Link to="/users/index">Users Index</Link>
+                    <Link to="/users">Users Index</Link>
                   </div>
                 ) : null
               }
