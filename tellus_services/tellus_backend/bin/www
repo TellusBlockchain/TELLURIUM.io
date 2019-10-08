@@ -8,6 +8,7 @@ var app = require('../app');
 var debug = require('debug')('tellus-backend:server');
 var http = require('http');
 const https = require('https');
+const fs = require('fs');
 
 var registryEntitiesEventsLoader = require('../loaders/registryEntitiesEventsLoader');
 
