@@ -18,7 +18,8 @@ class RegistryEntitiesNew extends React.Component {
 
     this.ipfs = ipfsClient(
       process.env.REACT_APP_IPFS_API_SERVER_URL,
-      process.env.REACT_APP_IPFS_API_SERVER_PORT
+      process.env.REACT_APP_IPFS_API_SERVER_PORT,
+      { protocol: 'https' }
     );
 
     this.state = {
