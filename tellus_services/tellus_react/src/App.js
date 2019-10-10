@@ -5,13 +5,13 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Header from './components/Header';
 
-import PagesWelcome from './routes/Pages/PagesWelcome';
-import PagesAcceptInvite from './routes/Pages/PagesAcceptInvite';
-import UsersNew from './routes/Users/UsersNew';
-import UsersIndex from './routes/Users/UsersIndex';
-import RegistryEntitiesNew from './routes/RegistryEntities/RegistryEntitiesNew';
+import PagesWelcome          from './routes/Pages/PagesWelcome';
+import PagesAcceptInvite     from './routes/Pages/PagesAcceptInvite';
+import UsersNew              from './routes/Users/UsersNew';
+import UsersIndex            from './routes/Users/UsersIndex';
+import RegistryEntitiesNew   from './routes/RegistryEntities/RegistryEntitiesNew';
 import RegistryEntitiesIndex from './routes/RegistryEntities/RegistryEntitiesIndex';
-import PagesExplorer from './routes/Pages/PagesExplorer';
+import PagesExplorer         from './routes/Pages/PagesExplorer';
 
 class App extends React.Component {
   constructor (props) {
@@ -19,7 +19,7 @@ class App extends React.Component {
 
     this.state = {
       current_user_role: undefined,
-      query_params: this.parse_query_params(props)
+      query_params:      this.parse_query_params(props)
     };
 
     if (this.state.query_params.email && this.state.query_params.token) {
@@ -62,13 +62,13 @@ class App extends React.Component {
           <Header current_user_role={this.state.current_user_role} token_is_valid={this.state.token_is_valid} />
           
           <Switch>
-            <Route path="/" exact                  render={(props) => <PagesWelcome app={this} {...props} />} />
-            <Route path="/invites/accept"          render={(props) => <PagesAcceptInvite app={this} {...props} />} />
-            <Route path="/users/new"               component={UsersNew} />
-            <Route path="/users"                   component={UsersIndex} />
-            <Route path="/registry_entities/new"   component={RegistryEntitiesNew} />
-            <Route path="/registry_entities"       render={(props) => <RegistryEntitiesIndex current_user_role={this.state.current_user_role} token_is_valid={this.state.token_is_valid} {...props} /> } />
-            <Route path="/explorer"                component={PagesExplorer} />
+            <Route path="/" exact                render={(props) => <PagesWelcome app={this} {...props} />} />
+            <Route path="/invites/accept"        render={(props) => <PagesAcceptInvite app={this} {...props} />} />
+            <Route path="/users/new"             component={UsersNew} />
+            <Route path="/users"                 component={UsersIndex} />
+            <Route path="/registry_entities/new" component={RegistryEntitiesNew} />
+            <Route path="/registry_entities"     render={(props) => <RegistryEntitiesIndex current_user_role={this.state.current_user_role} token_is_valid={this.state.token_is_valid} {...props} /> } />
+            <Route path="/explorer"              component={PagesExplorer} />
           </Switch>
         </Router>
       </div>
