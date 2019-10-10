@@ -1,7 +1,24 @@
 const models = require('../models');
 
 const Web3 = require('web3');
-const web3 = new Web3(process.env.WEB3_PROVIDER);
+const ROPSTEN_WSS = 'wss://ropsten.infura.io/ws';
+let provider = new Web3.providers.WebsocketProvider(ROPSTEN_WSS);
+
+provider.on('error', e => {
+  console.error('WS Infura Error', e);
+});
+
+provider.on('end', e => {
+  console.log('WS closed');
+  console.log('Attempting to reconnect...');
+  provider = new Web3.providers.WebsocketProvider(ROPSTEN_WSS);
+  provider.on('connect', function () {
+      console.log('WSS Reconnected');
+  });
+  web3.setProvider(provider);
+});
+
+const web3 = new Web3(provider);
 
 const RegistryEntitiesJSON = require("../contracts/RegistryEntities.json");
 let RegistryEntitiesContract = new web3.eth.Contract(
