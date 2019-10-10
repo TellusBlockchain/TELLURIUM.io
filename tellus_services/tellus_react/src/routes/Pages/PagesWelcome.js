@@ -47,6 +47,8 @@ class PagesWelcome extends React.Component {
         role:                  role
       });
 
+      localStorage.setItem('current_user_role', role);
+
       this.props.app.setState({ current_user_role: role });
       this.props.history.push('/registry_entities');
     }

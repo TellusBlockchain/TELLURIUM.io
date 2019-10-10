@@ -17,8 +17,10 @@ class App extends React.Component {
   constructor (props) {
     super(props);
 
+    let current_user_role = localStorage.getItem('current_user_role');
+
     this.state = {
-      current_user_role: undefined,
+      current_user_role: current_user_role,
       query_params:      this.parse_query_params(props)
     };
 
@@ -27,6 +29,7 @@ class App extends React.Component {
         .then(res => res.json())
         .then(
           (result) => {
+            localStorage.setItem('token_is_valid', token_is_valid);
             this.setState({
               token_is_valid: result.token_is_valid
             });
