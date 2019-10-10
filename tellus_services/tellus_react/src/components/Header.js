@@ -10,10 +10,12 @@ class Header extends React.Component {
         <Container>
           <Row>
             <Col md="auto">
-              <img src="/tellurium-logo-white.png"
-                   srcSet="/tellurium-logo-white@2x.png 2x,
-                          /tellurium-logo-white@3x.png 3x"
-                   className="Tellurium_logo_white" />
+              <Link to="/">
+                <img src="/tellurium-logo-white.png"
+                    srcSet="/tellurium-logo-white@2x.png 2x,
+                            /tellurium-logo-white@3x.png 3x"
+                    className="Tellurium_logo_white" />
+              </Link>
             </Col>
             <Col className="nav-links-container">
               <div>
