@@ -18,10 +18,12 @@ class App extends React.Component {
     super(props);
 
     let current_user_role = localStorage.getItem('current_user_role');
+    let token_is_valid    = localStorage.getItem('token_is_valid');
 
     this.state = {
       current_user_role: current_user_role,
-      query_params:      this.parse_query_params(props)
+      query_params:      this.parse_query_params(props),
+      token_is_valid:    token_is_valid
     };
 
     if (this.state.query_params.email && this.state.query_params.token) {
