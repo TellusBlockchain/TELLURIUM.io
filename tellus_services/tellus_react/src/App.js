@@ -17,7 +17,10 @@ class App extends React.Component {
   constructor (props) {
     super(props);
 
-    let current_user_role = localStorage.getItem('current_user_role') >> 0;
+    let current_user_role = localStorage.getItem('current_user_role');
+    if (current_user_role != null) {
+      current_user_role = current_user_role >> 0;
+    }
     let token_is_valid    = localStorage.getItem('token_is_valid') === 'true';
 
     this.state = {
