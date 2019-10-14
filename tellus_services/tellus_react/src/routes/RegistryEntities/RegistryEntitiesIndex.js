@@ -116,7 +116,7 @@ class RegistryEntitiesIndex extends React.Component {
   }
 
   render() {
-    return !(this.props.token_is_valid || this.props.current_user_role) ? (
+    return !(this.props.token_is_valid || this.props.current_user_role != null) ? (
       <div style={{ 'color': 'white' }}>No permissions</div>
     ) : (
       <>
