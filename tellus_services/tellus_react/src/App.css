@@ -125,8 +125,8 @@
 .Tellurium_logo_white {
   width: 167px;
   height: 18px;
-  object-fit: contain;
-  margin-top: 24px;
+  /* object-fit: contain;
+  margin-top: 24px; */
 }
 
 .art {

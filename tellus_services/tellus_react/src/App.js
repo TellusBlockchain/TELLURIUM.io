@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.css';
 
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Router as Router, Route, Switch } from "react-router-dom";
+import history from './history';
 
 import Header from './components/Header';
 
@@ -34,7 +35,7 @@ class App extends React.Component {
         .then(res => res.json())
         .then(
           (result) => {
-            localStorage.setItem('token_is_valid', token_is_valid);
+            localStorage.setItem('token_is_valid', result.token_is_valid);
             this.setState({
               token_is_valid: result.token_is_valid
             });
@@ -66,8 +67,8 @@ class App extends React.Component {
   render () {
     return (
       <div className="App">
-        <Router>
-          <Header current_user_role={this.state.current_user_role} token_is_valid={this.state.token_is_valid} />
+        <Router history={history}>
+          <Header current_user_role={this.state.current_user_role} token_is_valid={this.state.token_is_valid} app={this} history={history} />
           
           <Switch>
             <Route path="/" exact                render={(props) => <PagesWelcome app={this} {...props} />} />
