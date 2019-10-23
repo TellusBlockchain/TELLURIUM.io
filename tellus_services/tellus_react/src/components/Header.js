@@ -79,7 +79,7 @@ class Header extends React.Component {
             ) : null
           }
           {
-            this.props.current_user_role === 1 || this.props.current_user_role === 2 ? (
+            this.props.current_user_role != null ? (
               <LinkContainer to="/registry_entities/new">
                 <Nav.Link>
                   New Registry Entity
@@ -88,7 +88,7 @@ class Header extends React.Component {
             ) : null
           }
           {
-            (this.props.current_user_role != null) || this.props.token_is_valid ? (
+            this.props.current_user_role != null || this.props.token_is_valid ? (
               <LinkContainer to="/registry_entities">
                 <Nav.Link>
                   Decentralized Land Registry
@@ -100,7 +100,7 @@ class Header extends React.Component {
             <Nav.Link>Explorer</Nav.Link>
           </LinkContainer>
           {
-            (this.props.current_user_role != null) ? (
+            this.props.current_user_role != null ? (
               null
             ) : (
               <Nav.Item>
