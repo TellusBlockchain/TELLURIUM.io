@@ -46,7 +46,12 @@ contract RegistryEntities is Initializable {
                     string memory image_url,
                     string memory priceUSD,
                     int32[] memory points
-    ) public {
+    ) public payable {
+        require(
+            msg.value >= 0.1 ether,
+            "Not enough Ether provided."
+        );
+
         current_id += 1;
 
         uint created_at = block.timestamp;

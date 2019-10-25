@@ -5,6 +5,7 @@ import "truffle/DeployedAddresses.sol";
 import "../contracts/RegistryEntities.sol";
 
 contract TestRegistryEntities {
+    uint public initialBalance = 10 ether;
 
     function testCreate() public {
         RegistryEntities registryEntities = new RegistryEntities();
@@ -19,7 +20,7 @@ contract TestRegistryEntities {
         points[1] = valid_y;
         points[2] = valid_z;
 
-        registryEntities.create({
+        registryEntities.create.value(100000000000000000)({
             title: "title",
             description: "description",
             documents_url: "documents_url",
@@ -38,7 +39,7 @@ contract TestRegistryEntities {
         points[1] = 2;
         points[2] = 3;
 
-        registryEntities.create({
+        registryEntities.create.value(100000000000000000)({
             title: "title",
             description: "description",
             documents_url: "documents_url",
@@ -81,7 +82,7 @@ contract TestRegistryEntities {
         points[1] = 2;
         points[2] = 3;
 
-        registryEntities.create({
+        registryEntities.create.value(100000000000000000)({
             title: "title",
             description: "description",
             documents_url: "documents_url",

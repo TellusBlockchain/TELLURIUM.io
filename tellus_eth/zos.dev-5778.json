@@ -1,11 +1,11 @@
 {
   "contracts": {
     "RegistryEntities": {
-      "address": "0xbEf286266ba36C924bC96A1A13a10296B2E7088f",
-      "constructorCode": "608060405234801561001057600080fd5b5061183b806100206000396000f3fe",
-      "bodyBytecodeHash": "d343faa8691e70de47ec38746bd655611103e1816348d3fd848dd3cb5c5dcef0",
-      "localBytecodeHash": "962551e941ac492ebd3d24e337fcf3cb480e4781bf514d55e8c66cbe143f297d",
-      "deployedBytecodeHash": "962551e941ac492ebd3d24e337fcf3cb480e4781bf514d55e8c66cbe143f297d",
+      "address": "0xBa2BE74eD1519acDd542674089e31804f98a6A47",
+      "constructorCode": "608060405234801561001057600080fd5b506118e0806100206000396000f3fe",
+      "bodyBytecodeHash": "ed332f725915d30d5d582d66b960619fac403ee5666b7bbc318ef0edf9a8fd1d",
+      "localBytecodeHash": "370117f2df3182669542ef6d1a7611bde94b51c929ed310b2983012f55b5d76b",
+      "deployedBytecodeHash": "370117f2df3182669542ef6d1a7611bde94b51c929ed310b2983012f55b5d76b",
       "types": {
         "t_bool": {
           "id": "t_bool",
@@ -114,7 +114,7 @@
           "contract": "Initializable",
           "path": "zos-lib/contracts/Initializable.sol",
           "label": "initialized",
-          "astId": 383,
+          "astId": 391,
           "type": "t_bool",
           "src": "757:24:3"
         },
@@ -122,7 +122,7 @@
           "contract": "Initializable",
           "path": "zos-lib/contracts/Initializable.sol",
           "label": "initializing",
-          "astId": 385,
+          "astId": 393,
           "type": "t_bool",
           "src": "876:25:3"
         },
@@ -130,7 +130,7 @@
           "contract": "Initializable",
           "path": "zos-lib/contracts/Initializable.sol",
           "label": "______gap",
-          "astId": 441,
+          "astId": 449,
           "type": "t_array:50<t_uint256>",
           "src": "1951:29:3"
         },
@@ -307,7 +307,7 @@
       {
         "address": "0x56Ebc21A300882B23Adf6a2677D2993A34A9F8e5",
         "version": "1.0.0",
-        "implementation": "0xbEf286266ba36C924bC96A1A13a10296B2E7088f",
+        "implementation": "0xBa2BE74eD1519acDd542674089e31804f98a6A47",
         "admin": "0xa8b4a00e2EA7EBEb70De008dA1da48485F4027Dc"
       }
     ]

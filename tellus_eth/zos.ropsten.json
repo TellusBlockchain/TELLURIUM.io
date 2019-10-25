@@ -1,11 +1,11 @@
 {
   "contracts": {
     "RegistryEntities": {
-      "address": "0xbc4aC7a38555372f5B1e725132FF39c969e44F5B",
-      "constructorCode": "608060405234801561001057600080fd5b5061183b806100206000396000f3fe",
-      "bodyBytecodeHash": "d343faa8691e70de47ec38746bd655611103e1816348d3fd848dd3cb5c5dcef0",
-      "localBytecodeHash": "962551e941ac492ebd3d24e337fcf3cb480e4781bf514d55e8c66cbe143f297d",
-      "deployedBytecodeHash": "962551e941ac492ebd3d24e337fcf3cb480e4781bf514d55e8c66cbe143f297d",
+      "address": "0x652d095aa5Fb7574F56ef0fBBe1c2A6d8F3F29DC",
+      "constructorCode": "608060405234801561001057600080fd5b506118e0806100206000396000f3fe",
+      "bodyBytecodeHash": "ed332f725915d30d5d582d66b960619fac403ee5666b7bbc318ef0edf9a8fd1d",
+      "localBytecodeHash": "370117f2df3182669542ef6d1a7611bde94b51c929ed310b2983012f55b5d76b",
+      "deployedBytecodeHash": "370117f2df3182669542ef6d1a7611bde94b51c929ed310b2983012f55b5d76b",
       "types": {
         "t_bool": {
           "id": "t_bool",
@@ -114,7 +114,7 @@
           "contract": "Initializable",
           "path": "zos-lib/contracts/Initializable.sol",
           "label": "initialized",
-          "astId": 383,
+          "astId": 391,
           "type": "t_bool",
           "src": "757:24:3"
         },
@@ -122,7 +122,7 @@
           "contract": "Initializable",
           "path": "zos-lib/contracts/Initializable.sol",
           "label": "initializing",
-          "astId": 385,
+          "astId": 393,
           "type": "t_bool",
           "src": "876:25:3"
         },
@@ -130,7 +130,7 @@
           "contract": "Initializable",
           "path": "zos-lib/contracts/Initializable.sol",
           "label": "______gap",
-          "astId": 441,
+          "astId": 449,
           "type": "t_array:50<t_uint256>",
           "src": "1951:29:3"
         },
@@ -307,7 +307,7 @@
       {
         "address": "0x091bb13E6e55F07E9A42CBAa59e2c225C4a96E47",
         "version": "1.0.0",
-        "implementation": "0xbc4aC7a38555372f5B1e725132FF39c969e44F5B",
+        "implementation": "0x652d095aa5Fb7574F56ef0fBBe1c2A6d8F3F29DC",
         "admin": "0x7F539B9EEa2a320E1e34a1bBDd718E78649B063c"
       }
     ]

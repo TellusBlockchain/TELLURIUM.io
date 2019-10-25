@@ -11,6 +11,8 @@ import RegistryEntitiesNewMap from "../../components/RegistryEntitiesNewMap";
 import AboveTheMapWindow from "../../components/AboveTheMapWindow";
 
 const LAT_LNG_DIVIDER = 1000000;
+const LAT_INITIAL = 37770658;
+const LONG_INITIAL = -122414000;
 
 class RegistryEntitiesNew extends React.Component {
   constructor (props) {
@@ -30,7 +32,7 @@ class RegistryEntitiesNew extends React.Component {
       priceUSD: '',
       documents_files: [],
       images_files: [],
-      points: [ 0, 0, 0 ]
+      points: [ LAT_INITIAL, LONG_INITIAL, 0 ]
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -113,7 +115,8 @@ class RegistryEntitiesNew extends React.Component {
         this.state.documents_url,
         this.state.image_url,
         this.state.priceUSD,
-        this.state.points
+        this.state.points,
+        { value: 100000000000000000 }
       );
       
       this.props.history.push('/registry_entities')
