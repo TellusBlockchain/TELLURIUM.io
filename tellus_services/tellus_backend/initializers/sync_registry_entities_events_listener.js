@@ -3,10 +3,8 @@ const models = require('../models');
 const Web3 = require('web3');
 const web3 = new Web3();
 
-const ROPSTEN_WSS = 'wss://ropsten.infura.io/ws';
-
 const init_provider = function () {
-  let provider = new Web3.providers.WebsocketProvider(ROPSTEN_WSS);
+  let provider = new Web3.providers.WebsocketProvider(process.env.WEB3_PROVIDER);
 
   provider.on('error', e => {
     console.error('WSS error', e);
@@ -27,7 +25,7 @@ const init_provider = function () {
 
 init_provider().on('connect', function () {
   console.log('WSS connected');
-});;
+});
 
 const RegistryEntitiesJSON = require("../contracts/RegistryEntities.json");
 let RegistryEntitiesContract = new web3.eth.Contract(
