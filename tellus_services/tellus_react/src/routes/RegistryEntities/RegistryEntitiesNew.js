@@ -18,10 +18,11 @@ class RegistryEntitiesNew extends React.Component {
   constructor (props) {
     super(props);
 
+    let opts = process.env.NODE_ENV === 'production' ? { protocol: 'https' } : {}
     this.ipfs = ipfsClient(
       process.env.REACT_APP_IPFS_API_SERVER_URL,
       process.env.REACT_APP_IPFS_API_SERVER_PORT,
-      { protocol: 'https' }
+      opts
     );
 
     this.state = {

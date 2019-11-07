@@ -8,7 +8,8 @@ module.exports = (sequelize, DataTypes) => {
     image_url: DataTypes.STRING,
     priceUSD: DataTypes.STRING,
     points: DataTypes.TEXT,
-    _created_at: DataTypes.INTEGER
+    _created_at: DataTypes.INTEGER,
+    creator_addr: DataTypes.STRING
   }, {});
   RegistryEntity.associate = function(models) {
     // associations can be defined here

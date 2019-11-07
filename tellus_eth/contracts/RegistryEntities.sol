@@ -26,7 +26,8 @@ contract RegistryEntities is Initializable {
         string _image_url,
         string priceUSD,
         int32[] _points,
-        uint _created_at
+        uint _created_at,
+        address _creator_addr
     );
 
     // Autoincrementer:
@@ -71,7 +72,17 @@ contract RegistryEntities is Initializable {
 
         _registryEntities[current_id] = registryEntity;
 
-        emit AfterRegistryEntityCreated(current_id, title, description, documents_url, image_url, priceUSD, points, created_at);
+        emit AfterRegistryEntityCreated(
+            current_id,
+            title,
+            description,
+            documents_url,
+            image_url,
+            priceUSD,
+            points,
+            created_at,
+            tx.origin
+        );
     }
 
     // Function for getting land entry data by land entry id.

@@ -3,7 +3,7 @@ import React from 'react';
 import contract from "truffle-contract";
 import RegistryEntitiesJSON from "../../contracts/RegistryEntities.json";
 
-import { Row, Col, Button, Card, Container, Spinner } from 'react-bootstrap';
+import { Row, Col, Button, Card, Container, Spinner, Form } from 'react-bootstrap';
 
 import RegistryEntitiesIndexMap from "../../components/RegistryEntitiesIndexMap";
 import AboveTheMapWindow from "../../components/AboveTheMapWindow";
@@ -18,11 +18,13 @@ class RegistryEntitiesIndex extends React.Component {
       registry_entities:        [],
       showRegistryEntity:       false,
       registryEntity:           null,
-      registry_entities_loaded: false
+      registry_entities_loaded: false,
+      show_only_verified:       false
     };
 
     this.closeRegistryEntity = this.closeRegistryEntity.bind(this);
     this.showRegistryEntity = this.showRegistryEntity.bind(this);
+    this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
   }
 
   async componentDidMount () {
@@ -70,9 +72,12 @@ class RegistryEntitiesIndex extends React.Component {
         }
       }
     } else if (use_postgre_cache_as_db) {
-      let response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/registry_entities`);
+      let verified = this.state.show_only_verified ? '/verified' : '';
+      let response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/registry_entities${verified}`);
       response = await response.json();
       response.map( (registry_entity) => {
+        // console.log(registry_entity)
+        
         registry_entity.points = JSON.parse(registry_entity.points)
         registry_entity.points = registry_entity.points.map( (coord) => (coord >> 0) );
 
@@ -115,6 +120,20 @@ class RegistryEntitiesIndex extends React.Component {
     });
   }
 
+  async handleCheckboxChange(event) {
+    const value = event.target.checked;
+
+    await this.setState({
+      show_only_verified:       value,
+      registry_entities:        [],
+      showRegistryEntity:       false,
+      registryEntity:           null,
+      registry_entities_loaded: false,
+    });
+
+    await this.loadRegistryEntities();
+  }
+
   render() {
     return !(this.props.token_is_valid || this.props.current_user_role != null) ? (
       <div style={{ 'color': 'white' }}>No permissions</div>
@@ -124,6 +143,16 @@ class RegistryEntitiesIndex extends React.Component {
           <RegistryEntitiesIndexMap registry_entities={this.state.registry_entities} showRegistryEntity={this.showRegistryEntity} />
         </div>
         <AboveTheMapWindow>
+          <Row className="registry-entity-row">
+            <Col>
+              <>
+                <Form.Check type={'checkbox'}
+                            id={`show_only_verified_checkbox`}
+                            label={`Show entities only of verified users`}
+                            onChange={this.handleCheckboxChange}/>
+              </>
+            </Col>
+          </Row>
           {
             this.state.registry_entities.map((registry_entity) => {
               return (

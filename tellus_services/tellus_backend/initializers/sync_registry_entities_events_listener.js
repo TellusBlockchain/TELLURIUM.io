@@ -59,7 +59,8 @@ RegistryEntitiesContract.events.AfterRegistryEntityCreated({
       image_url: event.returnValues._image_url,
       priceUSD: event.returnValues.priceUSD,
       points: JSON.stringify(event.returnValues._points),
-      _created_at: event.returnValues._created_at
+      _created_at: event.returnValues._created_at,
+      creator_addr: event.returnValues._creator_addr
     });
     console.log(`Successfully created RegistryEntity with transactionHash=${event.transactionHash}`);
   } catch (err) {
