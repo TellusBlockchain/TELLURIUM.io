@@ -7,6 +7,7 @@ import { Row, Col, Button, Card, Container, Spinner, Form } from 'react-bootstra
 
 import RegistryEntitiesIndexMap from "../../components/RegistryEntitiesIndexMap";
 import AboveTheMapWindow from "../../components/AboveTheMapWindow";
+import { relative } from 'path';
 
 const use_postgre_cache_as_db = true;
 
@@ -140,10 +141,11 @@ class RegistryEntitiesIndex extends React.Component {
     ) : (
       <>
         <div className='map-container'>
-          <RegistryEntitiesIndexMap registry_entities={this.state.registry_entities} showRegistryEntity={this.showRegistryEntity} />
+          <RegistryEntitiesIndexMap registry_entities={this.state.registry_entities}
+                                    showRegistryEntity={this.showRegistryEntity} />
         </div>
-        <AboveTheMapWindow>
-          <Row className="registry-entity-row">
+        <div className="above-the-map-left-window">
+          <Row className="registry-entities-container-header">
             <Col>
               <>
                 <Form.Check type={'checkbox'}
@@ -153,38 +155,40 @@ class RegistryEntitiesIndex extends React.Component {
               </>
             </Col>
           </Row>
-          {
-            this.state.registry_entities.map((registry_entity) => {
-              return (
-                <Row key={registry_entity.id}
-                     className="registry-entity-row"
-                     onClick={() => { this.showRegistryEntity(registry_entity) } }
-                >
-                  <Col>
-                    <h5>{registry_entity.title}</h5>
-                    <p>
-                      {
-                        registry_entity.description.length > 280 ? (
-                          `${registry_entity.description.substring(0, 280)}...`
-                        ) : registry_entity.description
-                      }
-                    </p>
-                  </Col>
-                  <Col md='auto'>
-                    <div className='registry-entities-image-container'>
-                      <img src={registry_entity.image_url} />
-                    </div>
-                  </Col>
-                </Row>
-              )
-            })
-          }
+          <div className="registry-entities-container">
+            {
+              this.state.registry_entities.map((registry_entity) => {
+                return (
+                  <Row key={registry_entity.id}
+                      className="registry-entity-row"
+                      onClick={() => { this.showRegistryEntity(registry_entity) } }
+                  >
+                    <Col>
+                      <h5>{registry_entity.title}</h5>
+                      <p>
+                        {
+                          registry_entity.description.length > 280 ? (
+                            `${registry_entity.description.substring(0, 280)}...`
+                          ) : registry_entity.description
+                        }
+                      </p>
+                    </Col>
+                    <Col md='auto'>
+                      <div className='registry-entities-image-container'>
+                        <img src={registry_entity.image_url} />
+                      </div>
+                    </Col>
+                  </Row>
+                )
+              })
+            }
+          </div>
           {!this.state.registry_entities_loaded && <Row>
             <Col className='spinnerCol'>
               <Spinner animation="grow" variant="primary" />
             </Col>
           </Row>}
-        </AboveTheMapWindow>
+        </div>
         {
           this.state.registryEntity ? (
             <div className={ "registry-entity-show-container" + (this.state.showRegistryEntity ? '' : ' hidden') }>

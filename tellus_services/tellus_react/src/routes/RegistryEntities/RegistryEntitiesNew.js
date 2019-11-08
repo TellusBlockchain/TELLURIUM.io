@@ -141,65 +141,67 @@ class RegistryEntitiesNew extends React.Component {
         <div className='map-container'>
           <RegistryEntitiesNewMap onMarkerDragEnd={this.saveLatLngToState} />
         </div>
-        <AboveTheMapWindow style={{ padding: '30px' }}>
-          <Form>
-            <Form.Group controlId="formTitle">
-              <Form.Label>Title:</Form.Label>
-              <Form.Control type="text"
-                            placeholder="Title"
-                            name="title"
-                            value={this.state.title}
-                            onChange={this.handleInputChange} />
-            </Form.Group>
-            <Form.Group controlId="formDescription">
-              <Form.Label>Description:</Form.Label>
-              <Form.Control as="textarea"
-                            placeholder="Description"
-                            name="description"
-                            value={this.state.description}
-                            onChange={this.handleInputChange} />
-            </Form.Group>
-            <Form.Group controlId="formPriceUSD">
-              <Form.Label>PriceUSD:</Form.Label>
-              <Form.Control type="text"
-                            placeholder="Price in USD"
-                            name="priceUSD"
-                            value={this.state.priceUSD}
-                            onChange={this.handleInputChange} />
-            </Form.Group>
-            <Form.Group controlId="formDocumentsUrl">
-              <Form.Label>Upload Documents:</Form.Label>
-              <Form.Control type="file"
-                            name="documents_url"
-                            onChange={this.upload_documents} />
-            </Form.Group>
-            <Form.Group controlId="formImageUrl">
-              <Form.Label>Upload Image:</Form.Label>
-              <Form.Control type="file"
-                            name="image_url"
-                            onChange={this.upload_image} />
-            </Form.Group>
-            <Form.Group controlId="formPoints">
-              <Form.Label>Coordinates:</Form.Label>
-              <div>
-                Lat: {this.state.points[0]/LAT_LNG_DIVIDER}
-              </div>
-              <div>
-                Lng: {this.state.points[1]/LAT_LNG_DIVIDER}
-              </div>
-              <div>
-                Z: {this.state.points[2]}
-              </div>
-            </Form.Group>
-            <Row>
-              <Col>
-                <Button type="button" onClick={this.handleClick}>
-                  Save
-                </Button>
-              </Col>
-            </Row>
-          </Form>
-        </AboveTheMapWindow>
+        <div className="above-the-map-left-window" style={{ padding: '30px' }}>
+          <div class="registry-entities-container">
+            <Form>
+              <Form.Group controlId="formTitle">
+                <Form.Label>Title:</Form.Label>
+                <Form.Control type="text"
+                              placeholder="Title"
+                              name="title"
+                              value={this.state.title}
+                              onChange={this.handleInputChange} />
+              </Form.Group>
+              <Form.Group controlId="formDescription">
+                <Form.Label>Description:</Form.Label>
+                <Form.Control as="textarea"
+                              placeholder="Description"
+                              name="description"
+                              value={this.state.description}
+                              onChange={this.handleInputChange} />
+              </Form.Group>
+              <Form.Group controlId="formPriceUSD">
+                <Form.Label>PriceUSD:</Form.Label>
+                <Form.Control type="text"
+                              placeholder="Price in USD"
+                              name="priceUSD"
+                              value={this.state.priceUSD}
+                              onChange={this.handleInputChange} />
+              </Form.Group>
+              <Form.Group controlId="formDocumentsUrl">
+                <Form.Label>Upload Documents:</Form.Label>
+                <Form.Control type="file"
+                              name="documents_url"
+                              onChange={this.upload_documents} />
+              </Form.Group>
+              <Form.Group controlId="formImageUrl">
+                <Form.Label>Upload Image:</Form.Label>
+                <Form.Control type="file"
+                              name="image_url"
+                              onChange={this.upload_image} />
+              </Form.Group>
+              <Form.Group controlId="formPoints">
+                <Form.Label>Coordinates:</Form.Label>
+                <div>
+                  Lat: {this.state.points[0]/LAT_LNG_DIVIDER}
+                </div>
+                <div>
+                  Lng: {this.state.points[1]/LAT_LNG_DIVIDER}
+                </div>
+                <div>
+                  Z: {this.state.points[2]}
+                </div>
+              </Form.Group>
+              <Row>
+                <Col>
+                  <Button type="button" onClick={this.handleClick}>
+                    Save
+                  </Button>
+                </Col>
+              </Row>
+            </Form>
+          </div>
+        </div>
       </>
     );
   }

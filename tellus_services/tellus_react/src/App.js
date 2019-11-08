@@ -9,6 +9,7 @@ import Header from './components/Header';
 import PagesWelcome          from './routes/Pages/PagesWelcome';
 import PagesAcceptInvite     from './routes/Pages/PagesAcceptInvite';
 import UsersNew              from './routes/Users/UsersNew';
+import UsersProfile          from './routes/Users/UsersProfile';
 import UsersIndex            from './routes/Users/UsersIndex';
 import RegistryEntitiesNew   from './routes/RegistryEntities/RegistryEntitiesNew';
 import RegistryEntitiesIndex from './routes/RegistryEntities/RegistryEntitiesIndex';
@@ -74,6 +75,7 @@ class App extends React.Component {
             <Route path="/" exact                render={(props) => <PagesWelcome app={this} {...props} />} />
             <Route path="/invites/accept"        render={(props) => <PagesAcceptInvite app={this} {...props} />} />
             <Route path="/users/new"             component={UsersNew} />
+            <Route path="/users/profile/my"      render={(props) => <UsersProfile app={this} {...props} />} />
             <Route path="/users"                 component={UsersIndex} />
             <Route path="/registry_entities/new" component={RegistryEntitiesNew} />
             <Route path="/registry_entities"     render={(props) => <RegistryEntitiesIndex current_user_role={this.state.current_user_role} token_is_valid={this.state.token_is_valid} {...props} /> } />

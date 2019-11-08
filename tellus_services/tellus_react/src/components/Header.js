@@ -11,6 +11,19 @@ class Header extends React.Component {
   constructor (props) {
     super(props);
     this.tryToLoginViaMetamask = this.tryToLoginViaMetamask.bind(this);
+    this.handleLogoutClick = this.handleLogoutClick.bind(this);
+  }
+
+  handleLogoutClick () {
+    localStorage.removeItem('current_user_role');
+    localStorage.removeItem('token_is_valid');
+
+    this.props.app.setState({
+      current_user_role: null,
+      token_is_valid: null
+    });
+    
+    this.props.history.push('/');
   }
 
   async tryToLoginViaMetamask () {
@@ -47,33 +60,36 @@ class Header extends React.Component {
   render () {
     return (
       <Navbar className="mainHeader" variant="dark">
-        <LinkContainer to="/">
-          <Navbar.Brand>
-                <img src="/tellurium-logo-white.png"
-                     alt="TELLURIUM.IO logo"
-                     srcSet="/tellurium-logo-white@2x.png 2x,
-                             /tellurium-logo-white@3x.png 3x"
-                     className="Tellurium_logo_white" />
-          </Navbar.Brand>
-        </LinkContainer>
+        {
+          this.props.current_user_role != null || this.props.token_is_valid ? (
+            <LinkContainer to="/registry_entities">
+              <Navbar.Brand>
+                    <img src="/tellurium-logo-white.png"
+                         alt="TELLURIUM.IO logo"
+                         srcSet="/tellurium-logo-white@2x.png 2x,
+                                 /tellurium-logo-white@3x.png 3x"
+                         className="Tellurium_logo_white" />
+              </Navbar.Brand>
+            </LinkContainer>
+          ) : (
+            <LinkContainer to="/">
+              <Navbar.Brand>
+                    <img src="/tellurium-logo-white.png"
+                         alt="TELLURIUM.IO logo"
+                         srcSet="/tellurium-logo-white@2x.png 2x,
+                                 /tellurium-logo-white@3x.png 3x"
+                         className="Tellurium_logo_white" />
+              </Navbar.Brand>
+            </LinkContainer>
+          ) 
+        }
+
         <Nav style={{ width: '100%' }} className="justify-content-end">
-          <LinkContainer to="/">
-            <Nav.Link>Welcome</Nav.Link>
-          </LinkContainer>
           {
-            this.props.current_user_role === 1 || this.props.current_user_role === 2 ? (
-              <LinkContainer to="/users/new">
+            this.props.current_user_role != null || this.props.token_is_valid ? (
+              <LinkContainer to="/registry_entities">
                 <Nav.Link>
-                  New User
-                </Nav.Link>
-              </LinkContainer>
-            ) : null
-          }
-          {
-            this.props.current_user_role === 1 || this.props.current_user_role === 2 ? (
-              <LinkContainer to="/users">
-                <Nav.Link>
-                  Users Index
+                  Decentralized Land Registry
                 </Nav.Link>
               </LinkContainer>
             ) : null
@@ -88,10 +104,28 @@ class Header extends React.Component {
             ) : null
           }
           {
-            this.props.current_user_role != null || this.props.token_is_valid ? (
-              <LinkContainer to="/registry_entities">
+            this.props.current_user_role === 1 || this.props.current_user_role === 2 ? (
+              <LinkContainer to="/users">
                 <Nav.Link>
-                  Decentralized Land Registry
+                  Users
+                </Nav.Link>
+              </LinkContainer>
+            ) : null
+          }
+          {
+            this.props.current_user_role === 1 || this.props.current_user_role === 2 ? (
+              <LinkContainer to="/users/new">
+                <Nav.Link>
+                  New User
+                </Nav.Link>
+              </LinkContainer>
+            ) : null
+          }
+          {
+            this.props.current_user_role != null ? (
+              <LinkContainer to="/users/profile/my">
+                <Nav.Link>
+                  Profile
                 </Nav.Link>
               </LinkContainer>
             ) : null
@@ -110,6 +144,15 @@ class Header extends React.Component {
                 >Login via MetaMask</button>
               </Nav.Item>
             )
+          }
+          {
+            this.props.current_user_role != null || this.props.token_is_valid ? (
+              <LinkContainer to="#">
+                <Nav.Link onClick={this.handleLogoutClick}>
+                  Logout
+                </Nav.Link>
+              </LinkContainer>
+            ) : null
           }
         </Nav>
       </Navbar>
